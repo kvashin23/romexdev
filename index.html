@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ромекс Девелопмент — дизайн главной страницы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="transparent-header">
+
+<header>
+  <div class="topbar">
+    <a class="logo" href="index.html">
+      <img class="logo-img logo-color" src="assets/img/logo-color.png" alt="Ромекс Группа компаний">
+      <img class="logo-img logo-white" src="assets/img/logo-white.png" alt="Ромекс Группа компаний">
+    </a>
+    <nav class="mainnav">
+      <div class="navitem has-drop">
+        <a href="object.html">Объекты</a>
+        <div class="dropdown">
+          <a href="object.html"><span><span class="city">Краснодар</span>NEO-квартал «Красная площадь»</span><span class="price-tag">от 4,5 млн ₽</span></a>
+          <a href="object.html"><span><span class="city">Новороссийск</span>ЖК «Красная площадь»</span><span class="price-tag">от 5,2 млн ₽</span></a>
+          <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Анапа</span>ЖК «Приморский»</span><span class="sold-tag">Распродан</span></a>
+        </div>
+      </div>
+      <div class="navitem"><a href="flats.html">Квартиры</a></div>
+      <div class="navitem"><a href="commercial.html">Торговые помещения</a></div>
+      <div class="navitem"><a href="mortgage.html">Ипотека</a></div>
+      <div class="navitem"><a href="offices.html">Офисы продаж</a></div>
+    </nav>
+    <div class="header-actions">
+      <span class="phone mono">8 800 200 96 50</span>
+      <button class="btn btn-primary">Подобрать квартиру</button>
+      <button class="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="subnav">
+    <a href="promotions.html">Акции</a>
+    <a href="buying.html">Способы покупки</a>
+    <a href="about.html">О компании</a>
+    <a href="partners.html">Партнёрам</a>
+    <a href="keys.html">Выдача ключей</a>
+    <a href="contacts.html">Контакты</a>
+  </div>
+</header>
+
+<!-- ===================== HERO SLIDER ===================== -->
+<div class="hero-wrap">
+<section class="hero" id="hero">
+  <div class="slide active">
+    <div class="render" style="position:absolute;inset:0;background:url('assets/img/facades-wide.jpg') center/cover;"></div>
+    <div class="slide-content">
+      <div class="eyebrow-row"><span class="pill">Старт продаж</span><span class="pill">2‑я очередь</span></div>
+      <h1>NEO‑квартал «Красная площадь»</h1>
+      <p class="sub">Город в городе на 39 домов в Краснодаре — школы, детские сады и парк в шаговой доступности от дома.</p>
+      <div class="slide-cta"><button class="btn btn-primary">Перейти к объекту</button></div>
+    </div>
+  </div>
+  <div class="slide">
+    <div class="render" style="position:absolute;inset:0;background:url('assets/img/facade-close.jpg') center/cover;"></div>
+    <div class="slide-content">
+      <div class="eyebrow-row"><span class="pill">Скидка 2 млн ₽</span></div>
+      <h1>ЖК «Красная площадь» в Новороссийске</h1>
+      <p class="sub">5 домов у моря с видом на бухту. Ипотека от банков‑партнёров на специальных условиях.</p>
+      <div class="slide-cta"><button class="btn btn-primary">Смотреть акцию</button></div>
+    </div>
+  </div>
+  <div class="slide">
+    <div class="render" style="position:absolute;inset:0;background:url('assets/img/entrance.jpg') center/cover;"></div>
+    <div class="slide-content">
+      <div class="eyebrow-row"><span class="pill">Выдача ключей</span></div>
+      <h1>Выдаём ключи в NEO‑квартале</h1>
+      <p class="sub">Запишитесь на удобную дату и время получения ключей от новой квартиры.</p>
+      <div class="slide-cta"><button class="btn btn-primary">Записаться</button></div>
+    </div>
+  </div>
+  <button class="hero-nav prev" onclick="moveSlide(-1)">‹</button>
+  <button class="hero-nav next" onclick="moveSlide(1)">›</button>
+  <div class="hero-dots" id="heroDots"></div>
+</section>
+
+  <div class="wrap promo-overlap">
+    <div class="promo-row-wrap">
+      <button class="promo-big-arrow" data-scroll-prev="promoTrack">←</button>
+      <div class="promo-track" id="promoTrack">
+      <a class="promo-card" href="promotions.html">
+        <h3>Материнский капитал в зачёт взноса</h3>
+        <p>Используйте маткапитал как первоначальный взнос по ипотеке без доплат.</p>
+        <div class="promo-highlight">от 0 ₽ взнос</div>
+      </a>
+      <a class="promo-card" href="promotions.html">
+        <h3>Скидка на квартиры «под ключ»</h3>
+        <p>При покупке до конца месяца — скидка на отделку и мебельный пакет.</p>
+        <div class="promo-highlight">−2 млн ₽</div>
+      </a>
+      <a class="promo-card" href="promotions.html">
+        <h3>Военная ипотека</h3>
+        <p>Оформим заявку за 1 день, поможем со сбором документов.</p>
+        <div class="promo-highlight">от 6% годовых</div>
+      </a>
+      <a class="promo-card" href="promotions.html">
+        <h3>Рассрочка от застройщика</h3>
+        <p>Без банка и переплат — равными платежами до сдачи дома.</p>
+        <div class="promo-highlight">0% на 12 мес</div>
+      </a>
+      </div>
+      <button class="promo-big-arrow promo-big-arrow-next" data-scroll-next="promoTrack">→</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PROMO / NEWS STRIP ===================== -->
+<section class="promo-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="kicker">Актуально сейчас</span>
+        <h2>Акции и предложения</h2>
+      </div>
+      <button class="btn btn-primary" style="border-radius:100px;" data-modal-open="subscribeModal">Подписаться на рассылку</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SEARCH BLOCK ===================== -->
+<section class="search-section">
+  <div class="wrap">
+    <div class="search-card">
+      <div class="bp-overlay blueprint"></div>
+      <div class="search-top">
+        <div>
+          <h2>Подбор квартиры</h2>
+          <p>Отфильтруйте по городу, комнатности и бюджету — покажем свободные варианты по шахматке.</p>
+        </div>
+      </div>
+      <div class="room-tabs toggle-group">
+        <button class="active">Все квартиры</button><button>Студии</button><button>1‑комнатные</button><button>2‑комнатные</button><button>3‑комнатные и больше</button>
+      </div>
+      <div class="filters-grid filters-grid-4">
+        <div class="filter">
+          <label>Город</label>
+          <div class="custom-select">
+            <button type="button" class="custom-select-trigger">
+              <span class="custom-select-label">Все города</span>
+              <span class="chev">⌄</span>
+            </button>
+            <div class="custom-select-list">
+              <div class="custom-select-option selected">Все города</div>
+              <div class="custom-select-option">Краснодар</div>
+              <div class="custom-select-option">Новороссийск</div>
+              <div class="custom-select-option">Анапа</div>
+            </div>
+          </div>
+        </div>
+        <div class="filter">
+          <label>Стоимость, ₽</label>
+          <div class="filter-value">
+            <input type="text" inputmode="numeric" class="num-input" value="3 000 000" placeholder="от 3 000 000">
+          </div>
+        </div>
+        <div class="filter">
+          <label>Площадь, м²</label>
+          <div class="filter-value">
+            <input type="text" value="24–34">
+          </div>
+          <div class="hint">можно указать свой диапазон</div>
+        </div>
+        <button class="search-submit">Найти →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OBJECTS ===================== -->
+<section class="objects-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="kicker">Наши проекты</span>
+        <h2>Объекты</h2>
+      </div>
+    </div>
+    <div class="objects-grid">
+      <a class="object-card" href="object.html">
+        <div class="object-photo render corner-ticks" style="background:url('assets/img/object-krasnodar.jpg') center/cover;"><span class="badge">Старт продаж</span></div>
+        <div class="object-body">
+          <div>
+            <h3>NEO‑квартал «Красная площадь»</h3>
+            <div class="city">Краснодар</div>
+          </div>
+          <div class="price-box">от<b>4,5 млн ₽</b></div>
+        </div>
+      </a>
+      <a class="object-card" href="object.html">
+        <div class="object-photo render corner-ticks" style="background:url('assets/img/object-novorossiysk.jpg') center/cover;"><span class="badge">Скидка 10%</span></div>
+        <div class="object-body">
+          <div>
+            <h3>ЖК «Красная площадь»</h3>
+            <div class="city">Новороссийск</div>
+          </div>
+          <div class="price-box">от<b>5,2 млн ₽</b></div>
+        </div>
+      </a>
+      <div class="hidden-objects objects-grid" id="hiddenObjects">
+        <div class="object-card disabled">
+          <div class="object-photo render sold corner-ticks" style="background:url('assets/img/facades-wide.jpg') center/cover;"><span class="badge sold-badge">Сдан · Распродан</span></div>
+          <div class="object-body">
+            <div>
+              <h3>ЖК «Приморский»</h3>
+              <div class="city">Анапа</div>
+            </div>
+            <div class="price-box">Продано</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="show-more-wrap">
+      <button class="btn-show-more" data-target="hiddenObjects" data-more="Показать ещё" data-less="Свернуть" onclick="toggleShowMore(this)">Показать ещё</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PURCHASE METHODS ===================== -->
+<section class="purchase-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="kicker">Как купить</span><h2>Способы покупки</h2></div>
+    </div>
+    <div class="purchase-grid">
+      <div class="purchase-tile p1">
+        <div class="ic">%</div>
+        <div><h4>Ипотека</h4><p>Более 15 банков‑партнёров, одобрение за 1 день</p></div>
+      </div>
+      <div class="purchase-tile p2"><div class="ic">▤</div><h4>Рассрочка</h4></div>
+      <div class="purchase-tile p3"><div class="ic">₽</div><h4>Наличные</h4></div>
+      <div class="purchase-tile p4"><div class="ic">⇄</div><h4>Трейд‑ин</h4></div>
+      <div class="purchase-tile p5"><div class="ic">☰</div><h4>Банки‑партнёры</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NEWS ===================== -->
+<section class="news-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="kicker">Пресс-центр</span><h2>Новости</h2></div>
+      <a class="btn btn-outline" href="news.html">Все новости</a>
+    </div>
+    <div class="news-grid">
+      <a class="news-card" href="news-post.html">
+        <div class="news-photo render" style="background:url('assets/img/romex-signage.jpg') center/cover;"></div>
+        <div class="news-body"><span class="news-date">14.07.2026</span><h4>Ромекс Девелопмент награждён золотым знаком «Надёжный застройщик России 2025»</h4></div>
+      </a>
+      <a class="news-card" href="news-post.html">
+        <div class="news-photo render" style="background:url('assets/img/facade-close.jpg') center/cover;"></div>
+        <div class="news-body"><span class="news-date">02.07.2026</span><h4>NEO‑квартал вошёл в ТОП‑5 ЖК региона</h4></div>
+      </a>
+      <a class="news-card" href="news-post.html">
+        <div class="news-photo render" style="background:url('assets/img/courtyard-shops.jpg') center/cover;"></div>
+        <div class="news-body"><span class="news-date">28.06.2026</span><h4>Чёрная пятница — мечта становится ближе</h4></div>
+      </a>
+      <a class="news-card" href="news-post.html">
+        <div class="news-photo render" style="background:url('assets/img/playground-house.jpg') center/cover;"></div>
+        <div class="news-body"><span class="news-date">15.06.2026</span><h4>Воплощай мечту по выгодной цене!</h4></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="about-section">
+  <div class="wrap about-grid">
+    <div>
+      <h2>Надёжный застройщик,<br>которому доверяют с 1998 года</h2>
+      <p>Входит в состав инвестиционного холдинга «Ромекс Групп», специализируется на строительстве доступного жилья со всей инфраструктурой.</p>
+      <p style="margin-top:22px;"><a class="btn btn-outline" style="border-color:rgba(243,238,230,0.4); color:#fff;" href="about.html">О компании и команде →</a></p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><b class="count-up" data-count="1998" data-format="year">1998</b><span>год основания компании</span></div>
+      <div class="stat"><b class="count-up" data-count="1000000" data-format="area">1 000 000 м²</b><span>сдано жилой недвижимости</span></div>
+      <div class="stat"><b class="count-up" data-count="3" data-format="plain">3</b><span>реализованных ЖК</span></div>
+      <div class="stat"><b class="count-up" data-count="400" data-format="plus">400+</b><span>коммерческих объектов</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="assets/img/logo-white.png" alt="Ромекс" style="height:46px; width:auto;"></div>
+        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России.</p>
+      </div>
+      <div>
+        <h5>Проекты</h5>
+        <a href="object.html">NEO‑квартал, Краснодар</a>
+        <a href="object.html">ЖК «Красная площадь», Новороссийск</a>
+        <a href="commercial.html">Торговые помещения</a>
+      </div>
+      <div>
+        <h5>Покупателям</h5>
+        <a href="flats.html">Квартиры</a>
+        <a href="buying.html">Способы покупки</a>
+        <a href="mortgage.html">Ипотека</a>
+        <a href="keys.html">Выдача ключей</a>
+        <a href="contacts.html">Клиентский сервис</a>
+      </div>
+      <div>
+        <h5>Компания</h5>
+        <a href="about.html">О компании</a>
+        <a href="partners.html">Партнёрам</a>
+        <a href="news.html">Пресс‑центр</a>
+      </div>
+      <div>
+        <h5>Контакты</h5>
+        <a href="contacts.html">Краснодар, ул. Конгрессная 13</a>
+        <a href="tel:88002009650">8 800 200 96 50</a>
+        <a href="mailto:info@romexdev.ru">info@romexdev.ru</a>
+        <a href="offices.html">Офисы продаж</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 1998–2026 Группа компаний Ромекс. Все права защищены</div>
+      <div style="display:flex; gap:18px;">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Дисклеймеры</a>
+        <a href="#">VK · TG · WhatsApp · MAX</a>
+      </div>
+    </div>
+    <p class="legal-note">Сайт носит исключительно информационный характер и не является публичной офертой (ст. 437 п.2 ГК РФ). Продолжая пользоваться сайтом, вы соглашаетесь на обработку файлов cookie в соответствии с Политикой конфиденциальности.</p>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>Мы используем файлы cookie, чтобы сайт работал быстрее и удобнее для вас.</p>
+  <button onclick="dismissCookie()">Понятно</button>
+</div>
+
+<div class="modal-overlay" id="subscribeModal">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close>✕</button>
+    <h3>Оставьте заявку</h3>
+    <p class="form-note">Мы свяжемся с Вами и направим подборку лучших предложений</p>
+    <form data-form>
+      <div class="field"><label>Имя</label><input type="text" placeholder="Как к вам обращаться"></div>
+      <div class="field"><label>Номер телефона</label><input type="tel" placeholder="+7 900 000 00 00"></div>
+      <label class="consent"><input type="checkbox"> Даю согласие на обработку персональных данных</label>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+    <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:13.5px;">Мы свяжемся с вами в ближайшее время.</p></div>
+  </div>
+</div>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
