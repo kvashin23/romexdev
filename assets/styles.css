@@ -134,7 +134,7 @@
 
   /* ================= HERO SLIDER ================= */
   .hero-wrap{position:relative;}
-  .hero{position:relative; height:74vh; min-height:560px; overflow:hidden; color:#fff;}
+  .hero{position:relative; height:86vh; min-height:640px; overflow:hidden; color:#fff;}
   .slide{
     position:absolute; inset:0; opacity:0; transition:opacity .6s ease;
     display:flex; align-items:flex-end;
@@ -191,13 +191,13 @@
   .promo-overlap .track-dots button.active{background:var(--brick);}
   .promo-card{
     flex:0 0 340px; scroll-snap-align:start;
-    background:#fff;
-    border:1px solid var(--line); border-radius:18px;
+    background:rgba(255,255,255,0.7); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,0.5); border-radius:18px;
     padding:18px; display:flex; flex-direction:column; gap:7px;
-    transition:transform .18s ease, box-shadow .18s ease;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
     box-shadow:0 4px 10px rgba(0,0,0,0.06);
   }
-  .promo-card:hover{transform:translateY(-4px); box-shadow:0 14px 26px rgba(0,0,0,0.14);}
+  .promo-card:hover{transform:translateY(-4px); box-shadow:0 14px 26px rgba(0,0,0,0.14); background:rgba(255,255,255,0.88);}
   .promo-card:focus{outline:none;}
   .promo-card:focus-visible{outline:2px solid var(--brick); outline-offset:2px;}
   .promo-card h3{font-size:18px;}
@@ -513,7 +513,7 @@
     .photo-mosaic{grid-template-columns:repeat(4,1fr);}
     .footer-top{grid-template-columns:1fr 1fr;}
     .slide h1{font-size:22px;}
-    .hero{height:78vh; min-height:460px;}
+    .hero{height:88vh; min-height:540px;}
     .slide-content{padding-bottom:150px;}
     .promo-overlap{bottom:-70px;}
     .promo-section{padding-top:120px;}
@@ -809,18 +809,3 @@ body.transparent-header header.scrolled .burger span{background:var(--ink);}
 
 /* магнитные кнопки */
 .magnetic{transition:transform .18s cubic-bezier(.2,.9,.3,1.3);}
-
-/* курсор-компаньон на карточках объектов */
-.cursor-bubble{
-  position:fixed; top:0; left:0; z-index:200; pointer-events:none;
-  width:92px; height:92px; border-radius:50%; background:var(--brick); color:#fff;
-  display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;
-  font-family:'Golos Text',sans-serif;
-  transform:translate(-50%,-50%) scale(0); opacity:0;
-  transition:transform .22s cubic-bezier(.2,.9,.3,1.3), opacity .22s ease;
-}
-.cursor-bubble.show{transform:translate(-50%,-50%) scale(1); opacity:1;}
-@media (hover: none){ .cursor-bubble{display:none;} }
-@media (hover: hover) and (pointer: fine){
-  .object-card:hover .object-photo{cursor:none;}
-}

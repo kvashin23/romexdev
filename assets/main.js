@@ -217,19 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- курсор-компаньон на карточках объектов ---------- */
-  const cursorBubble = document.getElementById('cursorBubble');
-  if (cursorBubble && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    document.querySelectorAll('.object-card').forEach(card => {
-      card.addEventListener('mouseenter', () => cursorBubble.classList.add('show'));
-      card.addEventListener('mouseleave', () => cursorBubble.classList.remove('show'));
-      card.addEventListener('mousemove', e => {
-        cursorBubble.style.left = e.clientX + 'px';
-        cursorBubble.style.top = e.clientY + 'px';
-      });
-    });
-  }
-
   /* ---------- поочерёдная задержка для кирпичной кладки ---------- */
   document.querySelectorAll('.brick-viz i').forEach((brick, i) => {
     brick.style.animationDelay = (i * 45) + 'ms';
