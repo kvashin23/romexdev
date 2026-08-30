@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEO-квартал «Красная площадь» — Ромекс Девелопмент</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="transparent-header">
+
+<header>
+  <div class="topbar">
+    <a class="logo" href="index.html">
+      <img class="logo-img logo-color" src="assets/img/logo-devel-color.svg" alt="Ромекс Девелопмент">
+      <img class="logo-img logo-white" src="assets/img/logo-devel-white.svg" alt="Ромекс Девелопмент">
+    </a>
+    <nav class="mainnav">
+      <div class="navitem has-drop">
+        <a href="object.html">Объекты</a>
+        <div class="dropdown">
+          <a href="object.html"><span><span class="city">Краснодар</span>НЕО-квартал «Красная площадь»</span><span class="price-tag">от 4,5 млн ₽</span></a>
+          <a href="object.html"><span><span class="city">Анапа</span>«Мириады Анапы»</span><span class="price-tag">Старт продаж</span></a>
+          <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Новороссийск</span>«Красная площадь»</span><span class="sold-tag">Продано</span></a>
+          <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Анапа</span>«Красная площадь»</span><span class="sold-tag">Продано</span></a>
+        </div>
+      </div>
+      <div class="navitem"><a href="flats.html">Квартиры</a></div>
+      <div class="navitem"><a href="commercial.html">Торговые помещения</a></div>
+      <div class="navitem"><a href="mortgage.html">Ипотека</a></div>
+      <div class="navitem"><a href="offices.html">Офисы продаж</a></div>
+    </nav>
+    <div class="header-actions">
+      <a class="phone mono" href="tel:88002009650">8 800 200 96 50</a>
+      <button class="btn btn-primary magnetic" data-modal-open="subscribeModal">Подобрать квартиру</button>
+      <button class="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="subnav">
+    <a href="promotions.html">Акции</a>
+    <a href="buying.html">Способы покупки</a>
+    <a href="about.html">О компании</a>
+    <a href="partners.html">Партнёрам</a>
+    <a href="keys.html">Выдача ключей</a>
+    <a href="contacts.html">Контакты</a>
+  </div>
+</header>
+
+<section class="page-hero" style="height:560px;">
+  <div class="render" style="position:absolute;inset:0;background:url('assets/img/photo-facade-towers.jpg') center/cover;"></div>
+  <div class="page-hero-content">
+    <nav class="breadcrumbs" style="color:rgba(243,238,230,0.55); padding-top:0; padding-bottom:14px;">
+      <a href="index.html" style="color:rgba(243,238,230,0.7);">Главная</a><span class="sep">/</span>
+      <a href="index.html" style="color:rgba(243,238,230,0.7);">Объекты</a><span class="sep">/</span>
+      <span class="current" style="color:#fff;">NEO-квартал «Красная площадь»</span>
+    </nav>
+    <div class="eyebrow-row"><span class="pill">Старт продаж</span><span class="pill">2-я очередь</span><span class="pill">Скидка 2 млн ₽</span></div>
+    <h1>NEO-квартал «Красная площадь»</h1>
+    <p class="sub">Город в городе на 39 домов в Краснодаре — школы, детские сады и парк в шаговой доступности от дома.</p>
+    <div class="slide-cta">
+      <button class="btn btn-primary">Подобрать квартиру</button>
+      <button class="btn btn-outline" style="border-color:rgba(255,255,255,.5); color:#fff;">▷ Смотреть видео</button>
+    </div>
+  </div>
+</section>
+
+<!-- ПОИСК КВАРТИР: РАЗВЁРНУТЫЙ, ДО 6 ПЛАНИРОВОК 3×2 -->
+<section class="search-section">
+  <div class="wrap">
+    <div class="search-card">
+      <div class="bp-overlay blueprint"></div>
+      <div class="search-top">
+        <div>
+          <h2>Подбор квартиры в NEO-квартале</h2>
+          <p>Фильтруйте по комнатности, площади и бюджету — покажем актуальные планировки по шахматке.</p>
+        </div>
+      </div>
+      <div class="filters-grid" style="grid-template-columns:1.3fr 1fr 1fr auto;">
+        <div class="filter">
+          <label>Сколько комнат</label>
+          <div class="room-toggle">
+            <button>Все</button><button class="active">Студия</button><button>1к</button><button>2к</button><button>3к+</button>
+          </div>
+        </div>
+        <div class="filter readonly"><label>Площадь, м²</label><input type="text" value="24–34" readonly></div>
+        <div class="filter readonly"><label>Стоимость, ₽</label><input type="text" value="от 4 500 000" readonly></div>
+        <button class="search-submit">Показать планировки →</button>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:26px;">
+    <div class="card-grid-3">
+      <div class="flat-card">
+        <a class="flat-card-link" href="flat.html"><div class="render"><span class="lot-number">№101</span><span class="tag">план 1</span></div>
+        <div class="flat-body"><div class="flat-title">Студия · 24,3 м²</div><div class="flat-meta">Литер 1 · 3 этаж <span class="deadline">Сдача 4 кв. 2026</span></div>
+        <div class="row"><span class="flat-price">3 450 000 ₽</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        </div>
+      <div class="flat-card">
+        <a class="flat-card-link" href="flat.html"><div class="render tone-b"><span class="lot-number">№102</span><span class="tag">план 2</span></div>
+        <div class="flat-body"><div class="flat-title">Студия · 26,1 м²</div><div class="flat-meta">Литер 1 · 5 этаж <span class="deadline">Сдача 4 кв. 2026</span></div>
+        <div class="row"><span class="price-old">4 190 000 ₽</span><span class="flat-price">3 690 000 ₽</span><span class="discount-badge">−12%</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        </div>
+      <div class="flat-card">
+        <a class="flat-card-link" href="flat.html"><div class="render tone-c"><span class="lot-number">№103</span><span class="tag">план 3</span></div>
+        <div class="flat-body"><div class="flat-title">Студия · 28,4 м²</div><div class="flat-meta">Литер 2 · 2 этаж <span class="deadline">Сдача 2 кв. 2027</span></div>
+        <div class="row"><span class="flat-price">3 980 000 ₽</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        </div>
+      <div class="flat-card">
+        <a class="flat-card-link" href="flat.html"><div class="render"><span class="lot-number">№104</span><span class="tag">план 4</span></div>
+        <div class="flat-body"><div class="flat-title">Студия · 29,0 м²</div><div class="flat-meta">Литер 2 · 7 этаж <span class="deadline">Сдача 2 кв. 2027</span></div>
+        <div class="row"><span class="flat-price">4 050 000 ₽</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        </div>
+      <div class="flat-card">
+        <a class="flat-card-link" href="flat.html"><div class="render tone-b"><span class="lot-number">№105</span><span class="tag">план 5</span></div>
+        <div class="flat-body"><div class="flat-title">Студия · 31,2 м²</div><div class="flat-meta">Литер 3 · 4 этаж <span class="deadline">Сдача 2 кв. 2027</span></div>
+        <div class="row"><span class="price-old">4 780 000 ₽</span><span class="flat-price">4 320 000 ₽</span><span class="discount-badge">−10%</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        </div>
+      <div class="flat-card">
+        <a class="flat-card-link" href="flat.html"><div class="render tone-c"><span class="lot-number">№106</span><span class="tag">план 6</span></div>
+        <div class="flat-body"><div class="flat-title">Студия · 33,8 м²</div><div class="flat-meta">Литер 3 · 6 этаж <span class="deadline">Сдача 2 кв. 2027</span></div>
+        <div class="row"><span class="flat-price">4 500 000 ₽</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- ИДЕЯ ОБЪЕКТА -->
+<section style="padding:20px 0 60px;">
+  <div class="wrap idea-block">
+    <div>
+      <span class="kicker">Концепция</span>
+      <h2 style="font-size:28px; margin-top:10px;">Город в городе</h2>
+      <p style="color:var(--slate); font-size:14.5px; line-height:1.7; margin-top:14px; max-width:460px;">NEO-квартал проектируется как самостоятельный микрорайон: закрытые дворы без машин, коммерция на первых этажах, собственная школа и детские сады — всё, что нужно, в шаговой доступности.</p>
+    </div>
+    <div class="render corner-ticks" style="background:url('assets/img/object-krasnodar.jpg') center/cover;"></div>
+  </div>
+</section>
+
+<!-- ПРЕИМУЩЕСТВА -->
+<section style="padding:0 0 60px;">
+  <div class="wrap">
+    <div class="section-head"><div><span class="kicker">Почему NEO-квартал</span><h2>Преимущества проекта</h2></div></div>
+    <div class="tile-grid">
+      <div class="tile-card"><h4>214-ФЗ и эскроу</h4><p>Деньги под защитой банка до сдачи дома.</p></div>
+      <div class="tile-card"><h4>Закрытые дворы</h4><p>Без машин — только для жителей и гостей.</p></div>
+      <div class="tile-card"><h4>Своя школа</h4><p>На территории комплекса, в шаговой доступности.</p></div>
+      <div class="tile-card"><h4>Подземный паркинг</h4><p>Места для всех собственников квартир.</p></div>
+      <div class="tile-card"><h4>Панорамные окна</h4><p>Увеличенные оконные блоки во всех домах.</p></div>
+      <div class="tile-card"><h4>Коммерция на 1-х этажах</h4><p>Магазины, кафе и сервисы у дома.</p></div>
+      <div class="tile-card"><h4>Ландшафтный дизайн</h4><p>Профессиональное озеленение дворов.</p></div>
+      <div class="tile-card"><h4>Видеонаблюдение</h4><p>Периметр и дворы под круглосуточной охраной.</p></div>
+      <div class="tile-card"><h4>Развитая инфраструктура</h4><p>ТЦ, поликлиника и парк рядом с домом.</p></div>
+      <div class="tile-card empty"></div>
+    </div>
+    <p style="font-size:12px; color:var(--slate); margin-top:12px;">* Пустые блоки скрываются автоматически; если итоговое число блоков не кратно 3 — незаполненная строка тоже скрывается.</p>
+  </div>
+</section>
+
+<!-- НАПОЛНЕНИЕ ОБЪЕКТА: КВАДРАТНАЯ КАРУСЕЛЬ -->
+<section style="padding:0 0 60px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="kicker">Территория</span><h2>Наполнение объекта</h2></div>
+      <div class="arrow-btns"><button data-scroll-prev="fillTrack">‹</button><button data-scroll-next="fillTrack">›</button></div>
+    </div>
+    <div class="square-track" id="fillTrack">
+      <div class="square-card render" style="background:url('assets/img/photo-playground-slide.jpg') center/cover;"><span>Детская площадка</span></div>
+      <div class="square-card render tone-b"><span>Скейт-парк</span></div>
+      <div class="square-card render tone-c" style="background:url('assets/img/photo-boy-climbing-net.jpg') center/cover;"><span>Зона воркаут</span></div>
+      <div class="square-card render" style="background:url('assets/img/photo-pergola-benches.jpg') center/cover;"><span>Прогулочная аллея</span></div>
+      <div class="square-card render tone-b"><span>Зона барбекю</span></div>
+      <div class="square-card render tone-c"><span>Паркинг во дворе</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ГЕНПЛАН -->
+<section style="padding:0 0 60px;">
+  <div class="wrap">
+    <div class="section-head"><div><span class="kicker">Генплан</span><h2>Выберите литер</h2></div></div>
+    <div class="render corner-ticks" style="height:360px; margin-bottom:26px;"><span class="tag">генплан объекта — интерактив (наведение/клик по литеру) появится после интеграции с шахматкой Битрикс</span></div>
+    <div style="max-width:640px;">
+      <div class="accordion-item open"><div class="accordion-head">Литер 1 — свободно 12 квартир</div><div class="accordion-body">Студии от 3,45 млн ₽ · 1-к от 4,1 млн ₽ · 2-к от 5,6 млн ₽</div></div>
+      <div class="accordion-item"><div class="accordion-head">Литер 2 — свободно 8 квартир</div><div class="accordion-body">Студии от 3,98 млн ₽ · 1-к от 4,3 млн ₽</div></div>
+      <div class="accordion-item"><div class="accordion-head">Литер 3 — свободно 21 квартира</div><div class="accordion-body">Студии от 4,32 млн ₽ · 1-к от 4,9 млн ₽ · 2-к от 6,1 млн ₽ · 3-к от 7,8 млн ₽</div></div>
+      <div class="accordion-item"><div class="accordion-head">Литер 5 — свободно 4 квартиры</div><div class="accordion-body">1-к от 4,6 млн ₽ · 2-к от 5,9 млн ₽</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- РЯДОМ С ДОМОМ -->
+<section style="padding:0 0 60px;">
+  <div class="wrap idea-block">
+    <div>
+      <span class="kicker">Локация</span>
+      <h2 style="font-size:26px; margin-top:10px;">Рядом с домом</h2>
+      <ul>
+        <li>Школа №100 — 5 минут пешком</li>
+        <li>Детский сад — 3 минуты пешком</li>
+        <li>ТЦ «Красная площадь» — 7 минут пешком</li>
+        <li>Парк «Солнечный остров» — 10 минут пешком</li>
+      </ul>
+      <button class="btn btn-primary" style="margin-top:20px;">Подобрать квартиру</button>
+    </div>
+    <div class="render corner-ticks"><span class="tag">карта объекта (заглушка)</span></div>
+  </div>
+</section>
+
+<!-- ХОД СТРОИТЕЛЬСТВА -->
+<section style="padding:0 0 60px;">
+  <div class="wrap">
+    <div class="section-head"><div><span class="kicker">Прозрачность</span><h2>Ход строительства</h2></div></div>
+    <div class="tabs">
+      <div class="tab-btns">
+        <button class="tab-btn active">2026</button>
+        <button class="tab-btn">2025</button>
+        <button class="tab-btn">2024</button>
+      </div>
+      <div class="tab-panel active">
+        <div class="accordion-item open"><div class="accordion-head">Июль 2026</div><div class="accordion-body"><div class="timeline-photos"><div class="render"></div><div class="render tone-b"></div><div class="render tone-c"></div><div class="render"></div></div></div></div>
+        <div class="accordion-item"><div class="accordion-head">Июнь 2026</div><div class="accordion-body"><div class="timeline-photos"><div class="render tone-b"></div><div class="render tone-c"></div><div class="render"></div><div class="render tone-b"></div></div></div></div>
+        <div class="accordion-item"><div class="accordion-head">Май 2026</div><div class="accordion-body"><div class="timeline-photos"><div class="render tone-c"></div><div class="render"></div><div class="render tone-b"></div><div class="render tone-c"></div></div></div></div>
+      </div>
+      <div class="tab-panel"><p style="color:var(--slate); font-size:14px;">2025 год — фотоотчёты по месяцам.</p></div>
+      <div class="tab-panel"><p style="color:var(--slate); font-size:14px;">2024 год — начало строительства, закладка фундамента.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ФОРМА ЗАЯВКИ -->
+<section style="padding:0 0 70px;">
+  <div class="wrap" style="max-width:560px;">
+    <div class="form-card">
+      <h3>Остались вопросы?</h3>
+      <p class="form-note">Оставьте заявку — менеджер свяжется в течение 15 минут.</p>
+      <form data-form>
+        <div class="field"><label>Имя</label><input type="text" placeholder="Как к вам обращаться"></div>
+        <div class="field"><label>Телефон</label><input type="tel" placeholder="+7 900 000 00 00"></div>
+        <label class="consent"><input type="checkbox"> Соглашаюсь на обработку персональных данных в соответствии с политикой конфиденциальности</label>
+        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+      </form>
+      <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:13.5px;">Менеджер свяжется с вами в ближайшее время.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- О КОМПАНИИ (как на главной) -->
+<section class="about-section">
+  <div class="wrap about-grid">
+    <div>
+      <h2>Надёжный застройщик,<br>которому доверяют с 1998 года</h2>
+      <p>Входит в состав инвестиционного холдинга «Ромекс Групп», специализируется на строительстве доступного жилья со всей инфраструктурой.</p>
+      <p style="margin-top:22px;"><a class="btn btn-outline" style="border-color:rgba(243,238,230,0.4); color:#fff;" href="about.html">О компании и команде →</a></p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><b>1998</b><span>год основания компании</span></div>
+      <div class="stat"><b>1 000 000 м²</b><span>сдано жилой недвижимости</span></div>
+      <div class="stat"><b>3</b><span>реализованных ЖК</span></div>
+      <div class="stat"><b>400+</b><span>коммерческих объектов</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="assets/img/logo-devel-white.svg" alt="Ромекс Девелопмент" style="height:40px; width:auto;"></div>
+        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России.</p>
+        <button class="btn btn-footer-white magnetic" data-modal-open="subscribeModal">Подписаться на рассылку</button>
+      </div>
+      <div>
+        <h5>Проекты</h5>
+        <a href="object.html">НЕО‑квартал, Краснодар</a>
+        <a href="object.html">«Мириады Анапы», Анапа</a>
+        <a href="object.html">«Красная площадь», Новороссийск</a>
+        <a href="object.html">«Красная площадь», Анапа</a>
+        <a href="commercial.html">Торговые помещения</a>
+      </div>
+      <div>
+        <h5>Покупателям</h5>
+        <a href="flats.html">Квартиры</a>
+        <a href="buying.html">Способы покупки</a>
+        <a href="mortgage.html">Ипотека</a>
+        <a href="keys.html">Выдача ключей</a>
+        <a href="contacts.html">Клиентский сервис</a>
+      </div>
+      <div>
+        <h5>Компания</h5>
+        <a href="about.html">О компании</a>
+        <a href="partners.html">Партнёрам</a>
+        <a href="news.html">Пресс‑центр</a>
+      </div>
+      <div>
+        <h5>Контакты</h5>
+        <a href="contacts.html">Краснодар, ул. Конгрессная 13</a>
+        <a href="tel:88002009650">8 800 200 96 50</a>
+        <a href="mailto:info@romexdev.ru">info@romexdev.ru</a>
+        <a href="offices.html">Офисы продаж</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 1998–2026 Группа компаний Ромекс. Все права защищены</div>
+      <div style="display:flex; gap:18px; align-items:center;">
+        <a href="#" class="footer-link">Политика конфиденциальности</a>
+        <a href="#" class="footer-link">Дисклеймеры</a>
+        <div class="social-links">
+          <a href="#" class="social-link">VK<span class="social-icon">VK</span></a>
+          <a href="#" class="social-link">TG<span class="social-icon">TG</span></a>
+          <a href="#" class="social-link">WhatsApp<span class="social-icon">WA</span></a>
+          <a href="#" class="social-link">MAX<span class="social-icon">MAX</span></a>
+        </div>
+      </div>
+    </div>
+    <p class="legal-note">Сайт носит исключительно информационный характер и не является публичной офертой (ст. 437 п.2 ГК РФ). Продолжая пользоваться сайтом, вы соглашаетесь на обработку файлов cookie в соответствии с Политикой конфиденциальности.</p>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>Мы используем файлы cookie, чтобы сайт работал быстрее и удобнее для вас.</p>
+  <button onclick="dismissCookie()">Понятно</button>
+</div>
+
+<div class="modal-overlay" id="subscribeModal">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close>✕</button>
+    <h3>Оставьте заявку</h3>
+    <p class="form-note">Мы свяжемся с Вами и направим подборку лучших предложений</p>
+    <form data-form>
+      <div class="field"><label>Имя</label><input type="text" placeholder="Как к вам обращаться"></div>
+      <div class="field"><label>Номер телефона</label><input type="tel" placeholder="+7 900 000 00 00"></div>
+      <label class="consent"><input type="checkbox"> Даю согласие на обработку персональных данных</label>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+    <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:13.5px;">Мы свяжемся с вами в ближайшее время.</p></div>
+  </div>
+</div>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
