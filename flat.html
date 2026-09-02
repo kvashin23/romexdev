@@ -52,29 +52,29 @@
 </section>
 <section style="padding:0 0 60px;">
   <div class="wrap lot-layout">
-    <div>
+    <div class="lot-sticky-col">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;">
         <div>
           <h1 style="font-size:26px;">Студия, 24,3 м²</h1>
           <div style="color:var(--slate); font-size:13.5px; margin-top:6px;">NEO-квартал · Литер 1 · 3 этаж из 12 &middot; <span class="deadline">Сдача 4 кв. 2026</span></div>
         </div>
-        <div class="lot-icons"><button title="Скачать PDF">⬇</button><button title="В избранное">♡</button></div>
+        <div class="lot-icons"><button title="Скачать PDF">⬇</button></div>
       </div>
-      <div class="render corner-ticks" style="height:420px; margin-top:22px;"><span class="tag">план квартиры</span></div>
+      <div class="render corner-ticks" style="height:380px; margin-top:22px;"><span class="tag">план квартиры</span></div>
       <div class="tab-btns" style="margin-top:22px;">
         <button class="tab-btn active">Планировка</button>
         <button class="tab-btn">Визуализация</button>
         <button class="tab-btn">План этажа</button>
         <button class="tab-btn">Генплан</button>
       </div>
-    </div>
-    <div>
-      <div class="lot-price-box">
+      <div class="lot-price-box" style="margin-top:22px;">
         <div><span class="price-main">3 450 000 ₽</span><span class="price-per-m">142 000 ₽/м²</span></div>
         <div class="note">Цена действует при 100% оплате</div>
         <button class="btn btn-primary">Заказать звонок</button>
         <button class="btn btn-outline" style="width:100%; justify-content:center; margin-top:10px;">Забронировать онлайн</button>
       </div>
+    </div>
+    <div>
       <div class="lot-params">
         <h4>Параметры квартиры</h4>
         <div class="prow"><span>Проект</span><span>NEO-квартал</span></div>
@@ -95,17 +95,20 @@
   </div>
 </section>
 <section style="padding:0 0 70px;">
-  <div class="wrap" style="max-width:560px;">
-    <div class="form-card">
-      <h3>Забронировать эту квартиру</h3>
-      <p class="form-note">Закрепим цену на 48 часов без предоплаты.</p>
-      <form data-form>
-        <div class="field"><label>Имя</label><input type="text"></div>
-        <div class="field"><label>Телефон</label><input type="tel"></div>
-        <label class="consent"><input type="checkbox"> Соглашаюсь на обработку персональных данных</label>
-        <button type="submit" class="btn btn-primary">Забронировать</button>
-      </form>
-      <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3></div>
+  <div class="wrap">
+    <div class="form-card form-card-split">
+      <div class="form-card-photo render corner-ticks"><span class="tag">фото / план квартиры</span></div>
+      <div class="form-card-fields">
+        <h3>Забронировать эту квартиру</h3>
+        <p class="form-note">Закрепим цену на 48 часов без предоплаты.</p>
+        <form data-form>
+          <div class="field"><label>Имя</label><input type="text"></div>
+          <div class="field"><label>Телефон</label><input type="tel"></div>
+          <label class="consent"><input type="checkbox"> Соглашаюсь на обработку персональных данных</label>
+          <button type="submit" class="btn btn-primary">Забронировать</button>
+        </form>
+        <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3></div>
+      </div>
     </div>
   </div>
 </section>

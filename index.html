@@ -87,13 +87,15 @@
     </div>
   </div>
   <div class="hero-scrim"></div>
-  <button class="hero-nav prev" onclick="moveSlide(-1)">‹</button>
-  <button class="hero-nav next" onclick="moveSlide(1)">›</button>
+  <button class="hero-nav prev" onclick="moveSlide(-1)" aria-label="Назад"><svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M8 1.5 1.5 7.5 8 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button class="hero-nav next" onclick="moveSlide(1)" aria-label="Вперёд"><svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1 1.5 7.5 7.5 1 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <div class="hero-dots" id="heroDots"></div>
 </section>
 
   <div class="wrap promo-overlap">
-    <div class="promo-track" id="promoTrack">
+    <div class="promo-slider-row">
+      <button class="promo-arrow" data-scroll-prev="promoTrack" aria-label="Назад"><svg width="8" height="13" viewBox="0 0 9 15" fill="none"><path d="M8 1.5 1.5 7.5 8 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="promo-track" id="promoTrack">
       <a class="promo-card" href="promotions.html">
         <h3>Материнский капитал в зачёт взноса</h3>
         <p>Используйте маткапитал как первоначальный взнос по ипотеке без доплат.</p>
@@ -114,6 +116,8 @@
         <p>Без банка и переплат — равными платежами до сдачи дома.</p>
         <div class="promo-highlight">0% на 12 мес</div>
       </a>
+      </div>
+      <button class="promo-arrow promo-arrow-next" data-scroll-next="promoTrack" aria-label="Вперёд"><svg width="8" height="13" viewBox="0 0 9 15" fill="none"><path d="M1 1.5 7.5 7.5 1 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
     <div class="track-dots" data-dots-for="promoTrack"></div>
   </div>
@@ -134,11 +138,11 @@
         </div>
       </div>
       <div class="room-tabs toggle-group" id="roomTabs">
-        <button class="active" data-price="3 000 000 – 12 000 000" data-area="24–95">Все квартиры</button>
-        <button data-price="3 000 000 – 5 000 000" data-area="24–34">Студии</button>
-        <button data-price="5 000 000 – 7 000 000" data-area="35–45">1‑комнатные</button>
-        <button data-price="7 000 000 – 9 000 000" data-area="50–65">2‑комнатные</button>
-        <button data-price="9 000 000 – 12 000 000" data-area="70–95">3‑комнатные и больше</button>
+        <button class="active" data-min="3000000" data-max="12000000" data-area="24–95">Все квартиры</button>
+        <button data-min="3000000" data-max="5000000" data-area="24–34">Студии</button>
+        <button data-min="5000000" data-max="7000000" data-area="35–45">1‑комнатные</button>
+        <button data-min="7000000" data-max="9000000" data-area="50–65">2‑комнатные</button>
+        <button data-min="9000000" data-max="12000000" data-area="70–95">3‑комнатные и больше</button>
       </div>
       <div class="filters-grid filters-grid-4">
         <div class="filter">
@@ -156,16 +160,19 @@
             </div>
           </div>
         </div>
-        <div class="filter filter-locked">
+        <div class="filter">
           <label>Стоимость, ₽</label>
-          <div class="filter-value">
-            <input type="text" id="priceRangeField" value="3 000 000 – 12 000 000" readonly tabindex="-1">
+          <div class="range-pair" data-output="priceRangeOut" data-unit=" ₽" id="priceSliderIndex">
+            <div class="range-track-bg"></div>
+            <input type="range" class="range-min" min="3000000" max="12000000" step="100000" value="3000000">
+            <input type="range" class="range-max" min="3000000" max="12000000" step="100000" value="12000000">
           </div>
+          <div class="range-values" id="priceRangeOut">3 000 000 – 12 000 000 ₽</div>
         </div>
-        <div class="filter filter-locked">
+        <div class="filter">
           <label>Площадь, м²</label>
           <div class="filter-value">
-            <input type="text" id="areaRangeField" value="24–95" readonly tabindex="-1">
+            <input type="text" inputmode="numeric" id="areaRangeField" value="24–95">
           </div>
         </div>
         <button class="search-submit magnetic">Найти →</button>
@@ -278,27 +285,27 @@
     </div>
     <div class="news-track" id="newsTrack">
       <a class="news-card" href="news-post.html">
-        <div class="news-photo render" style="background:url('assets/img/photo-romex-signage.jpg') center/cover;"><span class="read-badge">Читать</span></div>
+        <div class="news-photo render" style="background:url('assets/img/photo-romex-signage.jpg') center/cover;"></div>
         <div class="news-body"><span class="news-date">14.07.2026</span><h4>Ромекс Девелопмент награждён золотым знаком «Надёжный застройщик России 2025»</h4></div>
       </a>
       <a class="news-card" href="news-post.html">
-        <div class="news-photo render" style="background:url('assets/img/facade-close.jpg') center/cover;"><span class="read-badge">Читать</span></div>
+        <div class="news-photo render" style="background:url('assets/img/facade-close.jpg') center/cover;"></div>
         <div class="news-body"><span class="news-date">02.07.2026</span><h4>NEO‑квартал вошёл в ТОП‑5 ЖК региона</h4></div>
       </a>
       <a class="news-card" href="news-post.html">
-        <div class="news-photo render" style="background:url('assets/img/courtyard-shops.jpg') center/cover;"><span class="read-badge">Читать</span></div>
+        <div class="news-photo render" style="background:url('assets/img/courtyard-shops.jpg') center/cover;"></div>
         <div class="news-body"><span class="news-date">28.06.2026</span><h4>Чёрная пятница — мечта становится ближе</h4></div>
       </a>
       <a class="news-card" href="news-post.html">
-        <div class="news-photo render" style="background:url('assets/img/playground-house.jpg') center/cover;"><span class="read-badge">Читать</span></div>
+        <div class="news-photo render" style="background:url('assets/img/playground-house.jpg') center/cover;"></div>
         <div class="news-body"><span class="news-date">15.06.2026</span><h4>Воплощай мечту по выгодной цене!</h4></div>
       </a>
       <a class="news-card" href="news-post.html">
-        <div class="news-photo render" style="background:url('assets/img/facade-leaves.jpg') center/cover;"><span class="read-badge">Читать</span></div>
+        <div class="news-photo render" style="background:url('assets/img/facade-leaves.jpg') center/cover;"></div>
         <div class="news-body"><span class="news-date">02.06.2026</span><h4>Открылась продажа во второй очереди NEO-квартала</h4></div>
       </a>
       <a class="news-card" href="news-post.html">
-        <div class="news-photo render" style="background:url('assets/img/boy-net.jpg') center/cover;"><span class="read-badge">Читать</span></div>
+        <div class="news-photo render" style="background:url('assets/img/boy-net.jpg') center/cover;"></div>
         <div class="news-body"><span class="news-date">20.05.2026</span><h4>Как устроены дворы без машин в наших ЖК</h4></div>
       </a>
     </div>
