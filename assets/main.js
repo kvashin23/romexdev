@@ -171,13 +171,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- стоимость и площадь автоматически меняются от выбранной комнатности ---------- */
   const roomTabsEl = document.getElementById('roomTabs');
-  const priceRangeField = document.getElementById('priceRangeField');
   const areaRangeField = document.getElementById('areaRangeField');
-  if (roomTabsEl && priceRangeField && areaRangeField) {
+  if (roomTabsEl) {
+    const priceSlider = roomTabsEl.parentElement.querySelector('.range-pair');
+    const minInput = priceSlider ? priceSlider.querySelector('.range-min') : null;
+    const maxInput = priceSlider ? priceSlider.querySelector('.range-max') : null;
     roomTabsEl.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('click', () => {
-        priceRangeField.value = btn.dataset.price;
-        areaRangeField.value = btn.dataset.area;
+        if (minInput && maxInput && btn.dataset.min) {
+          minInput.value = btn.dataset.min;
+          maxInput.value = btn.dataset.max;
+          minInput.dispatchEvent(new Event('input'));
+        }
+        if (areaRangeField && btn.dataset.area) areaRangeField.value = btn.dataset.area;
       });
     });
   }
@@ -365,7 +371,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const unit = pair.dataset.unit || '';
     function fmt(v){
       const n = parseFloat(v);
-      return Number.isInteger(n) ? n : n.toFixed(1).replace('.', ',');
+      const rounded = Number.isInteger(n) ? n : Math.round(n);
+      return String(rounded).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
     }
     function update(){
       let a = parseFloat(minInput.value), b = parseFloat(maxInput.value);
