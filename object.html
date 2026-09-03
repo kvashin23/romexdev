@@ -208,12 +208,15 @@
     <div class="section-head"><div><span class="kicker">Генплан</span><h2>Выберите литер</h2></div></div>
     <div class="genplan-stub corner-ticks" style="margin-bottom:26px;">
       <div class="genplan-stub-inner">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M9 20l-6-3V4l6 3m0 13l6-3m-6 3V7m6 10l6 3V6l-6-3m0 17V7m0-3L9 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M9 20l-6-3V4l6 3m0 13l6-3m-6 3V7m6 10l6 3V6l-6-3m0 17V7m0-3L9 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h4>Интерактивный генплан</h4>
         <p>Наведение и клик по литеру — с реальными координатами корпусов, появится после интеграции с шахматкой Битрикс. Пока — список литеров ниже.</p>
       </div>
+      <div class="genplan-stub-graphic" aria-hidden="true">
+        <svg width="220" height="220" viewBox="0 0 24 24" fill="none"><path d="M9 20l-6-3V4l6 3m0 13l6-3m-6 3V7m6 10l6 3V6l-6-3m0 17V7m0-3L9 7" stroke="currentColor" stroke-width="0.6"/></svg>
+      </div>
     </div>
-    <div style="max-width:640px;">
+    <div class="litery-grid">
       <div class="accordion-item open"><div class="accordion-head">Литер 1 — свободно 12 квартир</div><div class="accordion-body">Студии от 3,45 млн ₽ · 1-к от 4,1 млн ₽ · 2-к от 5,6 млн ₽</div></div>
       <div class="accordion-item"><div class="accordion-head">Литер 2 — свободно 8 квартир</div><div class="accordion-body">Студии от 3,98 млн ₽ · 1-к от 4,3 млн ₽</div></div>
       <div class="accordion-item"><div class="accordion-head">Литер 3 — свободно 21 квартира</div><div class="accordion-body">Студии от 4,32 млн ₽ · 1-к от 4,9 млн ₽ · 2-к от 6,1 млн ₽ · 3-к от 7,8 млн ₽</div></div>
@@ -263,17 +266,20 @@
 
 <!-- ФОРМА ЗАЯВКИ -->
 <section style="padding:0 0 70px;">
-  <div class="wrap" style="max-width:560px;">
-    <div class="form-card">
-      <h3>Остались вопросы?</h3>
-      <p class="form-note">Оставьте заявку — менеджер свяжется в течение 15 минут.</p>
-      <form data-form>
-        <div class="field"><label>Имя</label><input type="text" placeholder="Как к вам обращаться"></div>
-        <div class="field"><label>Телефон</label><input type="tel" placeholder="+7 900 000 00 00"></div>
-        <label class="consent"><input type="checkbox"> Соглашаюсь на обработку персональных данных в соответствии с политикой конфиденциальности</label>
-        <button type="submit" class="btn btn-primary">Отправить заявку</button>
-      </form>
-      <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:13.5px;">Менеджер свяжется с вами в ближайшее время.</p></div>
+  <div class="wrap" style="max-width:820px;">
+    <div class="form-card form-card-split">
+      <div class="form-card-photo render corner-ticks" style="background:url('assets/img/object-krasnodar.jpg') center/cover;"></div>
+      <div class="form-card-fields">
+        <h3>Остались вопросы?</h3>
+        <p class="form-note">Оставьте заявку — менеджер свяжется в течение 15 минут.</p>
+        <form data-form>
+          <div class="field"><label>Имя</label><input type="text" placeholder="Как к вам обращаться"></div>
+          <div class="field"><label>Телефон</label><input type="tel" placeholder="+7 900 000 00 00"></div>
+          <label class="consent"><input type="checkbox"> Соглашаюсь на обработку персональных данных в соответствии с политикой конфиденциальности</label>
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </form>
+        <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:13.5px;">Менеджер свяжется с вами в ближайшее время.</p></div>
+      </div>
     </div>
   </div>
 </section>
