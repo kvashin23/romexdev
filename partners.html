@@ -18,7 +18,7 @@
     </a>
     <nav class="mainnav">
       <div class="navitem has-drop">
-        <a href="object.html">Объекты</a>
+        <a href="objects.html">Объекты</a>
         <div class="dropdown">
           <a href="object.html"><span><span class="city">Краснодар</span>НЕО-квартал «Красная площадь»</span><span class="price-tag">от 4,5 млн ₽</span></a>
           <a href="object.html"><span><span class="city">Анапа</span>«Мириады Анапы»</span><span class="price-tag">Старт продаж</span></a>
@@ -27,7 +27,14 @@
         </div>
       </div>
       <div class="navitem"><a href="flats.html">Квартиры</a></div>
-      <div class="navitem"><a href="commercial.html">Торговые помещения</a></div>
+      <div class="navitem has-drop">
+        <a href="commercial.html">Торговые помещения</a>
+        <div class="dropdown">
+          <a href="commercial-lot.html"><span><span class="city">Литер 1</span>Помещение №A.12 · 32 м²</span><span class="price-tag">3,2 млн ₽</span></a>
+          <a href="commercial-lot.html"><span><span class="city">Литер 2</span>Помещение №B.05 · 54 м²</span><span class="price-tag">5,1 млн ₽</span></a>
+          <a href="commercial-lot.html"><span><span class="city">Литер 3</span>Помещение №C.09 · 88 м²</span><span class="price-tag">7,8 млн ₽</span></a>
+        </div>
+      </div>
       <div class="navitem"><a href="mortgage.html">Ипотека</a></div>
       <div class="navitem"><a href="offices.html">Офисы продаж</a></div>
     </nav>
@@ -108,7 +115,7 @@
         <div class="field"><label>Фамилия</label><input type="text"></div>
         <div class="field"><label>Телефон</label><input type="tel"></div>
         <div class="field"><label>Агентство</label><input type="text"></div>
-        <label class="consent"><input type="checkbox"> Даю согласие на обработку персональных данных</label>
+        <label class="consent"><input type="checkbox"><span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>
         <button type="submit" class="btn btn-primary">Отправить</button>
       </form>
       <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3></div>
@@ -121,9 +128,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo"><img src="assets/img/logo-devel-white.svg" alt="Ромекс Девелопмент" style="height:40px; width:auto;"></div>
-        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России.</p>
-        <button class="btn btn-footer-white magnetic" data-modal-open="subscribeModal">Подписаться на рассылку</button>
-      </div>
+        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России.</p>      </div>
       <div>
         <h5>Проекты</h5>
         <a href="object.html">НЕО‑квартал, Краснодар</a>
@@ -157,7 +162,7 @@
     <div class="footer-bottom">
       <div>© 1998–2026 Группа компаний Ромекс. Все права защищены</div>
       <div style="display:flex; gap:18px; align-items:center;">
-        <a href="#" class="footer-link">Политика конфиденциальности</a>
+        <a href="privacy.html" class="footer-link">Политика конфиденциальности</a>
         <a href="#" class="footer-link">Дисклеймеры</a>
         <div class="social-links">
           <a href="#" class="social-link">VK<span class="social-icon">VK</span></a>
@@ -172,8 +177,8 @@
 </footer>
 
 <div class="cookie-banner" id="cookieBanner">
-  <p>Мы используем файлы cookie, чтобы сайт работал быстрее и удобнее для вас.</p>
-  <button onclick="dismissCookie()">Понятно</button>
+  <p>Мы используем файлы cookie, чтобы сайт работал быстрее и удобнее для вас. Подробнее — в <a href="privacy.html">политике конфиденциальности</a>.</p>
+  <button onclick="dismissCookie()">Согласен</button>
 </div>
 
 <div class="modal-overlay" id="subscribeModal">
@@ -184,7 +189,7 @@
     <form data-form>
       <div class="field"><label>Имя</label><input type="text" placeholder="Как к вам обращаться"></div>
       <div class="field"><label>Номер телефона</label><input type="tel" placeholder="+7 900 000 00 00"></div>
-      <label class="consent"><input type="checkbox"> Даю согласие на обработку персональных данных</label>
+      <label class="consent"><input type="checkbox"><span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>
       <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
     <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:13.5px;">Мы свяжемся с вами в ближайшее время.</p></div>

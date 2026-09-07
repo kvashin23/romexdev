@@ -18,7 +18,7 @@
     </a>
     <nav class="mainnav">
       <div class="navitem has-drop">
-        <a href="object.html">Объекты</a>
+        <a href="objects.html">Объекты</a>
         <div class="dropdown">
           <a href="object.html"><span><span class="city">Краснодар</span>НЕО-квартал «Красная площадь»</span><span class="price-tag">от 4,5 млн ₽</span></a>
           <a href="object.html"><span><span class="city">Анапа</span>«Мириады Анапы»</span><span class="price-tag">Старт продаж</span></a>
@@ -27,7 +27,14 @@
         </div>
       </div>
       <div class="navitem"><a href="flats.html">Квартиры</a></div>
-      <div class="navitem"><a href="commercial.html">Торговые помещения</a></div>
+      <div class="navitem has-drop">
+        <a href="commercial.html">Торговые помещения</a>
+        <div class="dropdown">
+          <a href="commercial-lot.html"><span><span class="city">Литер 1</span>Помещение №A.12 · 32 м²</span><span class="price-tag">3,2 млн ₽</span></a>
+          <a href="commercial-lot.html"><span><span class="city">Литер 2</span>Помещение №B.05 · 54 м²</span><span class="price-tag">5,1 млн ₽</span></a>
+          <a href="commercial-lot.html"><span><span class="city">Литер 3</span>Помещение №C.09 · 88 м²</span><span class="price-tag">7,8 млн ₽</span></a>
+        </div>
+      </div>
       <div class="navitem"><a href="mortgage.html">Ипотека</a></div>
       <div class="navitem"><a href="offices.html">Офисы продаж</a></div>
     </nav>
@@ -52,7 +59,7 @@
   <div class="page-hero-content">
     <nav class="breadcrumbs" style="color:rgba(243,238,230,0.55); padding-top:0; padding-bottom:14px;">
       <a href="index.html" style="color:rgba(243,238,230,0.7);">Главная</a><span class="sep">/</span>
-      <a href="index.html" style="color:rgba(243,238,230,0.7);">Объекты</a><span class="sep">/</span>
+      <a href="objects.html" style="color:rgba(243,238,230,0.7);">Объекты</a><span class="sep">/</span>
       <span class="current" style="color:#fff;">NEO-квартал «Красная площадь»</span>
     </nav>
     <div class="eyebrow-row"><span class="pill">Старт продаж</span><span class="pill">2-я очередь</span><span class="pill">Скидка 2 млн ₽</span></div>
@@ -75,25 +82,20 @@
           <p>Фильтруйте по комнатности, площади и бюджету — покажем актуальные планировки по шахматке.</p>
         </div>
       </div>
-      <div class="filters-grid" style="grid-template-columns:1.1fr 0.8fr 1.3fr 1fr auto;">
+      <div class="filters-grid" style="grid-template-columns:1.3fr 0.65fr 0.75fr 0.9fr auto;">
         <div class="filter">
           <label>Сколько комнат</label>
           <div class="room-toggle">
             <button>Все</button><button class="active">Студия</button><button>1к</button><button>2к</button><button>3к+</button>
           </div>
         </div>
-        <div class="filter">
+        <div class="filter filter-compact">
           <label>Площадь, м²</label>
-          <div class="filter-value"><input type="text" inputmode="numeric" value="24–34"></div>
+          <div class="filter-value"><input type="text" inputmode="numeric" class="num-range-input" value="24–34"></div>
         </div>
-        <div class="filter">
+        <div class="filter filter-compact readonly">
           <label>Стоимость, ₽</label>
-          <div class="range-pair" data-output="objPriceOut" data-unit=" ₽">
-            <div class="range-track-bg"></div>
-            <input type="range" class="range-min" min="3450000" max="8000000" step="50000" value="3450000">
-            <input type="range" class="range-max" min="3450000" max="8000000" step="50000" value="8000000">
-          </div>
-          <div class="range-values" id="objPriceOut">3 450 000 – 8 000 000 ₽</div>
+          <div class="filter-value"><input type="text" value="от 3 450 000" readonly tabindex="-1"></div>
         </div>
         <div class="filter">
           <label>Срок сдачи</label>
@@ -104,8 +106,9 @@
             </button>
             <div class="custom-select-list">
               <div class="custom-select-option selected">Любой</div>
-              <div class="custom-select-option">4 кв. 2026</div>
-              <div class="custom-select-option">2 кв. 2027</div>
+              <div class="custom-select-option">Сдан</div>
+              <div class="custom-select-option">1 кв. 2026</div>
+              <div class="custom-select-option">4 кв. 2030</div>
             </div>
           </div>
         </div>
@@ -119,85 +122,124 @@
         <a class="flat-card-link" href="flat.html"><div class="render"><span class="lot-number">№101</span><span class="tag">план 1</span></div>
         <div class="flat-body"><div class="flat-title">Студия · 24,3 м²</div><div class="flat-meta">Литер 1 · 3 этаж <span class="deadline">Сдача 4 кв. 2026</span></div>
         <div class="row"><span class="flat-price">3 450 000 ₽</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
       <div class="flat-card">
         <a class="flat-card-link" href="flat.html"><div class="render tone-b"><span class="lot-number">№102</span><span class="tag">план 2</span></div>
         <div class="flat-body"><div class="flat-title">Студия · 26,1 м²</div><div class="flat-meta">Литер 1 · 5 этаж <span class="deadline">Сдача 4 кв. 2026</span></div>
         <div class="price-old">4 190 000 ₽</div><div class="row"><span class="flat-price">3 690 000 ₽</span><span class="discount-badge">−12%</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
       <div class="flat-card">
         <a class="flat-card-link" href="flat.html"><div class="render tone-c"><span class="lot-number">№103</span><span class="tag">план 3</span></div>
         <div class="flat-body"><div class="flat-title">Студия · 28,4 м²</div><div class="flat-meta">Литер 2 · 2 этаж <span class="deadline">Сдача 2 кв. 2027</span></div>
         <div class="row"><span class="flat-price">3 980 000 ₽</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
       <div class="flat-card">
         <a class="flat-card-link" href="flat.html"><div class="render"><span class="lot-number">№104</span><span class="tag">план 4</span></div>
         <div class="flat-body"><div class="flat-title">Студия · 29,0 м²</div><div class="flat-meta">Литер 2 · 7 этаж <span class="deadline">Сдача 2 кв. 2027</span></div>
         <div class="row"><span class="flat-price">4 050 000 ₽</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
       <div class="flat-card">
         <a class="flat-card-link" href="flat.html"><div class="render tone-b"><span class="lot-number">№105</span><span class="tag">план 5</span></div>
         <div class="flat-body"><div class="flat-title">Студия · 31,2 м²</div><div class="flat-meta">Литер 3 · 4 этаж <span class="deadline">Сдача 2 кв. 2027</span></div>
         <div class="price-old">4 780 000 ₽</div><div class="row"><span class="flat-price">4 320 000 ₽</span><span class="discount-badge">−10%</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
       <div class="flat-card">
         <a class="flat-card-link" href="flat.html"><div class="render tone-c"><span class="lot-number">№106</span><span class="tag">план 6</span></div>
         <div class="flat-body"><div class="flat-title">Студия · 33,8 м²</div><div class="flat-meta">Литер 3 · 6 этаж <span class="deadline">Сдача 2 кв. 2027</span></div>
         <div class="row"><span class="flat-price">4 500 000 ₽</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
     </div>
   </div>
 </section>
 
 <!-- ГОРОД В ГОРОДЕ + ПРЕИМУЩЕСТВА (объединённый блок) -->
-<section class="city-block">
-  <div class="city-photo" style="background-image:url('assets/img/object-krasnodar.jpg');">
-    <div class="city-photo-scrim"></div>
-    <div class="wrap city-photo-content">
-      <span class="kicker" style="color:#E8B197;">Концепция</span>
-      <h2>Город в городе</h2>
-      <p>NEO-квартал проектируется как самостоятельный микрорайон: закрытые дворы без машин, коммерция на первых этажах, собственная школа и детские сады — всё, что нужно, в шаговой доступности.</p>
+<!-- ИДЕЯ ОБЪЕКТА -->
+<section style="padding:20px 0 60px;">
+  <div class="wrap idea-block">
+    <div>
+      <span class="kicker">Концепция</span>
+      <h2 style="font-size:28px; margin-top:10px;">Город в городе</h2>
+      <p style="color:var(--slate); font-size:14.5px; line-height:1.7; margin-top:14px; max-width:460px;">NEO-квартал проектируется как самостоятельный микрорайон: закрытые дворы без машин, коммерция на первых этажах, собственная школа и детские сады — всё, что нужно, в шаговой доступности.</p>
+      <div class="idea-adv-row">
+        <div class="idea-adv-tile">
+          <div class="fill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <span>Семейная инфраструктура</span>
+        </div>
+        <div class="idea-adv-tile">
+          <div class="fill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3c-4 3-7 6-7 10a7 7 0 0 0 14 0c0-4-3-7-7-10Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <span>Дворы без машин и с озеленением</span>
+        </div>
+        <div class="idea-adv-tile">
+          <div class="fill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 21V9l8-5 8 5v12M9 21v-7h6v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <span>Современная архитектура</span>
+        </div>
+      </div>
+    </div>
+    <div class="petal-mosaic">
+      <div class="petal-tile petal-a" style="background-image:url('assets/img/object-krasnodar.jpg');"></div>
+      <div class="petal-tile petal-b" style="background-image:url('assets/img/photo-facade-towers.jpg');"></div>
     </div>
   </div>
+</section>
+
+<!-- ПРЕИМУЩЕСТВА (полный список) -->
+<section style="padding:0 0 60px;">
   <div class="wrap">
-    <div class="section-head" style="margin-top:34px;">
-      <div><span class="kicker">Почему NEO-квартал</span><h2 style="font-size:24px;">Преимущества проекта</h2></div>
-      <div class="arrow-btns"><button data-scroll-prev="advTrack">‹</button><button data-scroll-next="advTrack">›</button></div>
+    <div class="section-head">
+      <div><span class="kicker">Почему NEO-квартал</span><h2>Преимущества проекта</h2></div>
+      <div class="arrow-btns"><button data-scroll-prev="advTrack" aria-label="Назад"><svg width="8" height="13" viewBox="0 0 9 15" fill="none"><path d="M8 1.5 1.5 7.5 8 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button data-scroll-next="advTrack" aria-label="Вперёд"><svg width="8" height="13" viewBox="0 0 9 15" fill="none"><path d="M1 1.5 7.5 7.5 1 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     </div>
-    <div class="adv-track" id="advTrack">
-      <div class="adv-card"><h4>214-ФЗ и эскроу</h4><p>Деньги под защитой банка до сдачи дома.</p></div>
-      <div class="adv-card"><h4>Закрытые дворы</h4><p>Без машин — только для жителей и гостей.</p></div>
-      <div class="adv-card"><h4>Своя школа</h4><p>На территории комплекса, в шаговой доступности.</p></div>
-      <div class="adv-card"><h4>Подземный паркинг</h4><p>Места для всех собственников квартир.</p></div>
-      <div class="adv-card"><h4>Панорамные окна</h4><p>Увеличенные оконные блоки во всех домах.</p></div>
-      <div class="adv-card"><h4>Коммерция на 1-х этажах</h4><p>Магазины, кафе и сервисы у дома.</p></div>
-      <div class="adv-card"><h4>Ландшафтный дизайн</h4><p>Профессиональное озеленение дворов.</p></div>
-      <div class="adv-card"><h4>Видеонаблюдение</h4><p>Периметр и дворы под круглосуточной охраной.</p></div>
-      <div class="adv-card"><h4>Развитая инфраструктура</h4><p>ТЦ, поликлиника и парк рядом с домом.</p></div>
+    <div class="adv-track adv-track-light" id="advTrack">
+      <div class="adv-card adv-card-light"><h4>214-ФЗ и эскроу</h4><p>Деньги под защитой банка до сдачи дома.</p></div>
+      <div class="adv-card adv-card-light"><h4>Закрытые дворы</h4><p>Без машин — только для жителей и гостей.</p></div>
+      <div class="adv-card adv-card-light"><h4>Своя школа</h4><p>На территории комплекса, в шаговой доступности.</p></div>
+      <div class="adv-card adv-card-light"><h4>Подземный паркинг</h4><p>Места для всех собственников квартир.</p></div>
+      <div class="adv-card adv-card-light"><h4>Панорамные окна</h4><p>Увеличенные оконные блоки во всех домах.</p></div>
+      <div class="adv-card adv-card-light"><h4>Коммерция на 1-х этажах</h4><p>Магазины, кафе и сервисы у дома.</p></div>
+      <div class="adv-card adv-card-light"><h4>Ландшафтный дизайн</h4><p>Профессиональное озеленение дворов.</p></div>
+      <div class="adv-card adv-card-light"><h4>Видеонаблюдение</h4><p>Периметр и дворы под круглосуточной охраной.</p></div>
+      <div class="adv-card adv-card-light"><h4>Развитая инфраструктура</h4><p>ТЦ, поликлиника и парк рядом с домом.</p></div>
     </div>
   </div>
 </section>
 
 <!-- НАПОЛНЕНИЕ ОБЪЕКТА: КВАДРАТНАЯ КАРУСЕЛЬ -->
-<section style="padding:60px 0 60px;">
+<section style="padding:0 0 60px;">
   <div class="wrap">
     <div class="section-head">
       <div><span class="kicker">Территория</span><h2>Наполнение объекта</h2></div>
-      <div class="arrow-btns"><button data-scroll-prev="fillTrack">‹</button><button data-scroll-next="fillTrack">›</button></div>
     </div>
-    <div class="square-track" id="fillTrack">
-      <div class="square-card render" style="background:url('assets/img/photo-playground-slide.jpg') center/cover;"><span>Детская площадка</span></div>
-      <div class="square-card render tone-b"><span>Скейт-парк</span></div>
-      <div class="square-card render tone-c" style="background:url('assets/img/photo-boy-climbing-net.jpg') center/cover;"><span>Зона воркаут</span></div>
-      <div class="square-card render" style="background:url('assets/img/photo-pergola-benches.jpg') center/cover;"><span>Прогулочная аллея</span></div>
-      <div class="square-card render tone-b"><span>Зона барбекю</span></div>
-      <div class="square-card render tone-c"><span>Паркинг во дворе</span></div>
+    <div class="fill-grid-v2">
+      <div class="fill-card">
+        <div class="fill-card-media" style="background:url('assets/img/photo-playground-slide.jpg') center/cover;"></div>
+        <div class="fill-card-body">Детская площадка</div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card-media" style="background:url('assets/img/photo-pergola-benches.jpg') center/cover;"></div>
+        <div class="fill-card-body">Прогулочная аллея</div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card-media" style="background:url('assets/img/photo-boy-climbing-net.jpg') center/cover;"></div>
+        <div class="fill-card-body">Зона воркаута</div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card-media fill-card-media-icon"><div class="fill-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M2 17c3-1 5-4 8-4s5 3 8 4M4 20l1.5-2M20 20l-1.5-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="19.5" r="1.4" fill="currentColor"/><circle cx="18" cy="19.5" r="1.4" fill="currentColor"/></svg></div></div>
+        <div class="fill-card-body">Скейт-парк</div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card-media fill-card-media-icon"><div class="fill-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2c1.5 2 2 3.5 1 5-.6.9-1.5 1-1.5 2.2 0 1 .8 1.8 1.8 1.8A2.2 2.2 0 0 0 15.5 9c1 1.5 1 3.6-.3 5.3A5.2 5.2 0 0 1 11 16.5a5.2 5.2 0 0 1-4.2-2.2c-1.6-2.3-1-5 .7-7C9 5.8 10 4 12 2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 20h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div></div>
+        <div class="fill-card-body">Зона барбекю</div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card-media fill-card-media-icon"><div class="fill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M9.5 15V7h3.2a2.5 2.5 0 1 1 0 5H9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="fill-card-body">Паркинг во дворе</div>
+      </div>
     </div>
   </div>
 </section>
@@ -230,16 +272,33 @@
   <div class="wrap location-block">
     <div>
       <span class="kicker">Локация</span>
-      <h2 style="font-size:26px; margin-top:10px;">Рядом с домом</h2>
-      <ul class="location-list">
-        <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3 3 8v3h18V8l-9-5Zm-7 11v6h4v-6M10 20v-6h4v6m1-6v6h4v-6M4 20h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Школа №100 — 5 минут пешком</li>
-        <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M4 20c0-3.5 3.5-6 8-6s8 2.5 8 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Детский сад — 3 минуты пешком</li>
-        <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 9 12 3l9 6v10a1 1 0 0 1-1 1h-4v-7H8v7H4a1 1 0 0 1-1-1V9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>ТЦ «Красная площадь» — 7 минут пешком</li>
-        <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 6 9.5 6 13a6 6 0 0 0 12 0c0-3.5-2-7-6-11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 13v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Парк «Солнечный остров» — 10 минут пешком</li>
-      </ul>
+      <h2 style="font-size:38px; margin-top:10px; text-transform:uppercase;">Всё нужное рядом</h2>
+      <div class="loc-group">
+        <div class="loc-group-title">5–10 минут пешком</div>
+        <ul class="location-list">
+          <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M4 20c0-3.5 3.5-6 8-6s8 2.5 8 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Детский сад — 3 минуты</li>
+          <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3 3 8v3h18V8l-9-5Zm-7 11v6h4v-6M10 20v-6h4v6m1-6v6h4v-6M4 20h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Школа №100 — 5 минут</li>
+          <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 9 12 3l9 6v10a1 1 0 0 1-1 1h-4v-7H8v7H4a1 1 0 0 1-1-1V9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>ТЦ «Красная площадь» — 7 минут</li>
+        </ul>
+      </div>
+      <div class="loc-group">
+        <div class="loc-group-title">10–20 минут</div>
+        <ul class="location-list">
+          <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 6 9.5 6 13a6 6 0 0 0 12 0c0-3.5-2-7-6-11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 13v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Парк «Солнечный остров» — 10 минут</li>
+          <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19 14c1.5-1.3 2.5-3 2.5-5A6.5 6.5 0 0 0 4 8.5c0 2 1 3.7 2.5 5L12 21l6.5-7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>Поликлиника — 15 минут</li>
+          <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18M8 4v3M16 4v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Ж/д вокзал — 18 минут</li>
+        </ul>
+      </div>
       <button class="btn btn-primary" style="margin-top:20px;">Подобрать квартиру</button>
     </div>
-    <div class="render corner-ticks location-map"><span class="tag">карта объекта (заглушка)</span></div>
+    <div class="location-map-wrap">
+      <iframe
+        class="location-map"
+        src="https://yandex.ru/map-widget/v1/?ll=38.964021%2C45.107006&z=16&pt=38.964021,45.107006,pm2rdm"
+        title="Яндекс.Карта — офис продаж, ул. Конгрессная 13, Краснодар"
+        loading="lazy">
+      </iframe>
+    </div>
   </div>
 </section>
 
@@ -266,19 +325,23 @@
 
 <!-- ФОРМА ЗАЯВКИ -->
 <section style="padding:0 0 70px;">
-  <div class="wrap" style="max-width:820px;">
+  <div class="wrap">
     <div class="form-card form-card-split">
       <div class="form-card-photo render corner-ticks" style="background:url('assets/img/object-krasnodar.jpg') center/cover;"></div>
       <div class="form-card-fields">
-        <h3>Остались вопросы?</h3>
-        <p class="form-note">Оставьте заявку — менеджер свяжется в течение 15 минут.</p>
+        <img src="assets/img/logo-devel-color.svg" alt="Ромекс Девелопмент" class="form-card-logo">
+        <h3 style="font-size:22px;">Нужна консультация?</h3>
+        <p class="form-note">Оставьте свой номер, и мы перезвоним вам.</p>
         <form data-form>
-          <div class="field"><label>Имя</label><input type="text" placeholder="Как к вам обращаться"></div>
-          <div class="field"><label>Телефон</label><input type="tel" placeholder="+7 900 000 00 00"></div>
-          <label class="consent"><input type="checkbox"> Соглашаюсь на обработку персональных данных в соответствии с политикой конфиденциальности</label>
-          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+          <div class="field"><label>Имя</label><input type="text" placeholder="Ваше имя"></div>
+          <div class="field"><label>Телефон</label><input type="tel" placeholder="+7 (000) 000-00-00"></div>
+          <label class="consent"><input type="checkbox"><span>Соглашаюсь на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>
+          <button type="submit" class="btn btn-primary btn-call-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.5c0-.6.4-1 1-1H7.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            Жду звонка
+          </button>
         </form>
-        <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:13.5px;">Менеджер свяжется с вами в ближайшее время.</p></div>
+        <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3></div>
       </div>
     </div>
   </div>
@@ -306,9 +369,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo"><img src="assets/img/logo-devel-white.svg" alt="Ромекс Девелопмент" style="height:40px; width:auto;"></div>
-        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России.</p>
-        <button class="btn btn-footer-white magnetic" data-modal-open="subscribeModal">Подписаться на рассылку</button>
-      </div>
+        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России.</p>      </div>
       <div>
         <h5>Проекты</h5>
         <a href="object.html">НЕО‑квартал, Краснодар</a>
@@ -342,7 +403,7 @@
     <div class="footer-bottom">
       <div>© 1998–2026 Группа компаний Ромекс. Все права защищены</div>
       <div style="display:flex; gap:18px; align-items:center;">
-        <a href="#" class="footer-link">Политика конфиденциальности</a>
+        <a href="privacy.html" class="footer-link">Политика конфиденциальности</a>
         <a href="#" class="footer-link">Дисклеймеры</a>
         <div class="social-links">
           <a href="#" class="social-link">VK<span class="social-icon">VK</span></a>
@@ -357,8 +418,8 @@
 </footer>
 
 <div class="cookie-banner" id="cookieBanner">
-  <p>Мы используем файлы cookie, чтобы сайт работал быстрее и удобнее для вас.</p>
-  <button onclick="dismissCookie()">Понятно</button>
+  <p>Мы используем файлы cookie, чтобы сайт работал быстрее и удобнее для вас. Подробнее — в <a href="privacy.html">политике конфиденциальности</a>.</p>
+  <button onclick="dismissCookie()">Согласен</button>
 </div>
 
 <div class="modal-overlay" id="subscribeModal">
@@ -369,7 +430,7 @@
     <form data-form>
       <div class="field"><label>Имя</label><input type="text" placeholder="Как к вам обращаться"></div>
       <div class="field"><label>Номер телефона</label><input type="tel" placeholder="+7 900 000 00 00"></div>
-      <label class="consent"><input type="checkbox"> Даю согласие на обработку персональных данных</label>
+      <label class="consent"><input type="checkbox"><span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>
       <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
     <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:13.5px;">Мы свяжемся с вами в ближайшее время.</p></div>

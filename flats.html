@@ -18,7 +18,7 @@
     </a>
     <nav class="mainnav">
       <div class="navitem has-drop">
-        <a href="object.html">Объекты</a>
+        <a href="objects.html">Объекты</a>
         <div class="dropdown">
           <a href="object.html"><span><span class="city">Краснодар</span>НЕО-квартал «Красная площадь»</span><span class="price-tag">от 4,5 млн ₽</span></a>
           <a href="object.html"><span><span class="city">Анапа</span>«Мириады Анапы»</span><span class="price-tag">Старт продаж</span></a>
@@ -27,7 +27,14 @@
         </div>
       </div>
       <div class="navitem"><a href="flats.html">Квартиры</a></div>
-      <div class="navitem"><a href="commercial.html">Торговые помещения</a></div>
+      <div class="navitem has-drop">
+        <a href="commercial.html">Торговые помещения</a>
+        <div class="dropdown">
+          <a href="commercial-lot.html"><span><span class="city">Литер 1</span>Помещение №A.12 · 32 м²</span><span class="price-tag">3,2 млн ₽</span></a>
+          <a href="commercial-lot.html"><span><span class="city">Литер 2</span>Помещение №B.05 · 54 м²</span><span class="price-tag">5,1 млн ₽</span></a>
+          <a href="commercial-lot.html"><span><span class="city">Литер 3</span>Помещение №C.09 · 88 м²</span><span class="price-tag">7,8 млн ₽</span></a>
+        </div>
+      </div>
       <div class="navitem"><a href="mortgage.html">Ипотека</a></div>
       <div class="navitem"><a href="offices.html">Офисы продаж</a></div>
     </nav>
@@ -58,11 +65,33 @@
   <div class="wrap">
     <div class="search-card">
       <div class="bp-overlay blueprint"></div>
-      <div class="filters-grid" style="grid-template-columns:1fr 1.3fr 1fr 1fr auto;">
-        <div class="filter"><label>Город / объект</label><select><option>Все объекты</option><option>NEO-квартал, Краснодар</option><option>ЖК «Красная площадь», Новороссийск</option></select></div>
-        <div class="filter"><label>Сколько комнат</label><div class="room-toggle room-toggle-compact"><button class="active">Все</button><button>Студия</button><button>1к</button><button>2к</button><button>3к+</button></div></div>
-        <div class="filter readonly"><label>Площадь, м²</label><input type="text" value="24–34" readonly></div>
-        <div class="filter readonly"><label>Стоимость, ₽</label><input type="text" value="от 3 450 000" readonly></div>
+      <div class="filters-grid" style="grid-template-columns:1.1fr 1.3fr 0.65fr 0.75fr auto;">
+        <div class="filter">
+          <label>Город / объект</label>
+          <div class="custom-select">
+            <button type="button" class="custom-select-trigger">
+              <span class="custom-select-label">Все объекты</span>
+              <span class="chev">⌄</span>
+            </button>
+            <div class="custom-select-list">
+              <div class="custom-select-option selected">Все объекты</div>
+              <div class="custom-select-option">НЕО-квартал, Краснодар</div>
+              <div class="custom-select-option">«Мириады Анапы», Анапа</div>
+            </div>
+          </div>
+        </div>
+        <div class="filter">
+          <label>Сколько комнат</label>
+          <div class="room-toggle room-toggle-compact"><button class="active">Все</button><button>Студия</button><button>1к</button><button>2к</button><button>3к+</button></div>
+        </div>
+        <div class="filter filter-compact">
+          <label>Площадь, м²</label>
+          <div class="filter-value"><input type="text" inputmode="numeric" class="num-range-input" value="24–34"></div>
+        </div>
+        <div class="filter filter-compact readonly">
+          <label>Стоимость, ₽</label>
+          <div class="filter-value"><input type="text" value="от 3 450 000" readonly tabindex="-1"></div>
+        </div>
         <button class="search-submit">Найти →</button>
       </div>
     </div>
@@ -76,37 +105,37 @@
         <a class="flat-card-link" href="flat.html"><div class="render"><span class="lot-number">№101</span><span class="tag">план</span></div>
         <div class="flat-body"><div class="flat-title">Студия · 24,3 м²</div><div class="flat-meta">NEO-квартал · Литер 1, 3 этаж <span class="deadline">Сдача 4 кв. 2026</span></div>
         <div class="row"><span class="flat-price">3 450 000 ₽</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
       <div class="flat-card">
         <a class="flat-card-link" href="flat.html"><div class="render tone-b"><span class="lot-number">№207</span><span class="tag">план</span></div>
         <div class="flat-body"><div class="flat-title">1-комнатная · 38,7 м²</div><div class="flat-meta">NEO-квартал · Литер 2, 6 этаж <span class="deadline">Сдача 2 кв. 2027</span></div>
         <div class="row"><span class="price-old">5 540 000 ₽</span><span class="flat-price">4 980 000 ₽</span><span class="discount-badge">−10%</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
       <div class="flat-card">
         <a class="flat-card-link" href="flat.html"><div class="render tone-c"><span class="lot-number">№314</span><span class="tag">план</span></div>
         <div class="flat-body"><div class="flat-title">2-комнатная · 54,2 м²</div><div class="flat-meta">NEO-квартал · Литер 3, 4 этаж <span class="deadline">Сдача 2 кв. 2027</span></div>
         <div class="row"><span class="flat-price">6 340 000 ₽</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
       <div class="flat-card">
-        <a class="flat-card-link" href="flat.html"><div class="render"><span class="lot-number">№112</span><span class="tag">план</span></div>
-        <div class="flat-body"><div class="flat-title">1-комнатная · 40,1 м²</div><div class="flat-meta">Новороссийск · Литер 1, 2 этаж <span class="deadline">Сдача 3 кв. 2026</span></div>
-        <div class="row"><span class="flat-price">5 200 000 ₽</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        <a class="flat-card-link" href="flat.html"><div class="render" style="background:url('assets/img/object-anapa-miriady.jpg') center/cover;"><span class="lot-number">№112</span><span class="tag">план</span></div>
+        <div class="flat-body"><div class="flat-title">1-комнатная · 39,4 м²</div><div class="flat-meta">Мириады Анапы · Литер 1, 4 этаж <span class="deadline">Сдача 4 кв. 2027</span></div>
+        <div class="row"><span class="flat-price">5 350 000 ₽</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
       <div class="flat-card">
-        <a class="flat-card-link" href="flat.html"><div class="render tone-b"><span class="lot-number">№225</span><span class="tag">план</span></div>
-        <div class="flat-body"><div class="flat-title">3-комнатная · 71,5 м²</div><div class="flat-meta">Новороссийск · Литер 2, 5 этаж <span class="deadline">Сдача 3 кв. 2026</span></div>
-        <div class="row"><span class="price-old">9 650 000 ₽</span><span class="flat-price">8 900 000 ₽</span><span class="discount-badge">−8%</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        <a class="flat-card-link" href="flat.html"><div class="render tone-b" style="background:url('assets/img/object-anapa-miriady.jpg') center/cover;"><span class="lot-number">№225</span><span class="tag">план</span></div>
+        <div class="flat-body"><div class="flat-title">2-комнатная · 58,2 м²</div><div class="flat-meta">Мириады Анапы · Литер 1, 7 этаж <span class="deadline">Сдача 4 кв. 2027</span></div>
+        <div class="row"><span class="flat-price">7 900 000 ₽</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
       <div class="flat-card">
         <a class="flat-card-link" href="flat.html"><div class="render tone-c"><span class="lot-number">№318</span><span class="tag">план</span></div>
         <div class="flat-body"><div class="flat-title">Студия · 26,8 м²</div><div class="flat-meta">NEO-квартал · Литер 3, 8 этаж <span class="deadline">Сдача 2 кв. 2027</span></div>
         <div class="row"><span class="flat-price">3 780 000 ₽</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Забронировать</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
     </div>
     <div class="show-more-wrap"><button class="btn-show-more">Показать ещё</button></div>
@@ -119,9 +148,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo"><img src="assets/img/logo-devel-white.svg" alt="Ромекс Девелопмент" style="height:40px; width:auto;"></div>
-        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России.</p>
-        <button class="btn btn-footer-white magnetic" data-modal-open="subscribeModal">Подписаться на рассылку</button>
-      </div>
+        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России.</p>      </div>
       <div>
         <h5>Проекты</h5>
         <a href="object.html">НЕО‑квартал, Краснодар</a>
@@ -155,7 +182,7 @@
     <div class="footer-bottom">
       <div>© 1998–2026 Группа компаний Ромекс. Все права защищены</div>
       <div style="display:flex; gap:18px; align-items:center;">
-        <a href="#" class="footer-link">Политика конфиденциальности</a>
+        <a href="privacy.html" class="footer-link">Политика конфиденциальности</a>
         <a href="#" class="footer-link">Дисклеймеры</a>
         <div class="social-links">
           <a href="#" class="social-link">VK<span class="social-icon">VK</span></a>
@@ -170,8 +197,8 @@
 </footer>
 
 <div class="cookie-banner" id="cookieBanner">
-  <p>Мы используем файлы cookie, чтобы сайт работал быстрее и удобнее для вас.</p>
-  <button onclick="dismissCookie()">Понятно</button>
+  <p>Мы используем файлы cookie, чтобы сайт работал быстрее и удобнее для вас. Подробнее — в <a href="privacy.html">политике конфиденциальности</a>.</p>
+  <button onclick="dismissCookie()">Согласен</button>
 </div>
 
 <div class="modal-overlay" id="subscribeModal">
@@ -182,7 +209,7 @@
     <form data-form>
       <div class="field"><label>Имя</label><input type="text" placeholder="Как к вам обращаться"></div>
       <div class="field"><label>Номер телефона</label><input type="tel" placeholder="+7 900 000 00 00"></div>
-      <label class="consent"><input type="checkbox"> Даю согласие на обработку персональных данных</label>
+      <label class="consent"><input type="checkbox"><span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>
       <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
     <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:13.5px;">Мы свяжемся с вами в ближайшее время.</p></div>
