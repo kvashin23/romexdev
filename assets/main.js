@@ -143,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   initDraggableCarousel(document.getElementById('promoTrack'));
   initDraggableCarousel(document.getElementById('newsTrack'));
+  initDraggableCarousel(document.getElementById('advTrack'));
 
   /* ---------- зацикленная карусель (новости): в конце — переход в начало и обратно ---------- */
   document.querySelectorAll('[data-loop-prev]').forEach(btn => {
@@ -172,19 +173,142 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- стоимость и площадь автоматически меняются от выбранной комнатности ---------- */
   const roomTabsEl = document.getElementById('roomTabs');
   const areaRangeField = document.getElementById('areaRangeField');
+  const priceRangeField = document.getElementById('priceRangeField');
   if (roomTabsEl) {
-    const priceSlider = roomTabsEl.parentElement.querySelector('.range-pair');
-    const minInput = priceSlider ? priceSlider.querySelector('.range-min') : null;
-    const maxInput = priceSlider ? priceSlider.querySelector('.range-max') : null;
     roomTabsEl.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('click', () => {
-        if (minInput && maxInput && btn.dataset.min) {
-          minInput.value = btn.dataset.min;
-          maxInput.value = btn.dataset.max;
-          minInput.dispatchEvent(new Event('input'));
+        if (priceRangeField && btn.dataset.min) {
+          const fmtNum = n => Number(n).toLocaleString('ru-RU').replace(/,/g, ' ');
+          priceRangeField.value = `${fmtNum(btn.dataset.min)} – ${fmtNum(btn.dataset.max)}`;
         }
         if (areaRangeField && btn.dataset.area) areaRangeField.value = btn.dataset.area;
       });
+    });
+  }
+
+  /* ---------- лайтбокс для фото-мозаики (блок «О компании») ---------- */
+  document.querySelectorAll('.photo-mosaic').forEach(mosaic => {
+    const imgs = Array.from(mosaic.querySelectorAll('img'));
+    if (!imgs.length) return;
+    imgs.forEach((img, i) => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => openLightbox(imgs, i));
+    });
+  });
+  let lightboxEl = null;
+  function openLightbox(imgs, index) {
+    if (!lightboxEl) {
+      lightboxEl = document.createElement('div');
+      lightboxEl.className = 'lightbox-overlay';
+      lightboxEl.innerHTML = `
+        <button class="lightbox-close" aria-label="Закрыть">✕</button>
+        <button class="lightbox-nav lightbox-prev" aria-label="Назад"><svg width="10" height="16" viewBox="0 0 9 15" fill="none"><path d="M8 1.5 1.5 7.5 8 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <img class="lightbox-img" src="" alt="">
+        <button class="lightbox-nav lightbox-next" aria-label="Вперёд"><svg width="10" height="16" viewBox="0 0 9 15" fill="none"><path d="M1 1.5 7.5 7.5 1 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      `;
+      document.body.appendChild(lightboxEl);
+      lightboxEl.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+      lightboxEl.addEventListener('click', e => { if (e.target === lightboxEl) closeLightbox(); });
+      document.addEventListener('keydown', e => {
+        if (!lightboxEl.classList.contains('show')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') step(-1);
+        if (e.key === 'ArrowRight') step(1);
+      });
+      lightboxEl.querySelector('.lightbox-prev').addEventListener('click', () => step(-1));
+      lightboxEl.querySelector('.lightbox-next').addEventListener('click', () => step(1));
+    }
+    lightboxEl._imgs = imgs;
+    lightboxEl._index = index;
+    render();
+    lightboxEl.classList.add('show');
+    function render() {
+      lightboxEl.querySelector('.lightbox-img').src = lightboxEl._imgs[lightboxEl._index].src;
+    }
+    function step(dir) {
+      lightboxEl._index = (lightboxEl._index + dir + lightboxEl._imgs.length) % lightboxEl._imgs.length;
+      render();
+    }
+  }
+  function closeLightbox() { if (lightboxEl) lightboxEl.classList.remove('show'); }
+
+  /* ---------- кастомный календарь (страница «Выдача ключей») ---------- */
+  const dateField = document.getElementById('dateField');
+  const miniCalendar = document.getElementById('miniCalendar');
+  const dateFieldLabel = document.getElementById('dateFieldLabel');
+  if (dateField && miniCalendar && dateFieldLabel) {
+    const monthNames = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+    const weekDays = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+    const today = new Date();
+    let viewYear = today.getFullYear();
+    let viewMonth = today.getMonth();
+
+    // демо-набор доступных дней: вт/чт/сб и не раньше сегодняшнего дня
+    function isAvailable(date) {
+      if (date < new Date(today.getFullYear(), today.getMonth(), today.getDate())) return false;
+      const day = date.getDay(); // 0=вс..6=сб
+      return day === 2 || day === 4 || day === 6;
+    }
+
+    function renderCalendar() {
+      const first = new Date(viewYear, viewMonth, 1);
+      const startOffset = (first.getDay() + 6) % 7; // понедельник = 0
+      const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+      const daysInPrevMonth = new Date(viewYear, viewMonth, 0).getDate();
+
+      let cells = '';
+      for (let i = startOffset; i > 0; i--) {
+        cells += `<span class="cal-day muted">${daysInPrevMonth - i + 1}</span>`;
+      }
+      for (let d = 1; d <= daysInMonth; d++) {
+        const date = new Date(viewYear, viewMonth, d);
+        const avail = isAvailable(date);
+        cells += `<span class="cal-day${avail ? ' available' : ' disabled'}" data-day="${d}">${d}</span>`;
+      }
+      const totalCells = startOffset + daysInMonth;
+      const trailing = (7 - (totalCells % 7)) % 7;
+      for (let d = 1; d <= trailing; d++) {
+        cells += `<span class="cal-day muted">${d}</span>`;
+      }
+
+      miniCalendar.innerHTML = `
+        <div class="cal-head">
+          <button type="button" class="cal-nav" data-cal-prev aria-label="Предыдущий месяц"><svg width="7" height="11" viewBox="0 0 9 15" fill="none"><path d="M8 1.5 1.5 7.5 8 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <span class="cal-title">${monthNames[viewMonth]} ${viewYear}</span>
+          <button type="button" class="cal-nav" data-cal-next aria-label="Следующий месяц"><svg width="7" height="11" viewBox="0 0 9 15" fill="none"><path d="M1 1.5 7.5 7.5 1 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="cal-weekdays">${weekDays.map(w => `<span>${w}</span>`).join('')}</div>
+        <div class="cal-days">${cells}</div>
+        <div class="cal-legend"><span class="cal-dot"></span> — доступные дни для визита</div>
+      `;
+
+      miniCalendar.querySelector('[data-cal-prev]').addEventListener('click', e => {
+        e.stopPropagation();
+        viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+        renderCalendar();
+      });
+      miniCalendar.querySelector('[data-cal-next]').addEventListener('click', e => {
+        e.stopPropagation();
+        viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+        renderCalendar();
+      });
+      miniCalendar.querySelectorAll('.cal-day.available').forEach(el => {
+        el.addEventListener('click', e => {
+          e.stopPropagation();
+          const d = el.dataset.day;
+          dateFieldLabel.textContent = `${d} ${monthNames[viewMonth].toLowerCase()} ${viewYear}`;
+          dateFieldLabel.classList.add('has-value');
+          dateField.classList.remove('open');
+        });
+      });
+    }
+    renderCalendar();
+
+    dateField.addEventListener('click', () => {
+      dateField.classList.toggle('open');
+    });
+    document.addEventListener('click', e => {
+      if (!dateField.contains(e.target)) dateField.classList.remove('open');
     });
   }
 
@@ -342,6 +466,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- поле диапазона (площадь) — только цифры и тире ---------- */
+  document.querySelectorAll('.num-range-input').forEach(inp => {
+    inp.addEventListener('input', () => {
+      let v = inp.value.replace(/[^0-9\-–—]/g, '');
+      v = v.replace(/[-–—]+/g, '–');
+      inp.value = v;
+    });
+    inp.addEventListener('keypress', e => {
+      if (!/[0-9\-–—]/.test(e.key)) e.preventDefault();
+    });
+  });
+
   /* ---------- модальные окна ---------- */
   document.querySelectorAll('[data-modal-open]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -415,10 +551,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- формы: имитация успешной отправки ---------- */
+  /* ---------- формы: имитация успешной отправки (только после согласия) ---------- */
   document.querySelectorAll('form[data-form]').forEach(form => {
     form.addEventListener('submit', e => {
       e.preventDefault();
+      const consentBox = form.querySelector('.consent input[type="checkbox"]');
+      if (consentBox && !consentBox.checked) {
+        const label = consentBox.closest('.consent');
+        if (label) {
+          label.classList.add('consent-error');
+          setTimeout(() => label.classList.remove('consent-error'), 1600);
+        }
+        consentBox.focus();
+        return;
+      }
       const card = form.closest('.form-card') || form.parentElement;
       const success = card ? card.querySelector('.form-success') : null;
       form.style.display = 'none';
