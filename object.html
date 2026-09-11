@@ -30,9 +30,8 @@
       <div class="navitem has-drop">
         <a href="commercial.html">Торговые помещения</a>
         <div class="dropdown">
-          <a href="commercial.html"><span><span class="city">Литер 1</span>Помещение №A.12 · 32 м²</span><span class="price-tag">3,2 млн ₽</span></a>
-          <a href="commercial.html"><span><span class="city">Литер 2</span>Помещение №B.05 · 54 м²</span><span class="price-tag">5,1 млн ₽</span></a>
-          <a href="commercial.html"><span><span class="city">Литер 3</span>Помещение №C.09 · 88 м²</span><span class="price-tag">7,8 млн ₽</span></a>
+          <a href="commercial.html"><span><span class="city">Краснодар</span>Торговые помещения NEO-квартал</span><span class="price-tag">от 3,2 млн ₽</span></a>
+          <a href="commercial-anapa.html"><span><span class="city">Анапа</span>Торговые помещения «Мириады Анапы»</span><span class="price-tag">от 2,9 млн ₽</span></a>
         </div>
       </div>
       <div class="navitem"><a href="mortgage.html">Ипотека</a></div>
@@ -40,7 +39,7 @@
     </nav>
     <div class="header-actions">
       <a class="phone mono" href="tel:88002009650">8 800 200 96 50</a>
-      <button class="btn btn-primary magnetic" data-modal-open="subscribeModal">Подобрать квартиру</button>
+      <button class="btn btn-primary" data-modal-open="subscribeModal">Подобрать квартиру</button>
       <button class="burger"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -158,89 +157,36 @@
   </div>
 </section>
 
-<!-- ГОРОД В ГОРОДЕ + ПРЕИМУЩЕСТВА (объединённый блок) -->
-<!-- ИДЕЯ ОБЪЕКТА -->
-<section style="padding:20px 0 60px;">
-  <div class="wrap idea-block">
-    <div>
-      <span class="kicker">Концепция</span>
-      <h2 style="font-size:28px; margin-top:10px;">Город в городе</h2>
-      <p style="color:var(--slate); font-size:14.5px; line-height:1.7; margin-top:14px; max-width:460px;">NEO-квартал проектируется как самостоятельный микрорайон: закрытые дворы без машин, коммерция на первых этажах, собственная школа и детские сады — всё, что нужно, в шаговой доступности.</p>
-      <div class="idea-adv-row">
-        <div class="idea-adv-tile">
-          <div class="fill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-          <span>Семейная инфраструктура</span>
-        </div>
-        <div class="idea-adv-tile">
-          <div class="fill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3c-4 3-7 6-7 10a7 7 0 0 0 14 0c0-4-3-7-7-10Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-          <span>Дворы без машин и с озеленением</span>
-        </div>
-        <div class="idea-adv-tile">
-          <div class="fill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 21V9l8-5 8 5v12M9 21v-7h6v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-          <span>Современная архитектура</span>
-        </div>
-      </div>
-    </div>
-    <div class="petal-mosaic">
-      <div class="petal-tile petal-a" style="background-image:url('assets/img/object-krasnodar.jpg');"></div>
-      <div class="petal-tile petal-b" style="background-image:url('assets/img/photo-facade-towers.jpg');"></div>
+<!-- ГОРОД В ГОРОДЕ + ПРЕИМУЩЕСТВА (единый блок) -->
+<section class="city-unified">
+  <div class="wrap">
+    <span class="kicker">Концепция</span>
+    <h2 style="font-size:29px; margin-top:10px;">Город в городе</h2>
+    <p style="color:var(--slate); font-size:15.5px; line-height:1.7; margin-top:14px; max-width:560px;">NEO-квартал проектируется как самостоятельный микрорайон: закрытые дворы без машин, коммерция на первых этажах, собственная школа и детские сады — всё, что нужно, в шаговой доступности.</p>
+  </div>
+  <div class="wrap">
+    <div class="city-photo-wrap">
+      <div class="city-photo-big" style="background-image:url('assets/img/object-krasnodar.jpg');"></div>
+      <div class="city-photo-accent" style="background-image:url('assets/img/photo-facade-towers.jpg');"></div>
     </div>
   </div>
-</section>
-
-<!-- ПРЕИМУЩЕСТВА (полный список) -->
-<section style="padding:0 0 60px;">
-  <div class="wrap">
-    <div class="section-head">
-      <div><span class="kicker">Почему NEO-квартал</span><h2>Преимущества проекта</h2></div>
+  <div class="wrap city-adv-overlap-wrap">
+    <div class="city-adv-row">
+      <button class="arrow-btns-single" data-scroll-prev="advTrack" aria-label="Назад"><svg width="8" height="13" viewBox="0 0 9 15" fill="none"><path d="M8 1.5 1.5 7.5 8 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="city-adv-track" id="advTrack">
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>214-ФЗ и эскроу</h4><p>Деньги под защитой банка до сдачи дома.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 21V9l8-6 8 6v12M4 21h16M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h4>Закрытые дворы</h4><p>Без машин — только для жителей и гостей.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9 12 4l9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 12.5V17c0 1.1 2.7 2 6 2s6-.9 6-2v-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><h4>Своя школа</h4><p>На территории комплекса, в шаговой доступности.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M9.5 15V7h3.2a2.5 2.5 0 1 1 0 5H9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Подземный паркинг</h4><p>Места для всех собственников квартир.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.8"/></svg></div><h4>Панорамные окна</h4><p>Увеличенные оконные блоки во всех домах.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M4 21V10l4-5h8l4 5v11M9 21v-5h6v5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h4>Коммерция на 1-х этажах</h4><p>Магазины, кафе и сервисы у дома.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3c-4 3-7 6-7 10a7 7 0 0 0 14 0c0-4-3-7-7-10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h4>Ландшафтный дизайн</h4><p>Профессиональное озеленение дворов.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 8a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m21 9-5 3 5 3V9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h4>Видеонаблюдение</h4><p>Периметр и дворы под круглосуточной охраной.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 6 9.5 6 13a6 6 0 0 0 12 0c0-3.5-2-7-6-11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h4>Развитая инфраструктура</h4><p>ТЦ, поликлиника и парк рядом с домом.</p></div>
+      </div>
+      <button class="arrow-btns-single arrow-btns-next" data-scroll-next="advTrack" aria-label="Вперёд"><svg width="8" height="13" viewBox="0 0 9 15" fill="none"><path d="M1 1.5 7.5 7.5 1 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
-    <div class="purchase-grid-v2 adv-grid-v2">
-      <div class="purchase-card" data-glyph="01">
-        <div class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4>214-ФЗ и эскроу</h4>
-        <p>Деньги под защитой банка до сдачи дома.</p>
-      </div>
-      <div class="purchase-card" data-glyph="02">
-        <div class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 21V9l8-6 8 6v12M4 21h16M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-        <h4>Закрытые дворы</h4>
-        <p>Без машин — только для жителей и гостей.</p>
-      </div>
-      <div class="purchase-card" data-glyph="03">
-        <div class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9 12 4l9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 12.5V17c0 1.1 2.7 2 6 2s6-.9 6-2v-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-        <h4>Своя школа</h4>
-        <p>На территории комплекса, в шаговой доступности.</p>
-      </div>
-      <div class="purchase-card" data-glyph="04">
-        <div class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M9.5 15V7h3.2a2.5 2.5 0 1 1 0 5H9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4>Подземный паркинг</h4>
-        <p>Места для всех собственников квартир.</p>
-      </div>
-      <div class="purchase-card" data-glyph="05">
-        <div class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.8"/></svg></div>
-        <h4>Панорамные окна</h4>
-        <p>Увеличенные оконные блоки во всех домах.</p>
-      </div>
-      <div class="purchase-card" data-glyph="06">
-        <div class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M4 21V10l4-5h8l4 5v11M9 21v-5h6v5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-        <h4>Коммерция на 1-х этажах</h4>
-        <p>Магазины, кафе и сервисы у дома.</p>
-      </div>
-      <div class="purchase-card" data-glyph="07">
-        <div class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3c-4 3-7 6-7 10a7 7 0 0 0 14 0c0-4-3-7-7-10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-        <h4>Ландшафтный дизайн</h4>
-        <p>Профессиональное озеленение дворов.</p>
-      </div>
-      <div class="purchase-card" data-glyph="08">
-        <div class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 8a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m21 9-5 3 5 3V9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-        <h4>Видеонаблюдение</h4>
-        <p>Периметр и дворы под круглосуточной охраной.</p>
-      </div>
-      <div class="purchase-card" data-glyph="09">
-        <div class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 6 9.5 6 13a6 6 0 0 0 12 0c0-3.5-2-7-6-11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-        <h4>Развитая инфраструктура</h4>
-        <p>ТЦ, поликлиника и парк рядом с домом.</p>
-      </div>
-    </div>
+    <div class="track-dots city-adv-dots" data-dots-for="advTrack"></div>
   </div>
 </section>
 
@@ -307,7 +253,7 @@
   <div class="wrap location-block">
     <div>
       <span class="kicker">Локация</span>
-      <h2 style="font-size:38px; margin-top:10px; text-transform:uppercase;">Всё нужное рядом</h2>
+      <h2 style="font-size:39px; margin-top:10px; text-transform:uppercase;">Всё нужное рядом</h2>
       <div class="loc-group">
         <div class="loc-group-title">5–10 минут пешком</div>
         <ul class="location-list">
@@ -329,8 +275,8 @@
     <div class="location-map-wrap">
       <iframe
         class="location-map"
-        src="https://yandex.ru/map-widget/v1/?ll=38.964021%2C45.107006&z=16&pt=38.964021,45.107006,pm2rdm"
-        title="Яндекс.Карта — офис продаж, ул. Конгрессная 13, Краснодар"
+        src="https://yandex.ru/map-widget/v1/?ll=38.964021%2C45.106800&z=16&pt=38.964021,45.106800,pm2rdm"
+        title="Яндекс.Карта — офис продаж, ул. Конгрессная, 13, Краснодар"
         loading="lazy">
       </iframe>
     </div>
@@ -352,19 +298,19 @@
         <div class="accordion-item"><div class="accordion-head">Июнь 2026</div><div class="accordion-body"><div class="timeline-photos"><div class="render tone-b"></div><div class="render tone-c"></div><div class="render"></div><div class="render tone-b"></div></div></div></div>
         <div class="accordion-item"><div class="accordion-head">Май 2026</div><div class="accordion-body"><div class="timeline-photos"><div class="render tone-c"></div><div class="render"></div><div class="render tone-b"></div><div class="render tone-c"></div></div></div></div>
       </div>
-      <div class="tab-panel"><p style="color:var(--slate); font-size:14px;">2025 год — фотоотчёты по месяцам.</p></div>
-      <div class="tab-panel"><p style="color:var(--slate); font-size:14px;">2024 год — начало строительства, закладка фундамента.</p></div>
+      <div class="tab-panel"><p style="color:var(--slate); font-size:15px;">2025 год — фотоотчёты по месяцам.</p></div>
+      <div class="tab-panel"><p style="color:var(--slate); font-size:15px;">2024 год — начало строительства, закладка фундамента.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ФОРМА ЗАЯВКИ -->
-<section style="padding:0 0 70px;">
+<section style="padding:0 0 60px;">
   <div class="wrap">
     <div class="form-card form-card-split">
       <div class="form-card-photo render corner-ticks" style="background:url('assets/img/object-krasnodar.jpg') center/cover;"></div>
       <div class="form-card-fields">
-        <h3 style="font-size:24px;">Оставьте свой номер, и мы перезвоним вам</h3>
+        <h3 style="font-size:20px; line-height:1.3;">Оставьте свой номер, и мы перезвоним вам</h3>
         <form data-form>
           <div class="field"><label>Имя</label><input type="text" placeholder="Ваше имя"></div>
           <div class="field"><label>Телефон</label><input type="tel" placeholder="+7 (000) 000-00-00"></div>
@@ -381,18 +327,43 @@
 </section>
 
 <!-- О КОМПАНИИ (как на главной) -->
+<!-- ===================== ABOUT ===================== -->
 <section class="about-section">
-  <div class="wrap about-grid">
-    <div>
-      <h2>Надёжный застройщик,<br>которому доверяют с 1998 года</h2>
-      <p>Входит в состав инвестиционного холдинга «Ромекс Групп», специализируется на строительстве доступного жилья со всей инфраструктурой.</p>
-      <p style="margin-top:22px;"><a class="btn btn-outline" style="border-color:rgba(243,238,230,0.4); color:#fff;" href="about.html">О компании и команде →</a></p>
+  <div class="about-glow" aria-hidden="true"></div>
+  <div class="wrap about-grid-v2">
+    <div class="about-left">
+      <h2><span class="red">РОМЕКС —</span><br>один из крупнейших<br>застройщиков Юга России</h2>
+      <div class="photo-mosaic" aria-hidden="true">
+        <div class="mos-tile"><img src="assets/img/photo-romex-signage.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/facade-close.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/school.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/object-krasnodar.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/courtyard-shops.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/facades-wide.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/entrance.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/object-anapa-miriady.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/facade-leaves.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/object-novorossiysk.jpg" alt=""></div>
+      </div>
     </div>
-    <div class="stat-grid">
-      <div class="stat"><b>1998</b><span>год основания компании</span></div>
-      <div class="stat"><b>1 000 000 м²</b><span>сдано жилой недвижимости</span></div>
-      <div class="stat"><b>3</b><span>реализованных ЖК</span></div>
-      <div class="stat"><b>400+</b><span>коммерческих объектов</span></div>
+    <div class="about-right">
+      <span class="kicker">Ромекс Девелопмент</span>
+      <p>Входит в состав инвестиционного холдинга «Ромекс».</p>
+      <div class="about-stats">
+        <div class="about-stat">
+          <b class="count-up" data-count="28" data-format="plus">28+</b>
+          <span>лет на рынке</span>
+        </div>
+        <div class="about-stat">
+          <b class="count-up" data-count="400" data-format="plus">400+</b>
+          <span>объектов построено</span>
+        </div>
+        <div class="about-stat">
+          <b class="count-up" data-count="1000000" data-format="area">1 000 000 м²</b>
+          <span>жилья сдано</span>
+        </div>
+      </div>
+      <a class="btn btn-outline btn-outline-on-dark btn-compact" style="border-color:rgba(243,238,230,0.4); color:#fff;" href="about.html">О компании и команде →</a>
     </div>
   </div>
 </section>
@@ -427,7 +398,7 @@
       </div>
       <div>
         <h5>Контакты</h5>
-        <a href="contacts.html">Краснодар, ул. Конгрессная 13</a>
+        <a href="contacts.html">Краснодар, ул. Конгрессная, 13</a>
         <a href="tel:88002009650">8 800 200 96 50</a>
         <a href="mailto:info@romexdev.ru">info@romexdev.ru</a>
         <a href="offices.html">Офисы продаж</a>
@@ -466,7 +437,7 @@
       <label class="consent"><input type="checkbox"><span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>
       <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
-    <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:13.5px;">Мы свяжемся с вами в ближайшее время.</p></div>
+    <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:14.5px;">Мы свяжемся с вами в ближайшее время.</p></div>
   </div>
 </div>
 
