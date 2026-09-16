@@ -17,12 +17,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   function headerElForScroll(){ return document.querySelector('header'); }
 
-  /* ---------- мобильное меню (бургер) ---------- */
+  /* ---------- мобильное меню (бургер): единый плоский список без вложенных списков ---------- */
   const burger = document.querySelector('.burger');
   const headerEl = document.querySelector('header');
   if (burger && headerEl) {
+    // строим плоский список один раз: верхнеуровневые пункты меню (без выпадающих подсписков с адресами) + пункты subnav, в том же порядке
+    const flatNav = document.createElement('nav');
+    flatNav.className = 'mobile-flat-nav';
+    const links = [];
+    headerEl.querySelectorAll('nav.mainnav > .navitem > a').forEach(a => {
+      links.push({ href: a.getAttribute('href'), text: a.textContent.trim() });
+    });
+    headerEl.querySelectorAll('.subnav > a').forEach(a => {
+      links.push({ href: a.getAttribute('href'), text: a.textContent.trim() });
+    });
+    flatNav.innerHTML = links.map(l => `<a href="${l.href}">${l.text}</a>`).join('');
+    // Важно: список вставляется в <body>, а не внутрь <header>. У шапки есть
+    // backdrop-filter (эффект «стекла»), а это CSS-свойство создаёт свой
+    // containing block для потомков с position:fixed — внутри header фикс-меню
+    // считало бы top/bottom не от экрана, а от рамки самой шапки (высотой
+    // ~80px), и схлопывалось в узкую полоску вместо полноэкранного списка
+    // (воспроизводится на внутренних страницах и на главной после скролла).
+    document.body.appendChild(flatNav);
+
     burger.addEventListener('click', () => {
+      const opening = !headerEl.classList.contains('nav-open');
       headerEl.classList.toggle('nav-open');
+      flatNav.classList.toggle('open', opening);
+      if (opening) {
+        // высота хедера меняется, когда открывается subnav — считаем после переключения класса,
+        // используем .bottom (а не .height), чтобы верно учесть текущее положение шапки на экране
+        const bottom = headerEl.getBoundingClientRect().bottom;
+        flatNav.style.setProperty('--mobile-nav-top', Math.max(bottom, 0) + 'px');
+        document.body.classList.add('nav-locked');
+      } else {
+        document.body.classList.remove('nav-locked');
+      }
     });
   }
 
@@ -186,8 +216,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- лайтбокс для фото-мозаики (блок «О компании») ---------- */
-  document.querySelectorAll('.photo-mosaic').forEach(mosaic => {
+  /* ---------- то же самое для фильтров ЖК и каталога квартир (интервал цены, как на главной) ---------- */
+  document.querySelectorAll('.room-toggle').forEach(group => {
+    const buttons = group.querySelectorAll('button[data-min], button[data-price]');
+    if (!buttons.length) return;
+    const card = group.closest('.search-card');
+    if (!card) return;
+    const priceField = card.querySelector('.filter-locked input');
+    const areaField = card.querySelector('.num-range-input');
+    const fmtNum = n => Number(n).toLocaleString('ru-RU').replace(/,/g, ' ');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (priceField) {
+          if (btn.dataset.min && btn.dataset.max) {
+            priceField.value = `${fmtNum(btn.dataset.min)} – ${fmtNum(btn.dataset.max)}`;
+          } else if (btn.dataset.price) {
+            priceField.value = `от ${fmtNum(btn.dataset.price)}`;
+          }
+        }
+        if (areaField && btn.dataset.area) areaField.value = btn.dataset.area;
+      });
+    });
+  });
+
+  /* ---------- лайтбокс для фото-мозаики (блок «О компании») и хода строительства (object.html) ---------- */
+  document.querySelectorAll('.photo-mosaic, .timeline-photos').forEach(mosaic => {
     const imgs = Array.from(mosaic.querySelectorAll('img'));
     if (!imgs.length) return;
     imgs.forEach((img, i) => {
@@ -466,15 +519,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- поле диапазона (площадь) — только цифры и тире ---------- */
+  /* ---------- поле диапазона (площадь) — цифры и тире, с ограничением по метражу ---------- */
   document.querySelectorAll('.num-range-input').forEach(inp => {
+    const min = parseInt(inp.dataset.min || '10', 10);
+    const max = parseInt(inp.dataset.max || '300', 10);
+
+    function sanitize(raw) {
+      let v = raw.replace(/[^0-9\-–—]/g, '');
+      v = v.replace(/[-–—]+/g, '–'); // несколько тире подряд — в одно
+      const dashIndex = v.indexOf('–');
+      if (dashIndex === -1) return v.slice(0, 3); // максимум 3 цифры (до 999 м²)
+      const a = v.slice(0, dashIndex).slice(0, 3);
+      const b = v.slice(dashIndex + 1).replace(/–/g, '').slice(0, 3);
+      return a + '–' + b;
+    }
+
     inp.addEventListener('input', () => {
-      let v = inp.value.replace(/[^0-9\-–—]/g, '');
-      v = v.replace(/[-–—]+/g, '–');
-      inp.value = v;
+      inp.value = sanitize(inp.value);
     });
     inp.addEventListener('keypress', e => {
       if (!/[0-9\-–—]/.test(e.key)) e.preventDefault();
+    });
+    inp.addEventListener('blur', () => {
+      const parts = inp.value.split('–').map(s => s.trim()).filter(s => s !== '');
+      if (parts.length === 0) { inp.value = min + '–' + max; return; }
+      let a = parseInt(parts[0], 10);
+      let b = parts.length > 1 ? parseInt(parts[1], 10) : max;
+      if (isNaN(a)) a = min;
+      if (isNaN(b)) b = max;
+      a = Math.min(Math.max(a, min), max);
+      b = Math.min(Math.max(b, min), max);
+      if (a > b) { const t = a; a = b; b = t; }
+      inp.value = a + '–' + b;
     });
   });
 
@@ -537,6 +613,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- «Показать все» / «Скрыть» в списке литеров под генпланом ---------- */
+  (function () {
+    const showAllBtn = document.getElementById('literyShowAllBtn');
+    const hideBtn = document.getElementById('literyHideBtn');
+    const grid = document.getElementById('literyGrid');
+    if (!showAllBtn || !grid) return;
+    showAllBtn.addEventListener('click', () => {
+      grid.classList.remove('collapsed');
+      showAllBtn.style.display = 'none';
+      if (hideBtn) hideBtn.style.display = '';
+    });
+    hideBtn?.addEventListener('click', () => {
+      grid.classList.add('collapsed');
+      hideBtn.style.display = 'none';
+      showAllBtn.style.display = '';
+      grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  })();
+
   /* ---------- табы (год/месяц, разделы) ---------- */
   document.querySelectorAll('.tabs').forEach(tabs => {
     const buttons = tabs.querySelectorAll('.tab-btn');
@@ -551,24 +646,322 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- формы: имитация успешной отправки (только после согласия) ---------- */
+  /* ---------- маска телефона (+7 (000) 000-00-00) ---------- */
+  function formatPhoneDigits(digits) {
+    // digits — строка только из цифр, без ведущей 7/8 (максимум 10 знаков)
+    let out = '+7';
+    if (digits.length > 0) out += ' (' + digits.substring(0, 3);
+    if (digits.length >= 3) out += ')';
+    if (digits.length > 3) out += ' ' + digits.substring(3, 6);
+    if (digits.length > 6) out += '-' + digits.substring(6, 8);
+    if (digits.length > 8) out += '-' + digits.substring(8, 10);
+    return out;
+  }
+  function digitsFromPhoneValue(value) {
+    let d = (value || '').replace(/\D/g, '');
+    if (d.startsWith('7') || d.startsWith('8')) d = d.substring(1);
+    return d.substring(0, 10);
+  }
+  function applyPhoneMask(input) {
+    const digits = digitsFromPhoneValue(input.value);
+    input.value = digits ? formatPhoneDigits(digits) : '';
+  }
+  document.querySelectorAll('input[type="tel"]').forEach(input => {
+    input.setAttribute('inputmode', 'tel');
+    if (!input.placeholder) input.placeholder = '+7 (000) 000-00-00';
+    input.addEventListener('focus', () => { if (!input.value) input.value = '+7 '; });
+    input.addEventListener('input', () => applyPhoneMask(input));
+    input.addEventListener('blur', () => { if (input.value.trim() === '+7') input.value = ''; });
+    input.addEventListener('keydown', e => {
+      // Backspace на "+7 (" не должен застревать — просто очищаем поле
+      if (e.key === 'Backspace' && digitsFromPhoneValue(input.value).length === 0) {
+        input.value = '';
+      }
+    });
+  });
+  function isPhoneComplete(input) {
+    return digitsFromPhoneValue(input.value).length === 10;
+  }
+
+  /* ---------- вывод ошибки под полем формы ---------- */
+  function setFieldError(fieldEl, message) {
+    if (!fieldEl) return;
+    fieldEl.classList.add('has-error');
+    let err = fieldEl.querySelector('.field-error');
+    if (!err) {
+      err = document.createElement('div');
+      err.className = 'field-error';
+      fieldEl.appendChild(err);
+    }
+    err.textContent = message;
+  }
+  function clearFieldError(fieldEl) {
+    if (!fieldEl) return;
+    fieldEl.classList.remove('has-error');
+    const err = fieldEl.querySelector('.field-error');
+    if (err) err.remove();
+  }
+
+  /* ---------- формы: валидация + отправка через RomexAPI (fetch-заглушка) ---------- */
   document.querySelectorAll('form[data-form]').forEach(form => {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const consentBox = form.querySelector('.consent input[type="checkbox"]');
+    form.setAttribute('novalidate', 'novalidate');
+
+    const textFields = Array.from(form.querySelectorAll('.field input[type="text"]'));
+    const telFields = Array.from(form.querySelectorAll('.field input[type="tel"]'));
+    const nameField = textFields[0] || null; // первое текстовое поле формы считаем обязательным «Имя»
+    const consentBox = form.querySelector('.consent input[type="checkbox"]');
+
+    // снимаем ошибку по мере исправления поля
+    if (nameField) {
+      nameField.addEventListener('input', () => clearFieldError(nameField.closest('.field')));
+    }
+    telFields.forEach(tel => {
+      tel.addEventListener('input', () => { if (isPhoneComplete(tel)) clearFieldError(tel.closest('.field')); });
+    });
+    if (consentBox) {
+      consentBox.addEventListener('change', () => {
+        if (consentBox.checked) consentBox.closest('.consent')?.classList.remove('consent-error');
+      });
+    }
+
+    function validate() {
+      let valid = true;
+      if (nameField) {
+        const val = nameField.value.trim();
+        if (val.length < 2 || !/^[a-zA-Zа-яёА-ЯЁ\s\-]+$/.test(val)) {
+          setFieldError(nameField.closest('.field'), 'Введите имя');
+          valid = false;
+        } else {
+          clearFieldError(nameField.closest('.field'));
+        }
+      }
+      telFields.forEach(tel => {
+        if (!isPhoneComplete(tel)) {
+          setFieldError(tel.closest('.field'), 'Введите корректный номер телефона');
+          valid = false;
+        } else {
+          clearFieldError(tel.closest('.field'));
+        }
+      });
       if (consentBox && !consentBox.checked) {
         const label = consentBox.closest('.consent');
         if (label) {
           label.classList.add('consent-error');
           setTimeout(() => label.classList.remove('consent-error'), 1600);
         }
-        consentBox.focus();
+        valid = false;
+      }
+      return valid;
+    }
+
+    function getSubmitError() {
+      let el = form.querySelector('.form-submit-error');
+      if (!el) {
+        el = document.createElement('div');
+        el.className = 'form-submit-error';
+        const btn = form.querySelector('button[type="submit"]');
+        if (btn) btn.insertAdjacentElement('beforebegin', el); else form.appendChild(el);
+      }
+      return el;
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      if (!validate()) {
+        const firstError = form.querySelector('.has-error input, .consent-error input');
+        if (firstError) firstError.focus();
         return;
       }
-      const card = form.closest('.form-card') || form.parentElement;
-      const success = card ? card.querySelector('.form-success') : null;
-      form.style.display = 'none';
-      if (success) success.classList.add('show');
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const submitError = getSubmitError();
+      submitError.classList.remove('show');
+
+      const payload = {};
+      if (nameField) payload.name = nameField.value.trim();
+      telFields.forEach((tel, i) => { payload['phone' + (i ? i + 1 : '')] = tel.value; });
+      const textarea = form.querySelector('.field textarea');
+      if (textarea) payload.message = textarea.value.trim();
+
+      const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.dataset.loading = '1';
+        submitBtn.innerHTML = 'Отправляем&hellip;';
+      }
+
+      RomexAPI.submitForm(payload).then(() => {
+        const card = form.closest('.form-card') || form.parentElement;
+        const success = card ? card.querySelector('.form-success') : null;
+        form.style.display = 'none';
+        if (success) success.classList.add('show');
+      }).catch(() => {
+        submitError.textContent = 'Не удалось отправить заявку. Проверьте соединение и попробуйте ещё раз.';
+        submitError.classList.add('show');
+      }).finally(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          delete submitBtn.dataset.loading;
+          submitBtn.innerHTML = originalBtnHTML;
+        }
+      });
+    });
+  });
+
+  /* ---------- интерактивный генплан (страница объекта) ---------- */
+  const genplanFigure = document.getElementById('genplanFigure');
+  if (genplanFigure) {
+    const pins = Array.from(genplanFigure.querySelectorAll('.gp-pin'));
+    const polys = {};
+    genplanFigure.querySelectorAll('.gp-poly').forEach(p => { polys[p.dataset.liter] = p; });
+
+    // Единая всплывающая карточка вынесена в <body> и позиционируется через
+    // position:fixed. Так она никогда не обрезается overflow:hidden контейнера
+    // генплана и не перекрывается соседними литерами (у неё один z-index на всю страницу),
+    // а JS всегда удерживает её полностью в границах экрана.
+    const popupEl = document.createElement('div');
+    popupEl.className = 'gp-popup';
+    document.body.appendChild(popupEl);
+
+    let activePin = null;
+    let hideTimer = null;
+
+    function clearHideTimer() { if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; } }
+
+    function hidePopup() {
+      popupEl.classList.remove('gp-popup--visible');
+      activePin = null;
+    }
+
+    function deactivatePin(pin) {
+      pin.classList.remove('active', 'tap-locked');
+      const poly = polys[pin.dataset.liter];
+      if (poly) poly.classList.remove('active');
+      if (activePin === pin) hidePopup();
+    }
+
+    function closeAllPins(except) {
+      pins.forEach(p => {
+        if (p !== except) deactivatePin(p);
+      });
+      if (!except) hidePopup();
+    }
+
+    function positionPopup(pin) {
+      const dataCard = pin.querySelector('.gp-card');
+      if (!dataCard) return;
+      popupEl.innerHTML = dataCard.innerHTML;
+      activePin = pin;
+
+      const margin = 12;
+      const pinRect = pin.getBoundingClientRect();
+      const popRect = popupEl.getBoundingClientRect();
+
+      let left = pinRect.left + pinRect.width / 2 - popRect.width / 2;
+      left = Math.max(margin, Math.min(left, window.innerWidth - popRect.width - margin));
+
+      let below = false;
+      let top = pinRect.top - popRect.height - 14;
+      if (top < margin) {
+        top = pinRect.bottom + 14;
+        below = true;
+      }
+      top = Math.max(margin, Math.min(top, window.innerHeight - popRect.height - margin));
+
+      const arrowLeft = Math.max(14, Math.min(pinRect.left + pinRect.width / 2 - left, popRect.width - 14));
+
+      popupEl.style.left = left + 'px';
+      popupEl.style.top = top + 'px';
+      popupEl.style.setProperty('--gp-arrow-left', arrowLeft + 'px');
+      popupEl.classList.toggle('gp-popup--below', below);
+      popupEl.classList.add('gp-popup--visible');
+    }
+
+    pins.forEach(pin => {
+      const liter = pin.dataset.liter;
+      const poly = polys[liter];
+
+      const activate = () => {
+        clearHideTimer();
+        // закрываем все остальные литеры перед активацией этого — иначе при быстром
+        // перемещении курсора между пинами их общий hideTimer постоянно отменяется
+        // соседним mouseenter, и несколько литеров остаются подсвеченными одновременно
+        closeAllPins(pin);
+        pin.classList.add('active');
+        if (poly) poly.classList.add('active');
+        positionPopup(pin);
+      };
+      const scheduleDeactivate = () => {
+        clearHideTimer();
+        hideTimer = setTimeout(() => {
+          if (!pin.classList.contains('tap-locked')) deactivatePin(pin);
+        }, 150);
+      };
+
+      pin.addEventListener('mouseenter', activate);
+      pin.addEventListener('mouseleave', scheduleDeactivate);
+      pin.addEventListener('focus', activate);
+      pin.addEventListener('blur', () => {
+        if (!pin.classList.contains('tap-locked')) deactivatePin(pin);
+      });
+
+      pin.addEventListener('click', e => {
+        e.preventDefault();
+        // состояние "закреплён кликом/тапом" храним отдельно от .active,
+        // которое также включает чистый :hover — иначе на touch-устройствах,
+        // синтезирующих mouseenter перед click, попап открывался бы и тут же закрывался
+        const wasLocked = pin.classList.contains('tap-locked');
+        pins.forEach(p => p.classList.remove('tap-locked'));
+        if (wasLocked) {
+          closeAllPins(null);
+        } else {
+          closeAllPins(pin);
+          pin.classList.add('tap-locked');
+          activate();
+        }
+      });
+    });
+
+    // Пока курсор находится над самой всплывающей карточкой (уже вне пина),
+    // не закрываем её — иначе до ссылок внутри невозможно было бы дотянуться мышью.
+    popupEl.addEventListener('mouseenter', clearHideTimer);
+    popupEl.addEventListener('mouseleave', () => {
+      if (activePin && !activePin.classList.contains('tap-locked')) scheduleDeactivateFor(activePin);
+    });
+    function scheduleDeactivateFor(pin) {
+      clearHideTimer();
+      hideTimer = setTimeout(() => {
+        if (!pin.classList.contains('tap-locked')) deactivatePin(pin);
+      }, 150);
+    }
+
+    document.addEventListener('click', e => {
+      if (!genplanFigure.contains(e.target) && !popupEl.contains(e.target)) {
+        pins.forEach(p => p.classList.remove('tap-locked'));
+        closeAllPins(null);
+      }
+    });
+
+    // при скролле/ресайзе положение пина относительно вьюпорта меняется —
+    // пересчитываем позицию открытого попапа, а не закрываем его (иначе клик,
+    // из-за которого браузер сам подскроллил только что сфокусированную кнопку,
+    // тут же закрывал бы только что открытый попап)
+    function repositionActivePopup() {
+      if (activePin) positionPopup(activePin);
+    }
+    window.addEventListener('scroll', repositionActivePopup, { passive: true });
+    window.addEventListener('resize', repositionActivePopup);
+  }
+
+  /* ---------- «Скачать КП»: печатная версия страницы лота ---------- */
+  document.querySelectorAll('[data-print-kp]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const dateEl = document.querySelector('.print-letterhead .print-date');
+      if (dateEl) {
+        dateEl.textContent = new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+      }
+      window.print();
     });
   });
 
