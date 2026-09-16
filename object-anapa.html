@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>«Мириады Анапы» — Ромекс Девелопмент</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="transparent-header">
+
+<header>
+  <div class="topbar">
+    <a class="logo" href="index.html">
+      <img class="logo-img logo-color" src="assets/img/logo-devel-color.svg" alt="Ромекс Девелопмент">
+      <img class="logo-img logo-white" src="assets/img/logo-devel-white.svg" alt="Ромекс Девелопмент">
+    </a>
+    <nav class="mainnav">
+      <div class="navitem has-drop">
+        <a href="objects.html">Объекты</a>
+        <div class="dropdown">
+          <a href="object.html"><span><span class="city">Краснодар</span>НЕО-квартал «Красная площадь»</span><span class="price-tag">от 4,5 млн ₽</span></a>
+          <a href="object-anapa.html"><span><span class="city">Анапа</span>«Мириады Анапы»</span><span class="price-tag">Старт продаж</span></a>
+          <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Новороссийск</span>«Красная площадь»</span><span class="sold-tag">Продано</span></a>
+          <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Анапа</span>«Красная площадь»</span><span class="sold-tag">Продано</span></a>
+        </div>
+      </div>
+      <div class="navitem"><a href="flats.html">Квартиры</a></div>
+      <div class="navitem has-drop">
+        <a href="commercial-objects.html">Торговые помещения</a>
+        <div class="dropdown">
+          <a href="commercial.html"><span><span class="city">Краснодар</span>Торговые помещения NEO-квартал</span><span class="price-tag">от 3,2 млн ₽</span></a>
+          <a href="commercial-anapa.html"><span><span class="city">Анапа</span>Торговые помещения «Мириады Анапы»</span><span class="price-tag">от 2,9 млн ₽</span></a>
+        </div>
+      </div>
+      <div class="navitem"><a href="mortgage.html">Ипотека</a></div>
+      <div class="navitem"><a href="offices.html">Офисы продаж</a></div>
+    </nav>
+    <div class="header-actions">
+      <a class="phone mono" href="tel:88002009650">8 800 200 96 50</a>
+      <button class="btn btn-primary" data-modal-open="subscribeModal">Подобрать квартиру</button>
+      <button class="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="subnav">
+    <a href="promotions.html">Акции</a>
+    <a href="news.html">Новости</a>
+    <a href="buying.html">Способы покупки</a>
+    <a href="about.html">О компании</a>
+    <a href="partners.html">Партнёрам</a>
+    <a href="keys.html">Выдача ключей</a>
+    <a href="contacts.html">Контакты</a>
+  </div>
+</header>
+
+<section class="page-hero" style="height:560px;">
+  <div class="render" style="position:absolute;inset:0;background:url('assets/img/object-anapa-miriady.jpg') center/cover;"></div>
+  <div class="page-hero-content">
+    <nav class="breadcrumbs" style="color:rgba(243,238,230,0.55); padding-top:0; padding-bottom:14px;">
+      <a href="index.html" style="color:rgba(243,238,230,0.7);">Главная</a><span class="sep">/</span>
+      <a href="objects.html" style="color:rgba(243,238,230,0.7);">Объекты</a><span class="sep">/</span>
+      <span class="current" style="color:#fff;">«Мириады Анапы»</span>
+    </nav>
+    <div class="eyebrow-row"><span class="pill">Старт продаж</span><span class="pill">1-я очередь</span></div>
+    <h1>«Мириады Анапы»</h1>
+    <p class="sub">Клубный квартал у моря в Анапе — закрытый двор без машин, собственный променад к набережной и планировки с террасами.</p>
+    <div class="slide-cta">
+      <button class="btn btn-primary" data-modal-open="subscribeModal">Подобрать квартиру</button>
+    </div>
+  </div>
+</section>
+
+<section style="padding:34px 0 0;">
+  <div class="wrap">
+    <div class="kpi-row kpi-row-5" style="margin:0 0 30px;">
+      <div class="kpi"><b>Комфорт+</b><span>класс объекта</span></div>
+      <div class="kpi"><b>12</b><span>этажность</span></div>
+      <div class="kpi"><b>3</b><span>литера 1-й очереди</span></div>
+      <div class="kpi"><b>26–89 м²</b><span>площадь квартир</span></div>
+      <div class="kpi"><b>4 кв. 2027</b><span>срок сдачи</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ПОИСК КВАРТИР -->
+<section class="search-section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="search-card">
+      <div class="bp-overlay blueprint"></div>
+      <div class="search-top">
+        <div>
+          <h2>Подбор квартиры в «Мириады Анапы»</h2>
+          <p>Первая очередь только вышла в продажу — планировки и цены обновляются по ходу строительства.</p>
+        </div>
+      </div>
+      <div class="filters-grid" style="grid-template-columns:1.5fr 0.9fr 1fr auto;">
+        <div class="filter">
+          <label>Сколько комнат</label>
+          <div class="room-toggle" id="anapaRoomToggle">
+            <button class="active" data-min="4950000" data-max="11500000" data-area="26–89">Все</button>
+            <button data-min="4950000" data-max="6000000" data-area="26–34">Студия</button>
+            <button data-min="6200000" data-max="7800000" data-area="35–48">1к</button>
+            <button data-min="8900000" data-max="10500000" data-area="50–68">2к</button>
+            <button data-min="11500000" data-max="15000000" data-area="70–89">3к+</button>
+          </div>
+        </div>
+        <div class="filter filter-compact">
+          <label>Площадь, м²</label>
+          <div class="filter-value"><input type="text" inputmode="numeric" class="num-range-input" id="anapaAreaField" value="26–89" data-min="10" data-max="300" maxlength="7"></div>
+        </div>
+        <div class="filter filter-compact filter-locked">
+          <label>Стоимость, ₽</label>
+          <div class="filter-value"><input type="text" id="anapaPriceField" value="4 950 000 – 11 500 000" readonly tabindex="-1"></div>
+        </div>
+        <button class="search-submit">Показать →</button>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:26px;">
+    <div class="card-grid-3">
+      <div class="flat-card">
+        <a class="flat-card-link" href="flat.html"><div class="render"><span class="lot-number">№201</span><span class="tag">план 1</span></div>
+        <div class="flat-body"><div class="flat-title">Студия · 26,4 м²</div><div class="flat-meta">Литер 1 · 3 этаж <span class="deadline">Сдача 4 кв. 2027</span></div>
+        <div class="row"><span class="flat-price">4 950 000 ₽</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
+        </div>
+      <div class="flat-card">
+        <a class="flat-card-link" href="flat.html"><div class="render tone-b"><span class="lot-number">№214</span><span class="tag">план 2</span></div>
+        <div class="flat-body"><div class="flat-title">1-комнатная · 39,8 м²</div><div class="flat-meta">Литер 1 · 5 этаж <span class="deadline">Сдача 4 кв. 2027</span></div>
+        <div class="row"><span class="price-old">7 400 000 ₽</span><span class="flat-price">6 850 000 ₽</span><span class="discount-badge">−7%</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
+        </div>
+      <div class="flat-card">
+        <a class="flat-card-link" href="flat.html"><div class="render tone-c"><span class="lot-number">№228</span><span class="tag">план 3</span></div>
+        <div class="flat-body"><div class="flat-title">1-комнатная «евро» · 45,0 м²</div><div class="flat-meta">Литер 2 · 2 этаж <span class="deadline">Сдача 1 кв. 2028</span></div>
+        <div class="row"><span class="flat-price">7 600 000 ₽</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
+        </div>
+      <div class="flat-card">
+        <a class="flat-card-link" href="flat.html"><div class="render"><span class="lot-number">№305</span><span class="tag">план 4</span></div>
+        <div class="flat-body"><div class="flat-title">2-комнатная · 58,6 м²</div><div class="flat-meta">Литер 2 · 6 этаж <span class="deadline">Сдача 1 кв. 2028</span></div>
+        <div class="row"><span class="flat-price">9 900 000 ₽</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
+        </div>
+      <div class="flat-card">
+        <a class="flat-card-link" href="flat.html"><div class="render tone-b"><span class="lot-number">№318</span><span class="tag">план 5 · вид на море</span></div>
+        <div class="flat-body"><div class="flat-title">2-комнатная «евро» · 62,3 м²</div><div class="flat-meta">Литер 3 · 4 этаж <span class="deadline">Сдача 2 кв. 2028</span></div>
+        <div class="row"><span class="flat-price">10 400 000 ₽</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
+        </div>
+      <div class="flat-card">
+        <a class="flat-card-link" href="flat.html"><div class="render tone-c"><span class="lot-number">№402</span><span class="tag">план 6</span></div>
+        <div class="flat-body"><div class="flat-title">3-комнатная · 78,9 м²</div><div class="flat-meta">Литер 3 · 8 этаж <span class="deadline">Сдача 2 кв. 2028</span></div>
+        <div class="row"><span class="flat-price">13 200 000 ₽</span></div></div></a>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- КОНЦЕПЦИЯ -->
+<section class="city-unified">
+  <div class="wrap">
+    <span class="kicker">Концепция</span>
+    <h2 style="font-size:31px; margin-top:10px;">Квартал у моря</h2>
+    <p style="color:var(--slate); font-size:16.5px; line-height:1.7; margin-top:14px; max-width:560px;">«Мириады Анапы» — закрытый квартал в 12 минутах от набережной: собственный променад, дворы без машин и коммерция на первых этажах. Проектируем с расчётом на тех, кто хочет жить у моря круглый год.</p>
+  </div>
+  <div class="wrap">
+    <div class="city-photo-wrap">
+      <div class="city-photo-big" style="background-image:url('assets/img/object-anapa-miriady.jpg');"></div>
+      <div class="city-photo-accent" style="background-image:url('assets/img/photo-facade-plain.jpg');"></div>
+    </div>
+  </div>
+  <div class="wrap city-adv-overlap-wrap">
+    <div class="city-adv-row">
+      <button class="arrow-btns-single" data-scroll-prev="advTrackAnapa" aria-label="Назад"><svg width="8" height="13" viewBox="0 0 9 15" fill="none"><path d="M8 1.5 1.5 7.5 8 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="city-adv-track" id="advTrackAnapa">
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>214-ФЗ и эскроу</h4><p>Деньги под защитой банка до сдачи дома.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 21V9l8-6 8 6v12M4 21h16M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h4>Закрытый двор</h4><p>Без машин — только для жителей и гостей.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 6 9.5 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h4>12 минут до моря</h4><p>Собственный променад к набережной.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M9.5 15V7h3.2a2.5 2.5 0 1 1 0 5H9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Паркинг во дворе</h4><p>Места для всех собственников квартир.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.8"/></svg></div><h4>Террасы и панорамные окна</h4><p>В части планировок верхних этажей.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M4 21V10l4-5h8l4 5v11M9 21v-5h6v5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h4>Коммерция на 1-х этажах</h4><p>Магазины, кафе и сервисы у дома.</p></div>
+      <div class="city-adv-card"><div class="pc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 8a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m21 9-5 3 5 3V9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h4>Видеонаблюдение</h4><p>Периметр и дворы под круглосуточной охраной.</p></div>
+      </div>
+      <button class="arrow-btns-single arrow-btns-next" data-scroll-next="advTrackAnapa" aria-label="Вперёд"><svg width="8" height="13" viewBox="0 0 9 15" fill="none"><path d="M1 1.5 7.5 7.5 1 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="track-dots city-adv-dots" data-dots-for="advTrackAnapa"></div>
+  </div>
+</section>
+
+<!-- НАПОЛНЕНИЕ ОБЪЕКТА -->
+<section style="padding:0 0 60px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="kicker">Территория</span><h2>Наполнение объекта</h2></div>
+    </div>
+    <div class="fill-grid-v2">
+      <div class="fill-card">
+        <div class="fill-card-media" style="background:url('assets/img/photo-playground-slide.jpg') center/cover;"></div>
+        <div class="fill-card-body">Детская площадка</div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card-media" style="background:url('assets/img/photo-pergola-benches.jpg') center/cover;"></div>
+        <div class="fill-card-body">Променад во дворе</div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card-media" style="background:url('assets/img/photo-boy-climbing-net.jpg') center/cover;"></div>
+        <div class="fill-card-body">Зона воркаута</div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card-media fill-card-media-icon"><div class="fill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 6 9.5 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div></div>
+        <div class="fill-card-body">Спуск к набережной</div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card-media fill-card-media-icon"><div class="fill-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2c1.5 2 2 3.5 1 5-.6.9-1.5 1-1.5 2.2 0 1 .8 1.8 1.8 1.8A2.2 2.2 0 0 0 15.5 9c1 1.5 1 3.6-.3 5.3A5.2 5.2 0 0 1 11 16.5a5.2 5.2 0 0 1-4.2-2.2c-1.6-2.3-1-5 .7-7C9 5.8 10 4 12 2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 20h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div></div>
+        <div class="fill-card-body">Зона барбекю</div>
+      </div>
+      <div class="fill-card">
+        <div class="fill-card-media fill-card-media-icon"><div class="fill-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M9.5 15V7h3.2a2.5 2.5 0 1 1 0 5H9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="fill-card-body">Паркинг во дворе</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- МАСШТАБ ВСЕГО КВАРТАЛА -->
+<section style="padding:0 0 60px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="kicker">О квартале</span><h2>Не дом, а район на 70 гектаров</h2></div>
+    </div>
+    <p style="color:var(--slate); font-size:16.5px; line-height:1.7; max-width:640px; margin-bottom:26px;">«Мириады Анапы» проектируются одновременно с образованием, культурой, спортом, парками, медициной и повседневными сервисами — всё, что обычно распределено по городу, здесь объединено в одной продуманной среде. Первая очередь (3 литера, о которых эта страница) — только начало: дальше квартал вырастет до полноценного района с собственной инфраструктурой на каждый день.</p>
+    <div class="kpi-row kpi-row-6" style="margin:0 0 30px;">
+      <div class="kpi"><b>70 га</b><span>общая территория</span></div>
+      <div class="kpi"><b>43 га</b><span>соц., парковая и спортивная инфраструктура</span></div>
+      <div class="kpi"><b>335 тыс. м²</b><span>жилой фонд</span></div>
+      <div class="kpi"><b>15 тыс.</b><span>планируемая численность жителей</span></div>
+      <div class="kpi"><b>24 тыс. м²</b><span>коммерческая инфраструктура</span></div>
+      <div class="kpi"><b>7</b><span>тематических кварталов</span></div>
+    </div>
+    <div class="card-grid-3">
+      <div class="info-card">
+        <div class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 4 2 9l10 5 10-5-10-5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Образование и культура</h4>
+        <p style="color:var(--slate); font-size:15px; line-height:1.6;">8 детских садов, школа на 1&nbsp;550 мест (75 классов, обучение в одну смену), художественная школа, галерея на 200 мест, центр культурного развития и цифровые библиотеки 24/7.</p>
+      </div>
+      <div class="info-card">
+        <div class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2 6 11h3l-4 6h5v4h4v-4h5l-4-6h3L12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h4>Парк и спорт</h4>
+        <p style="color:var(--slate); font-size:15px; line-height:1.6;">Парк на 10 га — событийная зона, лаунж-пространства, крытый бассейн 1&nbsp;310 м² и фитнес-хаб 11&nbsp;000 м²: мини-футбол, волейбол, воркаут, кроссфит и падел-теннис.</p>
+      </div>
+      <div class="info-card">
+        <div class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 9v6M9 12h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h4>Медицина и безопасность</h4>
+        <p style="color:var(--slate); font-size:15px; line-height:1.6;">Медцентр 4&nbsp;000 м² (КТ, МРТ, УЗИ, скорая помощь), закрытые дворы без машин, система «Безопасный город» и пункт полиции на территории.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- РЯДОМ С ДОМОМ -->
+<section style="padding:0 0 60px;">
+  <div class="wrap location-block">
+    <div>
+      <span class="kicker">Локация</span>
+      <h2 style="font-size:41.5px; margin-top:10px; text-transform:uppercase;">Всё нужное рядом</h2>
+      <div class="loc-group">
+        <div class="loc-group-title">5–15 минут пешком</div>
+        <ul class="location-list">
+          <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M4 20c0-3.5 3.5-6 8-6s8 2.5 8 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Детский сад — 5 минут</li>
+          <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 9 12 3l9 6v10a1 1 0 0 1-1 1h-4v-7H8v7H4a1 1 0 0 1-1-1V9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>Рынок и магазины — 8 минут</li>
+          <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 6 9.5 6 13a6 6 0 0 0 12 0c0-3.5-2-7-6-11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 13v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Набережная и пляж — 12 минут</li>
+        </ul>
+      </div>
+      <div class="loc-group">
+        <div class="loc-group-title">15–25 минут</div>
+        <ul class="location-list">
+          <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19 14c1.5-1.3 2.5-3 2.5-5A6.5 6.5 0 0 0 4 8.5c0 2 1 3.7 2.5 5L12 21l6.5-7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>Поликлиника — 15 минут</li>
+          <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 9 12 4l9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 12.5V17c0 1.1 2.7 2 6 2s6-.9 6-2v-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>Школа — 18 минут</li>
+          <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18M8 4v3M16 4v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Аэропорт Анапы — 25 минут</li>
+        </ul>
+      </div>
+      <button class="btn btn-primary" style="margin-top:20px;" data-modal-open="subscribeModal">Подобрать квартиру</button>
+    </div>
+    <div class="location-map-wrap">
+      <iframe
+        class="location-map"
+        src="https://yandex.ru/map-widget/v1/?ll=37.317100%2C44.895010&z=14&pt=37.317100,44.895010,pm2rdm"
+        title="Яндекс.Карта — «Мириады Анапы», Анапа"
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ХОД СТРОИТЕЛЬСТВА -->
+<section style="padding:0 0 60px;">
+  <div class="wrap">
+    <div class="section-head"><div><span class="kicker">Прозрачность</span><h2>Ход строительства</h2></div></div>
+    <div class="litery-grid" style="grid-template-columns:1fr;">
+      <div class="accordion-item open"><div class="accordion-head">Август 2026 — получено разрешение на строительство</div><div class="accordion-body">Первая очередь из трёх литеров вышла в продажу, начата подготовка строительной площадки.</div></div>
+      <div class="accordion-item"><div class="accordion-head">Май 2026 — старт проектирования</div><div class="accordion-body">Утверждена концепция квартала, ведётся разработка проектной документации 1-й очереди.</div></div>
+    </div>
+    <p style="font-size:14px; color:var(--slate); margin-top:18px;">Фотоотчёты со стройплощадки появятся здесь после начала строительно-монтажных работ.</p>
+  </div>
+</section>
+
+<!-- ФОРМА ЗАЯВКИ -->
+<section style="padding:0 0 60px;">
+  <div class="wrap">
+    <div class="form-card form-card-split">
+      <div class="form-card-photo render corner-ticks" style="background:url('assets/img/object-anapa-miriady.jpg') center/cover;"></div>
+      <div class="form-card-fields">
+        <h3 style="font-size:21.5px; line-height:1.3;">Оставьте свой номер, и мы перезвоним вам</h3>
+        <form data-form>
+          <div class="field"><label>Имя</label><input type="text" placeholder="Ваше имя"></div>
+          <div class="field"><label>Телефон</label><input type="tel" placeholder="+7 (000) 000-00-00"></div>
+          <label class="consent"><input type="checkbox"><span>Соглашаюсь на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>
+          <button type="submit" class="btn btn-primary btn-call-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.5c0-.6.4-1 1-1H7.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            Жду звонка
+          </button>
+        </form>
+        <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- О КОМПАНИИ (как на главной) -->
+<section class="about-section">
+  <div class="about-glow" aria-hidden="true"></div>
+  <div class="wrap about-grid-v2">
+    <div class="about-left">
+      <h2><span class="red">РОМЕКС —</span><br>один из крупнейших<br>застройщиков Юга России</h2>
+      <div class="photo-mosaic" aria-hidden="true">
+        <div class="mos-tile"><img src="assets/img/photo-romex-signage.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/facade-close.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/school.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/object-krasnodar.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/courtyard-shops.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/facades-wide.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/entrance.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/object-anapa-miriady.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/facade-leaves.jpg" alt=""></div>
+        <div class="mos-tile"><img src="assets/img/object-novorossiysk.jpg" alt=""></div>
+      </div>
+    </div>
+    <div class="about-right">
+      <span class="kicker">Ромекс Девелопмент</span>
+      <p>Входит в состав инвестиционного холдинга «Ромекс».</p>
+      <div class="about-stats">
+        <div class="about-stat">
+          <b class="count-up" data-count="28" data-format="plus">28+</b>
+          <span>лет на рынке</span>
+        </div>
+        <div class="about-stat">
+          <b class="count-up" data-count="400" data-format="plus">400+</b>
+          <span>объектов построено</span>
+        </div>
+        <div class="about-stat">
+          <b class="count-up" data-count="1000000" data-format="area">1 000 000 м²</b>
+          <span>жилья сдано</span>
+        </div>
+      </div>
+      <a class="btn btn-outline btn-outline-on-dark btn-compact" style="border-color:rgba(243,238,230,0.4); color:#fff;" href="about.html">О компании и команде →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="assets/img/logo-devel-white.svg" alt="Ромекс Девелопмент" style="height:40px; width:auto;"></div>
+        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России.</p>      </div>
+      <div>
+        <h5>Проекты</h5>
+        <a href="object.html">НЕО‑квартал, Краснодар</a>
+        <a href="object-anapa.html">«Мириады Анапы», Анапа</a>
+        <a href="commercial-objects.html">Торговые помещения</a>
+      </div>
+      <div>
+        <h5>Покупателям</h5>
+        <a href="flats.html">Квартиры</a>
+        <a href="buying.html">Способы покупки</a>
+        <a href="mortgage.html">Ипотека</a>
+        <a href="keys.html">Выдача ключей</a>
+        <a href="contacts.html">Клиентский сервис</a>
+      </div>
+      <div>
+        <h5>Компания</h5>
+        <a href="about.html">О компании</a>
+        <a href="partners.html">Партнёрам</a>
+        <a href="news.html">Пресс‑центр</a>
+      </div>
+      <div>
+        <h5>Контакты</h5>
+        <a href="contacts.html">Краснодар, ул. Конгрессная, 13</a>
+        <a href="tel:88002009650">8 800 200 96 50</a>
+        <a href="mailto:info@romexdev.ru">info@romexdev.ru</a>
+        <a href="offices.html">Офисы продаж</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 1998–2026 Группа компаний Ромекс. Все права защищены</div>
+      <div style="display:flex; gap:18px; align-items:center;">
+        <a href="privacy.html" class="footer-link">Политика конфиденциальности</a>
+        <a href="#" class="footer-link">Дисклеймеры</a>
+        <div class="social-links">
+          <a href="#" class="social-link">VK<span class="social-icon">VK</span></a>
+          <a href="#" class="social-link">TG<span class="social-icon">TG</span></a>
+          <a href="#" class="social-link">WhatsApp<span class="social-icon">WA</span></a>
+          <a href="#" class="social-link">MAX<span class="social-icon">MAX</span></a>
+        </div>
+      </div>
+    </div>
+    <p class="legal-note">Сайт носит исключительно информационный характер и не является публичной офертой (ст. 437 п.2 ГК РФ). Продолжая пользоваться сайтом, вы соглашаетесь на обработку файлов cookie в соответствии с Политикой конфиденциальности.</p>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>Мы используем файлы cookie, чтобы сайт работал быстрее и удобнее для вас. Подробнее — в <a href="privacy.html">политике конфиденциальности</a>.</p>
+  <button onclick="dismissCookie()">Согласен</button>
+</div>
+
+<div class="modal-overlay" id="subscribeModal">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close>✕</button>
+    <h3>Оставьте заявку</h3>
+    <p class="form-note">Мы свяжемся с Вами и направим подборку лучших предложений</p>
+    <form data-form>
+      <div class="field"><label>Имя</label><input type="text" placeholder="Как к вам обращаться"></div>
+      <div class="field"><label>Номер телефона</label><input type="tel" placeholder="+7 900 000 00 00"></div>
+      <label class="consent"><input type="checkbox"><span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+    <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:15.5px;">Мы свяжемся с вами в ближайшее время.</p></div>
+  </div>
+</div>
+
+<script src="assets/api.js"></script>
+<script src="assets/main.js"></script>
+</body>
+</html>

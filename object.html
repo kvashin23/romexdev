@@ -21,14 +21,14 @@
         <a href="objects.html">Объекты</a>
         <div class="dropdown">
           <a href="object.html"><span><span class="city">Краснодар</span>НЕО-квартал «Красная площадь»</span><span class="price-tag">от 4,5 млн ₽</span></a>
-          <a href="object.html"><span><span class="city">Анапа</span>«Мириады Анапы»</span><span class="price-tag">Старт продаж</span></a>
+          <a href="object-anapa.html"><span><span class="city">Анапа</span>«Мириады Анапы»</span><span class="price-tag">Старт продаж</span></a>
           <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Новороссийск</span>«Красная площадь»</span><span class="sold-tag">Продано</span></a>
           <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Анапа</span>«Красная площадь»</span><span class="sold-tag">Продано</span></a>
         </div>
       </div>
       <div class="navitem"><a href="flats.html">Квартиры</a></div>
       <div class="navitem has-drop">
-        <a href="commercial.html">Торговые помещения</a>
+        <a href="commercial-objects.html">Торговые помещения</a>
         <div class="dropdown">
           <a href="commercial.html"><span><span class="city">Краснодар</span>Торговые помещения NEO-квартал</span><span class="price-tag">от 3,2 млн ₽</span></a>
           <a href="commercial-anapa.html"><span><span class="city">Анапа</span>Торговые помещения «Мириады Анапы»</span><span class="price-tag">от 2,9 млн ₽</span></a>
@@ -45,6 +45,7 @@
   </div>
   <div class="subnav">
     <a href="promotions.html">Акции</a>
+    <a href="news.html">Новости</a>
     <a href="buying.html">Способы покупки</a>
     <a href="about.html">О компании</a>
     <a href="partners.html">Партнёрам</a>
@@ -65,7 +66,7 @@
     <h1>NEO-квартал «Красная площадь»</h1>
     <p class="sub">Город в городе на 39 домов в Краснодаре — школы, детские сады и парк в шаговой доступности от дома.</p>
     <div class="slide-cta">
-      <button class="btn btn-primary">Подобрать квартиру</button>
+      <button class="btn btn-primary" data-modal-open="subscribeModal">Подобрать квартиру</button>
     </div>
   </div>
 </section>
@@ -78,38 +79,27 @@
       <div class="search-top">
         <div>
           <h2>Подбор квартиры в NEO-квартале</h2>
-          <p>Фильтруйте по комнатности, площади и бюджету — покажем актуальные планировки по шахматке.</p>
+          <p>Фильтруйте по комнатности и площади — покажем актуальные планировки по шахматке.</p>
         </div>
       </div>
-      <div class="filters-grid" style="grid-template-columns:1.3fr 0.65fr 0.75fr 0.9fr auto;">
+      <div class="filters-grid" style="grid-template-columns:1.5fr 0.9fr 1fr auto;">
         <div class="filter">
           <label>Сколько комнат</label>
-          <div class="room-toggle">
-            <button>Все</button><button class="active">Студия</button><button>1к</button><button>2к</button><button>3к+</button>
+          <div class="room-toggle" id="objRoomToggle">
+            <button data-min="3450000" data-max="10800000" data-area="24–95">Все</button>
+            <button class="active" data-min="3450000" data-max="4500000" data-area="24–34">Студия</button>
+            <button data-min="5900000" data-max="7500000" data-area="35–48">1к</button>
+            <button data-min="8200000" data-max="10000000" data-area="50–65">2к</button>
+            <button data-min="10800000" data-max="14500000" data-area="68–95">3к+</button>
           </div>
         </div>
         <div class="filter filter-compact">
           <label>Площадь, м²</label>
-          <div class="filter-value"><input type="text" inputmode="numeric" class="num-range-input" value="24–34"></div>
+          <div class="filter-value"><input type="text" inputmode="numeric" class="num-range-input" id="objAreaField" value="24–34" data-min="10" data-max="300" maxlength="7"></div>
         </div>
-        <div class="filter filter-compact readonly">
+        <div class="filter filter-compact filter-locked">
           <label>Стоимость, ₽</label>
-          <div class="filter-value"><input type="text" value="от 3 450 000" readonly tabindex="-1"></div>
-        </div>
-        <div class="filter">
-          <label>Срок сдачи</label>
-          <div class="custom-select">
-            <button type="button" class="custom-select-trigger">
-              <span class="custom-select-label">Любой</span>
-              <span class="chev">⌄</span>
-            </button>
-            <div class="custom-select-list">
-              <div class="custom-select-option selected">Любой</div>
-              <div class="custom-select-option">Сдан</div>
-              <div class="custom-select-option">1 кв. 2026</div>
-              <div class="custom-select-option">4 кв. 2030</div>
-            </div>
-          </div>
+          <div class="filter-value"><input type="text" id="objPriceField" value="3 450 000 – 4 500 000" readonly tabindex="-1"></div>
         </div>
         <button class="search-submit">Показать →</button>
       </div>
@@ -126,7 +116,7 @@
       <div class="flat-card">
         <a class="flat-card-link" href="flat.html"><div class="render tone-b"><span class="lot-number">№102</span><span class="tag">план 2</span></div>
         <div class="flat-body"><div class="flat-title">Студия · 26,1 м²</div><div class="flat-meta">Литер 1 · 5 этаж <span class="deadline">Сдача 4 кв. 2026</span></div>
-        <div class="price-old">4 190 000 ₽</div><div class="row"><span class="flat-price">3 690 000 ₽</span><span class="discount-badge">−12%</span></div></div></a>
+        <div class="row"><span class="price-old">4 190 000 ₽</span><span class="flat-price">3 690 000 ₽</span><span class="discount-badge">−12%</span></div></div></a>
         <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
       <div class="flat-card">
@@ -144,7 +134,7 @@
       <div class="flat-card">
         <a class="flat-card-link" href="flat.html"><div class="render tone-b"><span class="lot-number">№105</span><span class="tag">план 5</span></div>
         <div class="flat-body"><div class="flat-title">Студия · 31,2 м²</div><div class="flat-meta">Литер 3 · 4 этаж <span class="deadline">Сдача 2 кв. 2027</span></div>
-        <div class="price-old">4 780 000 ₽</div><div class="row"><span class="flat-price">4 320 000 ₽</span><span class="discount-badge">−10%</span></div></div></a>
+        <div class="row"><span class="price-old">4 780 000 ₽</span><span class="flat-price">4 320 000 ₽</span><span class="discount-badge">−10%</span></div></div></a>
         <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Забронировать</button></div>
         </div>
       <div class="flat-card">
@@ -161,8 +151,8 @@
 <section class="city-unified">
   <div class="wrap">
     <span class="kicker">Концепция</span>
-    <h2 style="font-size:29px; margin-top:10px;">Город в городе</h2>
-    <p style="color:var(--slate); font-size:15.5px; line-height:1.7; margin-top:14px; max-width:560px;">NEO-квартал проектируется как самостоятельный микрорайон: закрытые дворы без машин, коммерция на первых этажах, собственная школа и детские сады — всё, что нужно, в шаговой доступности.</p>
+    <h2 style="font-size:31px; margin-top:10px;">Город в городе</h2>
+    <p style="color:var(--slate); font-size:16.5px; line-height:1.7; margin-top:14px; max-width:560px;">NEO-квартал проектируется как самостоятельный микрорайон: закрытые дворы без машин, коммерция на первых этажах, собственная школа и детские сады — всё, что нужно, в шаговой доступности.</p>
   </div>
   <div class="wrap">
     <div class="city-photo-wrap">
@@ -228,22 +218,432 @@
 <!-- ГЕНПЛАН -->
 <section style="padding:0 0 60px;">
   <div class="wrap">
-    <div class="section-head"><div><span class="kicker">Генплан</span><h2>Выберите литер</h2></div></div>
-    <div class="genplan-stub corner-ticks" style="margin-bottom:26px;">
-      <div class="genplan-stub-inner">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M9 20l-6-3V4l6 3m0 13l6-3m-6 3V7m6 10l6 3V6l-6-3m0 17V7m0-3L9 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h4>Интерактивный генплан</h4>
-        <p>Наведение и клик по литеру — с реальными координатами корпусов, появится после интеграции с шахматкой Битрикс. Пока — список литеров ниже.</p>
+    <div class="section-head">
+      <div>
+        <span class="kicker">Генплан</span>
+        <h2>Выберите литер</h2>
       </div>
-      <div class="genplan-stub-graphic" aria-hidden="true">
-        <svg width="220" height="220" viewBox="0 0 24 24" fill="none"><path d="M9 20l-6-3V4l6 3m0 13l6-3m-6 3V7m6 10l6 3V6l-6-3m0 17V7m0-3L9 7" stroke="currentColor" stroke-width="0.6"/></svg>
-      </div>
+      <span class="genplan-phase-badge">Застройка I и&nbsp;II очереди</span>
     </div>
-    <div class="litery-grid">
-      <div class="accordion-item open"><div class="accordion-head">Литер 1 — свободно 12 квартир</div><div class="accordion-body">Студии от 3,45 млн ₽ · 1-к от 4,1 млн ₽ · 2-к от 5,6 млн ₽</div></div>
-      <div class="accordion-item"><div class="accordion-head">Литер 2 — свободно 8 квартир</div><div class="accordion-body">Студии от 3,98 млн ₽ · 1-к от 4,3 млн ₽</div></div>
-      <div class="accordion-item"><div class="accordion-head">Литер 3 — свободно 21 квартира</div><div class="accordion-body">Студии от 4,32 млн ₽ · 1-к от 4,9 млн ₽ · 2-к от 6,1 млн ₽ · 3-к от 7,8 млн ₽</div></div>
-      <div class="accordion-item"><div class="accordion-head">Литер 5 — свободно 4 квартиры</div><div class="accordion-body">1-к от 4,6 млн ₽ · 2-к от 5,9 млн ₽</div></div>
+
+    <div class="genplan-interactive corner-ticks" id="genplanFigure">
+      <img class="genplan-img" src="assets/img/genplan-neo.jpg" alt="Генплан NEO-квартала — застройка I и II очереди" draggable="false">
+      <svg class="genplan-overlay" viewBox="0 0 1020 627" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path class="gp-poly" data-liter="1" d="M725.48 497.5V496.1C725.48 496.1 733.48 490.29 735.23 488.66C735.52 488.38 735.25 486.98 735.47 486.77C737.92 484.5 739.5 484.5 739.5 484.5L752.09 489.63L756.5 486.77L767 492L765.78 495.26L776 503V513.5L794.99 520.15L804 513.14L812.45 517.06L813.99 520.15L819.5 524.5L818.39 568.43L798.01 586.61L725.48 551.53V497.5Z"></path>
+          <path class="gp-poly" data-liter="2" d="M612.39 444.13L618.24 439.93L616 437.5L616.32 436.01L624.92 429.8L629.35 431.73L637.33 425.7L647.05 430.16L648.27 427.36L655.75 430.8L654.48 433.42L656.32 434.26L654.96 436.97V440.22L671.65 446.81L675.77 448.72L676.5 447.73L691.37 455.02L695.11 452.41L705.32 457.27L704.34 461.71L706.19 462.59L707.15 461.71L722.37 469.07L721.48 469.81L724 473.5L722.37 536.86L708.5 547L613.52 499.71L613 445L612.39 444.13Z"></path>
+          <path class="gp-poly" data-liter="3" d="M698.69 373.7L700.51 374.41L703.27 372.16V367.59L710.38 363.05L714.01 364.47L717.57 361.78L737.1 369.51L734.94 422.57L730.11 427.5L728.73 432.5L722.67 436.68L718.99 434.68L705.08 444.48L704.71 450.52L699.65 453.85L695.52 451.91L684.8 458.77L667.37 451.91V409.67L673.39 405.2L672.49 401.96L684.8 392.91L688.55 394.4L693.74 390.02L692.88 381.78L695.11 376.92L698.69 373.7Z"></path>
+          <path class="gp-poly" data-liter="4" d="M837.78 308.9L834.29 307.05V304.5L831.54 303.19L825.48 303.5V306.31L800.5 306.5V301.5L788.65 301L785.26 302.93L780.5 306.5L776 304.5L769 309L770.65 311.63L767.21 313.53L768.12 314.59L764.24 317.18V344.5L757 351L754 348.5L746 353.5L747.75 355.93L738.5 363.5L737.5 402L755 411L796.24 382.31L812.22 383.92L876.98 407.87L889.5 392.5L891.5 342L885 338.5V334.5L875 330L872.5 333.5L853 324.5L855 319L848.96 314.84L849.5 312L840 308L837.78 308.9Z"></path>
+          <path class="gp-poly" data-liter="5" d="M893.4 363.92L906.83 354.02L913.9 356.8L917.73 352.84L934.04 359.21L933.23 363.45L941.62 367.46L940.74 380.35L947.95 383.37V381.82L949.7 379.86L959.9 384.09V386.82L969.37 391.04L968.85 391.93L974 394.12L971.99 436.61L955.02 450.28L934.45 440.84L934.84 431.62L890.86 410.55L893.4 363.92Z"></path>
+          <path class="gp-poly" data-liter="6" d="M804.48 387.7L808.88 389.72L810.03 388.92L823.63 395.06L826.18 393.09L837.55 398.07L844.01 393.09L848.27 394.8L849.29 394.05L854.3 396.33L855.17 395.61L857.2 396.47L859.5 394.36L868.63 398.38L868.33 402.34L896.17 414.33L899.54 411.65L908.72 415.72L908.51 419.48L916.66 422.91L915.49 424.1L924.83 428.15L920.62 477.17L908.03 486.93L790.74 434.19V398.07L804.48 387.7Z"></path>
+          <path class="gp-poly" data-liter="7" d="M736.5 440.5L751.42 428.38L772.65 436.85L775.45 434.96L785.56 439.28L790.5 434.96L812.77 444.18L815.64 441.63L824.9 445.95L822.18 448.35L853.55 462.23L856.16 459.74L865.84 464.19L863.49 466.63L873.88 471.23L871.49 524.07L855 538.5L766.39 495.49L768.25 491.59L757.51 486.09C757.51 486.09 753.26 489.28 753.38 489.28C753.69 489.28 737.55 482.5 737.55 482.5L736.5 440.5Z"></path>
+          <path class="gp-poly" data-liter="8" d="M505.56 367.55L497.97 372.94L499.41 377.74L500.77 378.42L502.51 441.79L562.14 470.94L577.16 458.4L576.8 412.39V393.95L577.88 392.14L570.6 388.35L565.24 385.62L566.19 383.17L553.99 377.36L550.27 379.88L544.99 377.74L543.52 378.85L538.13 376.1L539.66 373.33L538.13 372.94V370.34L539.29 368.74L527.62 363.34L524.61 365.33V366.65L522.23 365.33L521.7 365.82L512.56 361.33L504.41 366.65L505.56 367.55Z"></path>
+          <path class="gp-poly" data-liter="9" d="M557.11 331.19L558.18 335.71V379.48L566.19 383.17L565.24 385.62L577.88 392.14L576.8 393.95V411.24L603.87 423.46L607.21 420.92L619.53 426.76L632.36 417.52V355.08L634 353.84V350.7L634.74 349.34L626.87 345.76V343.72L628.17 342.2L619.2 338.12L616.04 340.11V340.99L613.36 339.86L614.41 338.96L608.89 336.18L607.9 337.06L605.25 335.71L604.29 336.61L600.52 335.11L598.79 336.61L591.8 333.23L593.13 330.91L591.43 329.93L592.6 326.07L581.38 320.6L578.48 322.64V324.03L571.86 320.96L557.11 331.19Z"></path>
+          <path class="gp-poly" data-liter="10" d="M612.27 293.11L612.92 293.65L613.71 309.9L613.4 337.13L613.71 337.45L612.87 338.13L614.17 338.8L613.4 339.69L616.28 340.89V339.69L619 338.23L628.02 342.31L626.95 343.68L626.77 345.58L634.19 349.08L633.58 351.11V353.52L631.86 355.26V357.83L632.24 372.73L658.57 385.25L662.97 382.47L675.27 388.03L687.41 379.75L687.85 366.85L688.64 366.03L687.54 365.2L687.75 316.59L689.15 315.76V312.34L690.17 311.11L682.39 307.38L682.59 305.47L683.66 304.25L673.8 299.46L671.33 301.65V302.33L668.47 301.2L669.19 300.47L663.96 297.99L662.93 298.78L660.34 297.5L659.27 298.4L655.96 296.86L653.7 297.99L646.7 294.89L648.45 292.59L646.7 291.63L646.38 290.23L647.41 289.45V287.47L636.84 282.71H635.93L633.82 284.42V285.32L627.38 282.3C627.38 282.3 612.96 292.53 612.62 292.53C612.27 292.53 612.27 293.11 612.27 293.11Z"></path>
+          <path class="gp-poly" data-liter="11" d="M600.12 177.98L605.58 174.77L606.43 175.16L606.97 174.49V173.15L609.58 171.47L612.96 172.8V175.16L615.33 176.03L620.22 173.15L630.64 177.98V183.25L632.06 182.53L634.34 183.25L635.09 182.9L639.19 184.59L639.97 184.05L655.52 190.21V194.82L659.66 196.69L659.94 195.99L661.59 194.82C661.59 194.82 663.88 195.71 664.66 196.69C665.45 197.68 663.95 199.88 663.95 199.88L663.48 279.35L665.18 279.85V281.93L663.95 282.8V286.7L663.48 287.18V291.31L661.59 293.3H659.94L654.78 296.44L651.22 295.19L649.86 296.44L646.48 295.19L648.45 292.59L646.7 291.63L646.48 290.12L647.77 289.41L647.37 287.18L636.67 282.8L633.82 284.43V285.32L627.38 282.3L621.93 286.27L597.79 273.95L597 183.5L600.12 181.51V177.98Z"></path>
+          <path class="gp-poly" data-liter="12" d="M293.37 292.9L301.29 288.37L300.64 287.65L308.72 282.94L317.13 286.75L318 286.42L319.52 287.3V285.92L322.2 284.42L333 289.02L332.05 290.32L331.64 292.9L342.5 298.48L343.63 297.96L347.26 299.61L348.36 298.77L350.3 299.61L352.74 297.96L361.24 302.01L360.62 303.12V305.56L362.88 306.85L365.38 305.56L366.47 305.89L368 305.02L367.05 304.34L371.82 301.65L372.76 302.01V299.61H372.23L373.94 298.48L379.76 300.8L379.05 303.42L380.09 304.01L379.43 305.02L380.09 305.56L381.01 305.02L388.97 308.6L388.06 310.1L391.12 364.25L367.05 376.01L298.94 342.94L296.88 298.48L294.88 297.96V294.24L293.37 292.9Z"></path>
+          <path class="gp-poly" data-liter="13" d="M204 239.1L205.12 242.36L199 245.93L200.2 247.4L204 283.25L202.51 284.42L204 285.4L205.12 295.01L278.19 333.13L293.69 324.42L292.79 313.52L294.43 311.76L292.43 310.51L288.74 267.06L289.98 265.94L286.65 264.6L287.46 263.63L275.77 258.16L274.86 258.79L274.04 258.51L273.69 255.69L274.86 254.33L266.51 250.29L262.93 252.28L252.46 247.4L251.38 247.85L248.42 246.4L243.4 249.1L241.43 247.85L241.01 248.23V245.24L239.02 244.18L238.45 236.11L239.02 235.02L233.91 232.37L232.62 233.33V235.02L225.07 231.71L217.03 236.11L212.17 234.33L204 239.1Z"></path>
+          <path class="gp-poly" data-liter="14" d="M123 212.5L125.5 217L127 229L130 259L178 283L193.5 271.5L190.5 237L182 232.5L181 229.5L172 224.5L167 227.5L164 225V216L159.5 211V207.5L150.5 203L147 206.5L138.5 202L123 212.5Z"></path>
+          <path class="gp-poly" data-liter="15" d="M47.5 220.5L44.5 180.5L41 174.5L47.5 170L46.5 167L55 163.5L60 165L68 161L73.5 164L75.5 161.5L80 164L81.5 176L87.5 173.5L101 179L103.5 176.5L110 180.5V184L124 191.5L128.5 246L114.5 254.5L47.5 220.5Z"></path>
+          <path class="gp-poly" data-liter="16" d="M157.5 122.5L160 157.5L211.5 172.5L217 173L225 180L229 176.5L236.5 183L244.5 177L243 160L252 153.5L251 134L249 127.5L236.5 123V119.5L229.5 116L226.5 118.5L226 115L219 112L218 113.5L212 112L202 117L201.5 111.5L197.5 109.5H193.5L187.5 105L184 108L180.5 106L178 108L173.5 105.5L164.5 110.5L165.5 113L154 119.5L157.5 122.5Z"></path>
+          <path class="gp-poly" data-liter="17" d="M308.5 208.5L295.5 217.5L285.5 213L281 216L251 201V192L244.5 190.5V185.5L242.5 159.5L257.5 151L272 152.5L280 153L286.5 152L290.5 155.5L293.5 153L307 161L305 168L308.5 208.5Z"></path>
+          <path class="gp-poly" data-liter="18" d="M253.5 238.5L241.5 247.5L239.5 244V235.5L233.5 232L231.5 234.5L226 231L217.5 235.5L212.5 234L205 238L196 233L188.5 226.5L141.5 199L139.5 167.5L154 160L157.5 162L161 159L168.5 163.5L175 160.5L186 163.5L188.5 161L196 164.5V168.5L202.5 171.5L199.5 177.5L207 183L209.5 180.5L217.5 185.5L222.5 182.5H231L236 186L238 183L246 186.5L245 190.5L250.5 192.5L251.5 197.5L249.5 199L253.5 238.5Z"></path>
+          <path class="gp-poly" data-liter="19" d="M358.5 180.5L345.5 189L305.5 172.5L307 161L297.5 155.5L296 127L293 122L307 113L314 117L317.5 114L327 119L326 122L332 124.5V135L335.5 137L338.5 134.5L348.5 138V140.5L358 145L358.5 180.5Z"></path>
+          <path class="gp-poly" data-liter="20" d="M291 123L264 139V144.5L252 147.5L251 133.5L248.5 128L236.5 122.5V120L228.5 116.5L227 110.5L225.5 104L236 98.5L235.5 96.5L243 92L246 95L249 93L248.5 82.5L258.5 77V74L266 69.5L269 73L272.5 69.5L282 74H285L290.5 77.5L287 82.5L291 123Z"></path>
+          <path class="gp-poly" data-liter="21" d="M298 119L290 115L287.5 83L290 77.5L287.5 74.5L300 67L303 70L307 67.5L305.5 59.5L311.5 54L317 52L316.5 49.5L324.5 45L325.5 49.5L329.5 46.5L344 50.5L345.5 87L338.5 94.5L341 99.5L337 103.5L318.5 111L314 117L308 112.5L298 119Z"></path>
+          <path class="gp-poly" data-liter="22" d="M418.5 145L407.5 155L372 141.5L364.5 136L359.5 131.5L357.5 124L356.5 102.5L355.5 98L369 90.5L373 93L377.5 90.5L384.5 95L390.5 91H395.5L403.5 95L405 92L412.5 94.5L412 99L417.5 99.5L418.5 105L416.5 107L418.5 145Z"></path>
+      </svg>
+      <div class="genplan-pins">
+          <button type="button" class="gp-pin" data-liter="1" style="left:74.56%; top:80.75%;" aria-label="Литер 1">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 1</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 1</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row gp-row-single"><span>Все квартиры проданы</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=1">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=1">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="2" style="left:65.14%; top:72.32%;" aria-label="Литер 2">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 2</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 2</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row gp-row-single"><span>Все квартиры проданы</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=2">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=2">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="3" style="left:68.78%; top:64.59%;" aria-label="Литер 3">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 3</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 3</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row gp-row-single"><span>Все квартиры проданы</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=3">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=3">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="4" style="left:79.48%; top:52.97%;" aria-label="Литер 4">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 4</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 4</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row gp-row-single"><span>Все квартиры проданы</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=4">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=4">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="5" style="left:91.98%; top:61.8%;" aria-label="Литер 5">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 5</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 5</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row gp-row-single"><span>Все квартиры проданы</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=5">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=5">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="6" style="left:84.24%; top:65.2%;" aria-label="Литер 6">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 6</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 6</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row gp-row-single"><span>Все квартиры проданы</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=6">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=6">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="7" style="left:77.88%; top:74.51%;" aria-label="Литер 7">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 7</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 7</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row gp-row-single"><span>Все квартиры проданы</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=7">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=7">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="8" style="left:52.64%; top:61.25%;" aria-label="Литер 8">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 8</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 8</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row gp-row-single"><span>Все квартиры проданы</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=8">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=8">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="9" style="left:58.72%; top:56.42%;" aria-label="Литер 9">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 9</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 9</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row gp-row-single"><span>Все квартиры проданы</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=9">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=9">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="10" style="left:63.32%; top:50.9%;" aria-label="Литер 10">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 10</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 10</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row gp-row-single"><span>Все квартиры проданы</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=10">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=10">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="11" style="left:62.7%; top:36.62%;" aria-label="Литер 11">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 11</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 11</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row"><span>1 комнатная</span><span class="gp-price">от 5.3 млн ₽</span></div>
+                  <div class="gp-row"><span>Студия</span><span class="gp-price-sold">продано</span></div>
+                  <div class="gp-row"><span>1 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 8.1 млн ₽</span></div>
+                  <div class="gp-row"><span>2 комнатная</span><span class="gp-price-sold">продано</span></div>
+                  <div class="gp-row"><span>2 комнатная &laquo;евро&raquo;</span><span class="gp-price-sold">продано</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=11">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=11">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="12" style="left:34.0%; top:48.18%;" aria-label="Литер 12">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 12</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 12</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row"><span>1 комнатная</span><span class="gp-price">от 6.9 млн ₽</span></div>
+                  <div class="gp-row"><span>Студия</span><span class="gp-price-sold">продано</span></div>
+                  <div class="gp-row"><span>1 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 7.9 млн ₽</span></div>
+                  <div class="gp-row"><span>2 комнатная</span><span class="gp-price-sold">продано</span></div>
+                  <div class="gp-row"><span>2 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 11.6 млн ₽</span></div>
+                  <div class="gp-row"><span>3 комнатная</span><span class="gp-price-sold">продано</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=12">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=12">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="13" style="left:24.21%; top:41.45%;" aria-label="Литер 13">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 13</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 13</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row"><span>1 комнатная</span><span class="gp-price">от 6.6 млн ₽</span></div>
+                  <div class="gp-row"><span>Студия</span><span class="gp-price-sold">продано</span></div>
+                  <div class="gp-row"><span>1 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 7.9 млн ₽</span></div>
+                  <div class="gp-row"><span>2 комнатная</span><span class="gp-price">от 10.9 млн ₽</span></div>
+                  <div class="gp-row"><span>2 комнатная &laquo;евро&raquo;</span><span class="gp-price-sold">продано</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=13">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=13">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="14" style="left:15.35%; top:36.15%;" aria-label="Литер 14">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 14</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 14</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row gp-row-single"><span>Все квартиры проданы</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=14">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=14">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="15" style="left:7.69%; top:29.42%;" aria-label="Литер 15">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 15</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 15</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row"><span>1 комнатная</span><span class="gp-price">от 6.0 млн ₽</span></div>
+                  <div class="gp-row"><span>1 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 7.5 млн ₽</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=15">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=15">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="16" style="left:20.26%; top:20.74%;" aria-label="Литер 16">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 16</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 16</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row"><span>1 комнатная</span><span class="gp-price">от 6.8 млн ₽</span></div>
+                  <div class="gp-row"><span>Студия</span><span class="gp-price">от 5.0 млн ₽</span></div>
+                  <div class="gp-row"><span>1 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 8.2 млн ₽</span></div>
+                  <div class="gp-row"><span>2 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 7.9 млн ₽</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=16">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=16">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="17" style="left:27.26%; top:28.69%;" aria-label="Литер 17">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 17</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 17</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row"><span>1 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 7.7 млн ₽</span></div>
+                  <div class="gp-row"><span>2 комнатная</span><span class="gp-price">от 9.0 млн ₽</span></div>
+                  <div class="gp-row"><span>2 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 8.2 млн ₽</span></div>
+                  <div class="gp-row"><span>3 комнатная</span><span class="gp-price">от 10.3 млн ₽</span></div>
+                  <div class="gp-row"><span>3 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 9.7 млн ₽</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=17">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=17">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="18" style="left:20.66%; top:31.46%;" aria-label="Литер 18">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 18</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 18</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row gp-row-single"><span>Все квартиры проданы</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=18">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=18">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="19" style="left:32.09%; top:22.55%;" aria-label="Литер 19">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 19</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 19</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row"><span>1 комнатная</span><span class="gp-price">от 7.3 млн ₽</span></div>
+                  <div class="gp-row"><span>1 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 8.0 млн ₽</span></div>
+                  <div class="gp-row"><span>2 комнатная</span><span class="gp-price">от 9.4 млн ₽</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=19">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=19">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="20" style="left:25.21%; top:16.19%;" aria-label="Литер 20">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 20</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 20</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row"><span>1 комнатная</span><span class="gp-price">от 6.5 млн ₽</span></div>
+                  <div class="gp-row"><span>2 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 11.6 млн ₽</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=20">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=20">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="21" style="left:30.79%; top:12.79%;" aria-label="Литер 21">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 21</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 21</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row"><span>1 комнатная</span><span class="gp-price">от 6.2 млн ₽</span></div>
+                  <div class="gp-row"><span>Студия</span><span class="gp-price">от 4.9 млн ₽</span></div>
+                  <div class="gp-row"><span>1 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 7.7 млн ₽</span></div>
+                  <div class="gp-row"><span>2 комнатная</span><span class="gp-price">от 9.7 млн ₽</span></div>
+                  <div class="gp-row"><span>3 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 11.0 млн ₽</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=21">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=21">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+          <button type="button" class="gp-pin" data-liter="22" style="left:38.26%; top:17.55%;" aria-label="Литер 22">
+            <span class="gp-dot"></span>
+            <span class="gp-pin-label">Литер 22</span>
+            <div class="gp-card">
+              <div class="gp-card-top">
+                <h4>Литер 22</h4>
+                <span class="gp-status">Дом сдан</span>
+              </div>
+              <div class="gp-card-rows">
+                  <div class="gp-row"><span>2 комнатная</span><span class="gp-price">от 8.9 млн ₽</span></div>
+                  <div class="gp-row"><span>3 комнатная &laquo;евро&raquo;</span><span class="gp-price">от 9.4 млн ₽</span></div>
+              </div>
+              <a class="gp-card-link" href="flats.html?liter=22">Смотреть квартиры &rarr;</a>
+            <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=22">Шахматка квартир &rarr;</a>
+            </div>
+          </button>
+      </div>
+      <div class="genplan-hint"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Наведите или коснитесь литера — покажем планировки и цены</div>
+    </div>
+
+    <div class="litery-grid collapsed" id="literyGrid" style="margin-top:20px;">
+      <!-- сначала литеры, где реально есть квартиры в продаже, затем полностью проданные -->
+      <div class="accordion-item open"><div class="accordion-head">Литер 11 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row is-sold">Студия продано</div><div class="litery-row">1 комнатная от 5.3 млн ₽</div><div class="litery-row">1 комнатная &laquo;евро&raquo; от 8.1 млн ₽</div><div class="litery-row is-sold">2 комнатная продано</div><div class="litery-row is-sold">2 комнатная &laquo;евро&raquo; продано</div></div><a href="chessboard.html?liter=11" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item"><div class="accordion-head">Литер 12 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row is-sold">Студия продано</div><div class="litery-row">1 комнатная от 6.9 млн ₽</div><div class="litery-row">1 комнатная &laquo;евро&raquo; от 7.9 млн ₽</div><div class="litery-row is-sold">2 комнатная продано</div><div class="litery-row">2 комнатная &laquo;евро&raquo; от 11.6 млн ₽</div><div class="litery-row is-sold">3 комнатная продано</div></div><a href="chessboard.html?liter=12" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item"><div class="accordion-head">Литер 13 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row is-sold">Студия продано</div><div class="litery-row">1 комнатная от 6.6 млн ₽</div><div class="litery-row">1 комнатная &laquo;евро&raquo; от 7.9 млн ₽</div><div class="litery-row">2 комнатная от 10.9 млн ₽</div><div class="litery-row is-sold">2 комнатная &laquo;евро&raquo; продано</div></div><a href="chessboard.html?liter=13" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item"><div class="accordion-head">Литер 15 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">1 комнатная от 6.0 млн ₽</div><div class="litery-row">1 комнатная &laquo;евро&raquo; от 7.5 млн ₽</div></div><a href="chessboard.html?liter=15" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item"><div class="accordion-head">Литер 16 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Студия от 5.0 млн ₽</div><div class="litery-row">1 комнатная от 6.8 млн ₽</div><div class="litery-row">1 комнатная &laquo;евро&raquo; от 8.2 млн ₽</div><div class="litery-row">2 комнатная &laquo;евро&raquo; от 7.9 млн ₽</div></div><a href="chessboard.html?liter=16" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item"><div class="accordion-head">Литер 17 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">1 комнатная &laquo;евро&raquo; от 7.7 млн ₽</div><div class="litery-row">2 комнатная от 9.0 млн ₽</div><div class="litery-row">2 комнатная &laquo;евро&raquo; от 8.2 млн ₽</div><div class="litery-row">3 комнатная от 10.3 млн ₽</div><div class="litery-row">3 комнатная &laquo;евро&raquo; от 9.7 млн ₽</div></div><a href="chessboard.html?liter=17" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 19 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">1 комнатная от 7.3 млн ₽</div><div class="litery-row">1 комнатная &laquo;евро&raquo; от 8.0 млн ₽</div><div class="litery-row">2 комнатная от 9.4 млн ₽</div></div><a href="chessboard.html?liter=19" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 20 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">1 комнатная от 6.5 млн ₽</div><div class="litery-row">2 комнатная &laquo;евро&raquo; от 11.6 млн ₽</div></div><a href="chessboard.html?liter=20" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 21 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Студия от 4.9 млн ₽</div><div class="litery-row">1 комнатная от 6.2 млн ₽</div><div class="litery-row">1 комнатная &laquo;евро&raquo; от 7.7 млн ₽</div><div class="litery-row">2 комнатная от 9.7 млн ₽</div><div class="litery-row">3 комнатная &laquo;евро&raquo; от 11.0 млн ₽</div></div><a href="chessboard.html?liter=21" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 22 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">2 комнатная от 8.9 млн ₽</div><div class="litery-row">3 комнатная &laquo;евро&raquo; от 9.4 млн ₽</div></div><a href="chessboard.html?liter=22" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 1 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Все квартиры проданы</div></div><a href="chessboard.html?liter=1" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 2 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Все квартиры проданы</div></div><a href="chessboard.html?liter=2" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 3 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Все квартиры проданы</div></div><a href="chessboard.html?liter=3" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 4 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Все квартиры проданы</div></div><a href="chessboard.html?liter=4" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 5 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Все квартиры проданы</div></div><a href="chessboard.html?liter=5" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 6 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Все квартиры проданы</div></div><a href="chessboard.html?liter=6" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 7 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Все квартиры проданы</div></div><a href="chessboard.html?liter=7" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 8 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Все квартиры проданы</div></div><a href="chessboard.html?liter=8" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 9 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Все квартиры проданы</div></div><a href="chessboard.html?liter=9" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 10 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Все квартиры проданы</div></div><a href="chessboard.html?liter=10" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 14 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Все квартиры проданы</div></div><a href="chessboard.html?liter=14" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+      <div class="accordion-item litery-extra"><div class="accordion-head">Литер 18 &mdash; дом сдан</div><div class="accordion-body"><div class="litery-rows"><div class="litery-row">Все квартиры проданы</div></div><a href="chessboard.html?liter=18" style="color:var(--brick); font-weight:600;">Шахматка &rarr;</a></div></div>
+    </div>
+    <div class="show-more-wrap" style="margin-top:18px;">
+      <button class="btn-show-more" id="literyShowAllBtn" type="button">Показать все</button>
+      <button class="btn-show-more" id="literyHideBtn" type="button" style="display:none;">Скрыть</button>
     </div>
   </div>
 </section>
@@ -253,7 +653,7 @@
   <div class="wrap location-block">
     <div>
       <span class="kicker">Локация</span>
-      <h2 style="font-size:39px; margin-top:10px; text-transform:uppercase;">Всё нужное рядом</h2>
+      <h2 style="font-size:41.5px; margin-top:10px; text-transform:uppercase;">Всё нужное рядом</h2>
       <div class="loc-group">
         <div class="loc-group-title">5–10 минут пешком</div>
         <ul class="location-list">
@@ -270,7 +670,7 @@
           <li><span class="loc-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18M8 4v3M16 4v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Ж/д вокзал — 18 минут</li>
         </ul>
       </div>
-      <button class="btn btn-primary" style="margin-top:20px;">Подобрать квартиру</button>
+      <button class="btn btn-primary" style="margin-top:20px;" data-modal-open="subscribeModal">Подобрать квартиру</button>
     </div>
     <div class="location-map-wrap">
       <iframe
@@ -289,17 +689,17 @@
     <div class="section-head"><div><span class="kicker">Прозрачность</span><h2>Ход строительства</h2></div></div>
     <div class="tabs">
       <div class="tab-btns">
-        <button class="tab-btn active">2026</button>
-        <button class="tab-btn">2025</button>
-        <button class="tab-btn">2024</button>
+        <button class="tab-btn active">2024</button>
       </div>
       <div class="tab-panel active">
-        <div class="accordion-item open"><div class="accordion-head">Июль 2026</div><div class="accordion-body"><div class="timeline-photos"><div class="render"></div><div class="render tone-b"></div><div class="render tone-c"></div><div class="render"></div></div></div></div>
-        <div class="accordion-item"><div class="accordion-head">Июнь 2026</div><div class="accordion-body"><div class="timeline-photos"><div class="render tone-b"></div><div class="render tone-c"></div><div class="render"></div><div class="render tone-b"></div></div></div></div>
-        <div class="accordion-item"><div class="accordion-head">Май 2026</div><div class="accordion-body"><div class="timeline-photos"><div class="render tone-c"></div><div class="render"></div><div class="render tone-b"></div><div class="render tone-c"></div></div></div></div>
+        <div class="accordion-item open"><div class="accordion-head">Июль 2024</div><div class="accordion-body"><div class="timeline-photos"><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-07_01.jpg" alt="Июль 2024 — ход строительства NEO-квартала, фото 1" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-07_02.jpg" alt="Июль 2024 — ход строительства NEO-квартала, фото 2" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-07_03.jpg" alt="Июль 2024 — ход строительства NEO-квартала, фото 3" loading="lazy"></div></div></div></div>
+        <div class="accordion-item"><div class="accordion-head">Июнь 2024</div><div class="accordion-body"><div class="timeline-photos"><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-06_01.jpg" alt="Июнь 2024 — ход строительства NEO-квартала, фото 1" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-06_02.jpg" alt="Июнь 2024 — ход строительства NEO-квартала, фото 2" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-06_03.jpg" alt="Июнь 2024 — ход строительства NEO-квартала, фото 3" loading="lazy"></div></div></div></div>
+        <div class="accordion-item"><div class="accordion-head">Май 2024</div><div class="accordion-body"><div class="timeline-photos"><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-05_01.jpg" alt="Май 2024 — ход строительства NEO-квартала, фото 1" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-05_02.jpg" alt="Май 2024 — ход строительства NEO-квартала, фото 2" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-05_03.jpg" alt="Май 2024 — ход строительства NEO-квартала, фото 3" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-05_04.jpg" alt="Май 2024 — ход строительства NEO-квартала, фото 4" loading="lazy"></div></div></div></div>
+        <div class="accordion-item"><div class="accordion-head">Апрель 2024</div><div class="accordion-body"><div class="timeline-photos"><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-04_01.jpg" alt="Апрель 2024 — ход строительства NEO-квартала, фото 1" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-04_02.jpg" alt="Апрель 2024 — ход строительства NEO-квартала, фото 2" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-04_03.jpg" alt="Апрель 2024 — ход строительства NEO-квартала, фото 3" loading="lazy"></div></div></div></div>
+        <div class="accordion-item"><div class="accordion-head">Март 2024</div><div class="accordion-body"><div class="timeline-photos"><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-03_01.jpg" alt="Март 2024 — ход строительства NEO-квартала, фото 1" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-03_02.jpg" alt="Март 2024 — ход строительства NEO-квартала, фото 2" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-03_03.jpg" alt="Март 2024 — ход строительства NEO-квартала, фото 3" loading="lazy"></div></div></div></div>
+        <div class="accordion-item"><div class="accordion-head">Февраль 2024</div><div class="accordion-body"><div class="timeline-photos"><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-02_01.jpg" alt="Февраль 2024 — ход строительства NEO-квартала, фото 1" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-02_02.jpg" alt="Февраль 2024 — ход строительства NEO-квартала, фото 2" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-02_03.jpg" alt="Февраль 2024 — ход строительства NEO-квартала, фото 3" loading="lazy"></div></div></div></div>
+        <div class="accordion-item"><div class="accordion-head">Январь 2024</div><div class="accordion-body"><div class="timeline-photos"><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-01_01.jpg" alt="Январь 2024 — ход строительства NEO-квартала, фото 1" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-01_02.jpg" alt="Январь 2024 — ход строительства NEO-квартала, фото 2" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-01_03.jpg" alt="Январь 2024 — ход строительства NEO-квартала, фото 3" loading="lazy"></div><div class="timeline-photo-tile"><img src="assets/img/construction/obj41506_photo2024-01_04.jpg" alt="Январь 2024 — ход строительства NEO-квартала, фото 4" loading="lazy"></div></div></div></div>
       </div>
-      <div class="tab-panel"><p style="color:var(--slate); font-size:15px;">2025 год — фотоотчёты по месяцам.</p></div>
-      <div class="tab-panel"><p style="color:var(--slate); font-size:15px;">2024 год — начало строительства, закладка фундамента.</p></div>
     </div>
   </div>
 </section>
@@ -310,7 +710,7 @@
     <div class="form-card form-card-split">
       <div class="form-card-photo render corner-ticks" style="background:url('assets/img/object-krasnodar.jpg') center/cover;"></div>
       <div class="form-card-fields">
-        <h3 style="font-size:20px; line-height:1.3;">Оставьте свой номер, и мы перезвоним вам</h3>
+        <h3 style="font-size:21.5px; line-height:1.3;">Оставьте свой номер, и мы перезвоним вам</h3>
         <form data-form>
           <div class="field"><label>Имя</label><input type="text" placeholder="Ваше имя"></div>
           <div class="field"><label>Телефон</label><input type="tel" placeholder="+7 (000) 000-00-00"></div>
@@ -377,10 +777,8 @@
       <div>
         <h5>Проекты</h5>
         <a href="object.html">НЕО‑квартал, Краснодар</a>
-        <a href="object.html">«Мириады Анапы», Анапа</a>
-        <a href="object.html">«Красная площадь», Новороссийск</a>
-        <a href="object.html">«Красная площадь», Анапа</a>
-        <a href="commercial.html">Торговые помещения</a>
+        <a href="object-anapa.html">«Мириады Анапы», Анапа</a>
+        <a href="commercial-objects.html">Торговые помещения</a>
       </div>
       <div>
         <h5>Покупателям</h5>
@@ -437,10 +835,11 @@
       <label class="consent"><input type="checkbox"><span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>
       <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
-    <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:14.5px;">Мы свяжемся с вами в ближайшее время.</p></div>
+    <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:15.5px;">Мы свяжемся с вами в ближайшее время.</p></div>
   </div>
 </div>
 
+<script src="assets/api.js"></script>
 <script src="assets/main.js"></script>
 </body>
 </html>

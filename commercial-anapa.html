@@ -21,14 +21,14 @@
         <a href="objects.html">Объекты</a>
         <div class="dropdown">
           <a href="object.html"><span><span class="city">Краснодар</span>НЕО-квартал «Красная площадь»</span><span class="price-tag">от 4,5 млн ₽</span></a>
-          <a href="object.html"><span><span class="city">Анапа</span>«Мириады Анапы»</span><span class="price-tag">Старт продаж</span></a>
+          <a href="object-anapa.html"><span><span class="city">Анапа</span>«Мириады Анапы»</span><span class="price-tag">Старт продаж</span></a>
           <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Новороссийск</span>«Красная площадь»</span><span class="sold-tag">Продано</span></a>
           <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Анапа</span>«Красная площадь»</span><span class="sold-tag">Продано</span></a>
         </div>
       </div>
       <div class="navitem"><a href="flats.html">Квартиры</a></div>
       <div class="navitem has-drop">
-        <a href="commercial.html">Торговые помещения</a>
+        <a href="commercial-objects.html">Торговые помещения</a>
         <div class="dropdown">
           <a href="commercial.html"><span><span class="city">Литер 1</span>Помещение №M.03 · 32 м²</span><span class="price-tag">3,2 млн ₽</span></a>
           <a href="commercial.html"><span><span class="city">Литер 2</span>Помещение №M.07 · 54 м²</span><span class="price-tag">5,1 млн ₽</span></a>
@@ -46,6 +46,7 @@
   </div>
   <div class="subnav">
     <a href="promotions.html">Акции</a>
+    <a href="news.html">Новости</a>
     <a href="buying.html">Способы покупки</a>
     <a href="about.html">О компании</a>
     <a href="partners.html">Партнёрам</a>
@@ -54,11 +55,11 @@
   </div>
 </header>
 
-<section class="page-hero" style="height:320px;">
+<section class="page-hero" style="height:560px;">
   <div class="render" style="position:absolute;inset:0;background:url('assets/img/object-anapa-miriady.jpg') center/cover;"></div>
   <div class="page-hero-content">
-    <nav class="breadcrumbs" style="color:rgba(243,238,230,0.55); padding-top:0; padding-bottom:10px;">
-      <a href="index.html" style="color:rgba(243,238,230,0.7);">Главная</a><span class="sep">/</span><a href="commercial.html" style="color:rgba(243,238,230,0.7);">Торговые помещения</a><span class="sep">/</span><span class="current" style="color:#fff;">«Мириады Анапы»</span>
+    <nav class="breadcrumbs" style="color:rgba(243,238,230,0.55); padding-top:0; padding-bottom:16px;">
+      <a href="index.html" style="color:rgba(243,238,230,0.7);">Главная</a><span class="sep">/</span><a href="commercial-objects.html" style="color:rgba(243,238,230,0.7);">Торговые помещения</a><span class="sep">/</span><span class="current" style="color:#fff;">«Мириады Анапы»</span>
     </nav>
     <div class="eyebrow-row"><span class="pill">Готовы к отделке</span></div>
     <h1>Торговые помещения в «Мириады Анапы»</h1>
@@ -66,9 +67,9 @@
   </div>
 </section>
 
-<section style="padding:34px 0 0;">
+<section style="padding:48px 0 0;">
   <div class="wrap">
-    <div class="kpi-row kpi-row-5" style="margin:0;">
+    <div class="kpi-row kpi-row-5" style="margin:0 0 30px;">
       <div class="kpi"><b>Комфорт</b><span>класс объекта</span></div>
       <div class="kpi"><b>8</b><span>этажность</span></div>
       <div class="kpi"><b>62</b><span>помещений в продаже</span></div>
@@ -85,28 +86,31 @@
       <div class="search-top">
         <div><h2>Выбрать помещение</h2><p>Фильтр можно скрыть в админ-панели, если коммерция распродана.</p></div>
       </div>
-      <div class="filters-grid" style="grid-template-columns:1fr 1.3fr 1.3fr 1fr auto;">
-        <div class="filter"><label>Литер</label><select><option>Любой</option><option>Литер 1</option><option>Литер 2</option><option>Литер 3</option></select></div>
+      <div class="filters-grid" style="grid-template-columns:1fr 1fr 1fr auto;">
         <div class="filter">
-          <label>Стоимость, млн ₽</label>
-          <div class="range-pair" data-output="commPriceOut">
-            <div class="range-track-bg"></div>
-            <input type="range" class="range-min" min="3" max="20" step="0.1" value="3.2">
-            <input type="range" class="range-max" min="3" max="20" step="0.1" value="20">
+          <label>Литер</label>
+          <div class="custom-select">
+            <button type="button" class="custom-select-trigger">
+              <span class="custom-select-label">Любой</span>
+              <span class="chev">⌄</span>
+            </button>
+            <div class="custom-select-list">
+              <div class="custom-select-option selected">Любой</div>
+              <div class="custom-select-option">Литер 1</div>
+              <div class="custom-select-option">Литер 2</div>
+              <div class="custom-select-option">Литер 3</div>
+            </div>
           </div>
-          <div class="range-values" id="commPriceOut">3,2 – 20 млн ₽</div>
         </div>
-        <div class="filter">
+        <div class="filter filter-compact">
           <label>Площадь, м²</label>
-          <div class="range-pair" data-output="commAreaOut">
-            <div class="range-track-bg"></div>
-            <input type="range" class="range-min" min="10" max="543" step="1" value="10">
-            <input type="range" class="range-max" min="10" max="543" step="1" value="543">
-          </div>
-          <div class="range-values" id="commAreaOut">10 – 543 м²</div>
+          <div class="filter-value"><input type="text" inputmode="numeric" class="num-range-input" value="10–543" data-min="10" data-max="543" maxlength="7"></div>
         </div>
-        <div class="filter"><label>Срок сдачи</label><select><option>Любой</option><option>3 кв. 2026</option><option>4 кв. 2026</option><option>2027</option></select></div>
-        <button class="search-submit">Показать 62 →</button>
+        <div class="filter filter-compact filter-locked">
+          <label>Стоимость, ₽</label>
+          <div class="filter-value"><input type="text" value="2 900 000 – 9 200 000" readonly tabindex="-1"></div>
+        </div>
+        <button class="search-submit">Показать →</button>
       </div>
     </div>
   </div>
@@ -120,19 +124,19 @@
         <a class="flat-card-link" href="commercial-lot.html"><div class="render"><span class="lot-number">№M.03</span><span class="tag">пом. 1</span></div>
         <div class="flat-body"><div class="flat-title">Помещение 28 м²</div><div class="flat-meta">Литер 1 · 1 этаж, вид на набережную <span class="deadline">Сдача 4 кв. 2026</span></div>
         <div class="row"><span class="flat-price">2 900 000 ₽</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Оставить заявку</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Оставить заявку</button></div>
         </div>
       <div class="flat-card">
         <a class="flat-card-link" href="commercial-lot.html"><div class="render tone-b"><span class="lot-number">№M.07</span><span class="tag">пом. 2</span></div>
         <div class="flat-body"><div class="flat-title">Помещение 46 м²</div><div class="flat-meta">Литер 2 · 1 этаж, угловое <span class="deadline">Сдача 2027</span></div>
         <div class="row"><span class="flat-price">4 600 000 ₽</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Оставить заявку</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Оставить заявку</button></div>
         </div>
       <div class="flat-card">
         <a class="flat-card-link" href="commercial-lot.html"><div class="render tone-c"><span class="lot-number">№M.14</span><span class="tag">пом. 3</span></div>
         <div class="flat-body"><div class="flat-title">Помещение 95 м²</div><div class="flat-meta">Литер 3 · 1 этаж, два входа <span class="deadline">Сдача 2027</span></div>
         <div class="row"><span class="price-old">9 200 000 ₽</span><span class="flat-price">8 400 000 ₽</span><span class="discount-badge">−9%</span></div></div></a>
-        <div class="flat-card-footer"><button class="btn btn-primary">Оставить заявку</button></div>
+        <div class="flat-card-footer"><button class="btn btn-primary" data-modal-open="subscribeModal">Оставить заявку</button></div>
         </div>
     </div>
   </div>
@@ -142,9 +146,9 @@
   <div class="wrap idea-block">
     <div>
       <span class="kicker">Для бизнеса</span>
-      <h2 style="font-size:27px; margin-top:10px;">Готовая аудитория с первого дня</h2>
-      <p style="color:var(--slate); font-size:15.5px; line-height:1.7; margin-top:14px;">Помещения передаются под чистовую отделку арендатором или под ключ. Отдельные входы, электрика с запасом мощности, витражное остекление.</p>
-      <button class="btn btn-primary" style="margin-top:18px;">Получить подборку лотов</button>
+      <h2 style="font-size:29px; margin-top:10px;">Готовая аудитория с первого дня</h2>
+      <p style="color:var(--slate); font-size:16.5px; line-height:1.7; margin-top:14px;">Помещения передаются под чистовую отделку арендатором или под ключ. Отдельные входы, электрика с запасом мощности, витражное остекление.</p>
+      <button class="btn btn-primary" style="margin-top:18px;" data-modal-open="subscribeModal">Получить подборку лотов</button>
     </div>
     <div class="render corner-ticks" style="background:url('assets/img/photo-facade-plain.jpg') center/cover;"></div>
   </div>
@@ -159,10 +163,8 @@
       <div>
         <h5>Проекты</h5>
         <a href="object.html">НЕО‑квартал, Краснодар</a>
-        <a href="object.html">«Мириады Анапы», Анапа</a>
-        <a href="object.html">«Красная площадь», Новороссийск</a>
-        <a href="object.html">«Красная площадь», Анапа</a>
-        <a href="commercial.html">Торговые помещения</a>
+        <a href="object-anapa.html">«Мириады Анапы», Анапа</a>
+        <a href="commercial-objects.html">Торговые помещения</a>
       </div>
       <div>
         <h5>Покупателям</h5>
@@ -219,10 +221,11 @@
       <label class="consent"><input type="checkbox"><span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>
       <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
-    <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:14.5px;">Мы свяжемся с вами в ближайшее время.</p></div>
+    <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:15.5px;">Мы свяжемся с вами в ближайшее время.</p></div>
   </div>
 </div>
 
+<script src="assets/api.js"></script>
 <script src="assets/main.js"></script>
 </body>
 </html>
