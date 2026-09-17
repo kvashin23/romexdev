@@ -166,8 +166,12 @@
     border:1px solid var(--glass-border); background:var(--glass-light);
     padding:5px 12px; border-radius:100px; backdrop-filter:blur(6px);
   }
-  .slide h1{font-size:37.5px; line-height:1.1; max-width:600px;}
-  .slide .sub{font-size:16.5px; opacity:0.85; margin-top:12px; max-width:480px; line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+  /* заголовок увеличен, облегчён по весу и больше не зажат узким max-width:600px —
+     по фидбеку клиента (сравнение с референсом, сайт MR «Клиф»): там заголовок hero
+     крупный, светлый (не жирный) и растянут на всю ширину контентной колонки, а не
+     занимает её небольшую часть узким жирным текстом, как было раньше */
+  .slide h1{font-size:60px; line-height:1.05; max-width:100%; font-weight:400; letter-spacing:0;}
+  .slide .sub{font-size:16.5px; opacity:0.85; margin-top:16px; max-width:560px; line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
   .slide-cta{margin-top:16px; display:flex; gap:14px; align-items:center;}
   .hero-scrim{position:absolute; inset:0; background:#000; opacity:0; z-index:1; pointer-events:none;}
   .hero-nav{
@@ -183,10 +187,13 @@
   .hero-dots button.active{background:#fff;}
 
   /* ================= PROMO / NEWS STRIP ================= */
+  /* карточки акций подросли (добавилось фото сверху), их высота увеличилась —
+     пересчитан отступ, иначе карточка перекрывала и подрезала кнопку CTA под
+     заголовком слайда (баг, который заметил клиент на скрине) */
   .promo-overlap{
-    position:absolute; left:0; right:0; bottom:-128px; z-index:8;
+    position:absolute; left:0; right:0; bottom:-190px; z-index:8;
   }
-  .promo-section{padding-top:172px;}
+  .promo-section{padding-top:234px;}
   .promo-section .section-head{margin-bottom:0;}
   .section-head{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:26px; flex-wrap:wrap; gap:10px;}
   .arrow-btns{display:flex; gap:8px;}
@@ -226,17 +233,22 @@
     flex:0 0 340px; scroll-snap-align:start;
     background:#fff;
     border:1px solid var(--line); border-radius:18px;
-    padding:18px; display:flex; flex-direction:column; gap:7px;
+    display:flex; flex-direction:column;
     transition:transform .18s ease, box-shadow .18s ease;
     box-shadow:0 2px 6px rgba(20,17,14,0.10);
+    overflow:hidden;
   }
   .promo-card:hover{transform:translateY(-4px); box-shadow:0 8px 18px rgba(20,17,14,0.16);}
   .promo-card:focus{outline:none;}
   .promo-card:focus-visible{outline:2px solid var(--brick); outline-offset:2px;}
-  .promo-card h3{font-size:20.5px;}
-  .promo-card p{font-size:15.5px; color:var(--slate); margin:0; line-height:1.5;}
+  /* картинка сверху карточки — по фидбеку клиента: акции выглядели "голо" без фото,
+     на референсе (MR «Клиф») карточки с картинками смотрятся заметно живее */
+  .promo-card-img{width:100%; height:132px; object-fit:cover; display:block; flex:0 0 auto;}
+  .promo-card-body{padding:16px 18px 18px; display:flex; flex-direction:column; gap:7px; flex:1;}
+  .promo-card h3{font-size:19px;}
+  .promo-card p{font-size:14.5px; color:var(--slate); margin:0; line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
   .promo-highlight{
-    margin-top:auto; font-family:'Golos Text',sans-serif; font-size:19.5px; color:var(--brick); font-weight:700;
+    margin-top:auto; font-family:'Golos Text',sans-serif; font-size:18px; color:var(--brick); font-weight:700;
     background:linear-gradient(90deg, rgba(227,4,19,0.1), rgba(227,4,19,0.03));
     border-left:3px solid var(--brick);
     padding:9px 12px; border-radius:0 8px 8px 0;
@@ -624,11 +636,22 @@
     .about-grid-v2{grid-template-columns:1fr; gap:34px;}
     .photo-mosaic{grid-template-columns:repeat(4,1fr);}
     .footer-top{grid-template-columns:1fr 1fr;}
-    .slide h1{font-size:24.5px;}
+    /* на узких экранах жирный (800) заголовок при плотном line-height выглядел
+       слипшимся — увеличиваем кегль, даём чуть больше межстрочного интервала
+       и лёгкий трекинг, чтобы буквы не сливались */
+    .slide h1{font-size:29px; line-height:1.2; letter-spacing:0.001em;}
     .hero{height:88vh; min-height:540px;}
     .slide-content{padding-bottom:172px;}
-    .promo-overlap{bottom:-100px;}
-    .promo-section{padding-top:135px;}
+    /* на мобильном карточки акций, наложенные на фото слайда (как на десктопе),
+       зажимали текст между двумя парами круглых стрелок (стрелки слайдера сверху
+       и стрелки самой карусели акций снизу почти вплотную) и обрезали фото под
+       карточкой — выглядело тесно и нечитаемо. На мобильном убираем наложение:
+       блок акций идёт обычным потоком под слайдом, на своей белой подложке. */
+    .promo-overlap.wrap{
+      position:static; bottom:auto; margin-top:0;
+      background:var(--paper); padding:26px 18px 6px;
+    }
+    .promo-section{padding-top:0;}
   }
   @media (max-width: 560px){
     .wrap{padding:0 18px;}
@@ -956,7 +979,13 @@ button[type="submit"][data-loading]{opacity:0.7; cursor:default;}
 .gp-card-rows{padding:10px 16px 4px;}
 .gp-row{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:5px 0; font-size:14px; border-bottom:1px dashed var(--line);}
 .gp-row:last-child{border-bottom:none;}
-.gp-row-single{justify-content:flex-start; color:var(--slate);}
+.gp-row-single{justify-content:flex-start; padding:8px 0;}
+/* «Все квартиры проданы» раньше просто серым текстом почти терялась в карточке —
+   теперь это заметная плашка в духе остальных sold-бейджей на сайте */
+.gp-row-single span{
+  display:inline-block; background:var(--sold); color:#2c2c2c; font-weight:700;
+  font-size:13px; padding:4px 10px; border-radius:20px;
+}
 .gp-price{color:var(--brick); font-weight:600; white-space:nowrap;}
 .gp-price-sold{color:var(--sold); white-space:nowrap;}
 .gp-card-link{
@@ -964,7 +993,12 @@ button[type="submit"][data-loading]{opacity:0.7; cursor:default;}
   border-top:1px solid var(--line); text-decoration:none;
 }
 .gp-card-link:hover{color:var(--brick-dark);}
-.gp-card-link-secondary{color:var(--ink); border-top-style:dashed;}
+/* вторая ссылка «Шахматка квартир →» под основной «Смотреть квартиры →» —
+   только там, где в литере есть свободные квартиры; более сдержанный стиль,
+   без верхней границы, чтобы визуально группироваться с ссылкой над ней */
+.gp-card-link-secondary{
+  margin-top:0; padding-top:0; border-top:none; font-weight:500; font-size:13.5px; color:var(--slate);
+}
 .gp-card-link-secondary:hover{color:var(--brick);}
 
 .genplan-hint{

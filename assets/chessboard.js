@@ -36,7 +36,7 @@
     statusLine.style.color = 'var(--slate)';
     statusLine.style.fontSize = '14px';
     statusLine.style.marginTop = '6px';
-    statusLine.textContent = 'NEO-квартал «Красная площадь», Краснодар · ' +
+    statusLine.textContent = 'НЕО-квартал «Красная площадь», Краснодар · ' +
       (isSoldOutLiter ? 'дом сдан, все квартиры проданы' : 'дом сдан, отдельные лоты в продаже');
     headbar.appendChild(statusLine);
   }

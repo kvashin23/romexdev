@@ -613,25 +613,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- «Показать все» / «Скрыть» в списке литеров под генпланом ---------- */
-  (function () {
-    const showAllBtn = document.getElementById('literyShowAllBtn');
-    const hideBtn = document.getElementById('literyHideBtn');
-    const grid = document.getElementById('literyGrid');
-    if (!showAllBtn || !grid) return;
-    showAllBtn.addEventListener('click', () => {
-      grid.classList.remove('collapsed');
-      showAllBtn.style.display = 'none';
-      if (hideBtn) hideBtn.style.display = '';
-    });
-    hideBtn?.addEventListener('click', () => {
-      grid.classList.add('collapsed');
-      hideBtn.style.display = 'none';
-      showAllBtn.style.display = '';
-      grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-  })();
-
   /* ---------- табы (год/месяц, разделы) ---------- */
   document.querySelectorAll('.tabs').forEach(tabs => {
     const buttons = tabs.querySelectorAll('.tab-btn');
