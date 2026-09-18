@@ -1,6 +1,2 @@
 User-agent: *
-Allow: /
-Disallow: /buying-variants-round2_1.html
-Disallow: /buying-variants-round2.html
-Disallow: /buying-variants.html
-Disallow: /buying-close-match.html
+Disallow: /
