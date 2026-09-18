@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Способы покупки — ещё 3 варианта</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1C1B; --paper:#FFFFFF; --paper-2:#F5F5F4;
+    --brick:#E30413; --brick-dark:#B80310; --slate:#4A4A49; --line:#E4E4E3;
+    --peach:#FBE9E6;
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper-2); color:var(--ink); font-family:'Golos Text',sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Golos Text',sans-serif; font-weight:800; margin:0; letter-spacing:-0.01em;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  a{color:inherit; text-decoration:none;}
+
+  .jumpbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); padding:14px 0;}
+  .jumpbar .wrap{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .jumpbar b{font-size:14px; color:var(--slate); margin-right:6px;}
+  .jumpbar a{font-size:14.5px; font-weight:600; padding:8px 16px; border-radius:100px; border:1px solid var(--line); background:#fff; transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .jumpbar a:hover{background:var(--brick); border-color:var(--brick); color:#fff;}
+
+  .intro{padding:40px 0 4px;}
+  .intro .tag{display:inline-block; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--brick); margin-bottom:8px;}
+  .intro p{color:var(--slate); font-size:15px; max-width:700px; line-height:1.55; margin-top:8px;}
+
+  .variant-section{padding:52px 0 70px; scroll-margin-top:70px;}
+  .variant-section:nth-of-type(odd){background:#fff;}
+  .variant-head{margin-bottom:6px;}
+  .variant-head .tag{display:inline-block; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--brick); margin-bottom:8px;}
+  .variant-head h2{font-size:24px;}
+  .variant-head p{color:var(--slate); font-size:14.5px; margin-top:8px; max-width:660px; line-height:1.55;}
+  .demo-kicker{font-size:14px; text-transform:uppercase; letter-spacing:0.1em; color:var(--brick); font-weight:700; margin:24px 0 8px;}
+  .demo-h2{font-size:30px; margin-bottom:24px;}
+
+  .grid{display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr 1fr; gap:22px; align-items:stretch;}
+  .cell-l1{grid-column:1; grid-row:1;}
+  .cell-l2{grid-column:1; grid-row:2;}
+  .cell-l3{grid-column:1; grid-row:3;}
+  .cell-r-tall{grid-column:2; grid-row:1 / span 2;}
+  .cell-r-small{grid-column:2; grid-row:3;}
+
+  .card{
+    position:relative; border-radius:24px; overflow:hidden;
+    display:flex; align-items:stretch; min-height:172px;
+  }
+  .cell-r-tall .card{min-height:100%;}
+  .card.tone-grey{background:#F0F0EF;}
+  .card.tone-peach{background:var(--peach);}
+  .card.tone-white{background:#fff; border:1px solid var(--line);}
+  .card.tone-dark{background:#141414;}
+
+  .card-text{position:relative; z-index:2; flex:1; padding:26px 10px 26px 28px; display:flex; flex-direction:column; min-width:0;}
+  .icon-badge{
+    width:44px; height:44px; border-radius:50%; background:#fff; color:var(--brick);
+    display:flex; align-items:center; justify-content:center; margin-bottom:auto;
+    box-shadow:0 3px 10px rgba(28,28,27,0.10); flex-shrink:0;
+  }
+  .card.tone-dark .icon-badge{background:rgba(255,255,255,0.14); color:#fff;}
+  .card-text h4{font-size:20px; margin:16px 0 6px;}
+  .card.tone-dark .card-text h4{color:#fff;}
+  .cell-r-tall .card-text h4{font-size:23px;}
+  .card-text p{font-size:14px; line-height:1.45; color:var(--slate); margin:0 0 16px; max-width:200px;}
+  .card.tone-dark .card-text p{color:rgba(255,255,255,0.62);}
+  .cell-r-tall .card-text p{max-width:230px;}
+  .arrow-cta{
+    width:42px; height:42px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
+    border:none; background:var(--brick); color:#fff; flex-shrink:0; margin-top:auto;
+    transition:transform .18s ease, background .18s ease;
+  }
+  a.card:hover .arrow-cta{transform:translateX(3px); background:var(--brick-dark);}
+
+  .card-art{position:relative; width:42%; flex-shrink:0; overflow:visible;}
+  .card-art svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible;}
+
+  @media (max-width:760px){
+    .grid{grid-template-columns:1fr; grid-template-rows:auto;}
+    .cell-l1,.cell-l2,.cell-l3,.cell-r-tall,.cell-r-small{grid-column:1; grid-row:auto;}
+    .card{min-height:150px;}
+    .card-art{width:36%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="jumpbar">
+  <div class="wrap">
+    <b>Быстрый переход:</b>
+    <a href="#va">A — Дуотон (слой-тень)</a>
+    <a href="#vb">B — Контурные иконки</a>
+    <a href="#vc">C — Чёрно-белые, красный только акцентом</a>
+  </div>
+</div>
+
+<section class="intro">
+  <div class="wrap">
+    <span class="tag">Способы покупки — ещё 3 варианта той же композиции</span>
+    <h1 style="font-size:24px;">Сетка и размер иконок те же (утверждённые), меняется только стиль самой графики.</h1>
+    <p>Везде — свои классические, однозначно читаемые иконки (процент, сердце, щит, ₽, календарь), плоский 2D без градиентов — только приём отрисовки отличается.</p>
+  </div>
+</section>
+
+<!-- ================= ВАРИАНТ A — ДУОТОН ================= -->
+<section class="variant-section" id="va">
+  <div class="wrap">
+    <div class="variant-head">
+      <span class="tag">Вариант A</span>
+      <h2>Дуотон — сдвоенный силуэт для лёгкой глубины</h2>
+      <p>Каждая иконка — два одинаковых силуэта: основной кирпично-красный сверху и светло-розовый повтор со сдвигом позади. Даёт объём без градиентов и без риска стать «неоднозначной» картинкой.</p>
+    </div>
+    <div class="demo-kicker">Как купить</div>
+    <div class="demo-h2">Способы покупки</div>
+    <div class="grid">
+
+      <a class="card tone-grey cell-l1" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19 5L5 19M9 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm11 11a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h4>Ипотека</h4>
+          <p>Более 15 банков-партнёров, одобрение за 1&nbsp;день</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+            <text x="122" y="142" font-size="118" font-weight="900" fill="#F4B8AF" font-family="Golos Text, sans-serif" text-anchor="middle" transform="rotate(-8 122 112)">%</text>
+            <text x="108" y="130" font-size="118" font-weight="900" fill="#E30413" font-family="Golos Text, sans-serif" text-anchor="middle" transform="rotate(-8 108 100)">%</text>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card tone-peach cell-l2" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2 0 3.5 1.2 4 2.5C10.5 5.2 12 4 14 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <h4>Материнский капитал</h4>
+          <p>Как первоначальный взнос без доплат</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+            <path transform="translate(72,32) scale(5.4)" d="M12,21.35l-1.45-1.32C5.4,15.36,2,12.28,2,8.5 C2,5.42,4.42,3,7.5,3c1.74,0,3.41,0.81,4.5,2.09C13.09,3.81,14.76,3,16.5,3 C19.58,3,22,5.42,22,8.5c0,3.78-3.4,6.86-8.55,11.54L12,21.35z" fill="#F4B8AF"/>
+            <path transform="translate(60,24) scale(5.4)" d="M12,21.35l-1.45-1.32C5.4,15.36,2,12.28,2,8.5 C2,5.42,4.42,3,7.5,3c1.74,0,3.41,0.81,4.5,2.09C13.09,3.81,14.76,3,16.5,3 C19.58,3,22,5.42,22,8.5c0,3.78-3.4,6.86-8.55,11.54L12,21.35z" fill="#E30413"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card tone-grey cell-l3" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Военная ипотека</h4>
+          <p>Оформим заявку за 1&nbsp;день</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+            <path d="M124 48 80 63v38c0 32 22 51 44 63 22-12 44-31 44-63V63l-44-15Z" fill="#D8D8D6"/>
+            <path d="M112 40 68 55v38c0 32 22 51 44 63 22-12 44-31 44-63V55l-44-15Z" fill="#1C1C1B"/>
+            <path d="M92 100l16 16 30-30" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card tone-dark cell-r-tall" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 6h5.5a3.5 3.5 0 1 1 0 7H8m0-7v11m0-11H6m2 7h5m-5 4h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Наличные</h4>
+          <p>Дополнительная скидка при 100% оплате. Быстрое оформление сделки без банка и лишних документов — вносите полную стоимость и въезжайте раньше.</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 240 300" preserveAspectRatio="xMidYMid meet">
+            <text x="160" y="212" font-size="196" font-weight="900" fill="#5A1315" font-family="Golos Text, sans-serif" text-anchor="middle">₽</text>
+            <text x="148" y="198" font-size="196" font-weight="900" fill="#F5F1EA" font-family="Golos Text, sans-serif" text-anchor="middle">₽</text>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card tone-peach cell-r-small" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h4>Рассрочка</h4>
+          <p>Равными платежами до сдачи дома</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+            <rect x="130" y="46" width="112" height="118" rx="16" fill="#F4B8AF"/>
+            <rect x="118" y="34" width="112" height="118" rx="16" fill="#fff" stroke="#EFCFC8" stroke-width="2"/>
+            <rect x="118" y="34" width="112" height="34" rx="16" fill="#E30413"/>
+            <rect x="118" y="58" width="112" height="10" fill="#E30413"/>
+            <rect x="136" y="86" width="20" height="20" rx="4" fill="#F4CFC7"/>
+            <rect x="164" y="86" width="20" height="20" rx="4" fill="#E30413"/>
+            <rect x="192" y="86" width="20" height="20" rx="4" fill="#F4CFC7"/>
+            <rect x="136" y="114" width="20" height="20" rx="4" fill="#F4CFC7"/>
+            <rect x="164" y="114" width="20" height="20" rx="4" fill="#F4CFC7"/>
+          </svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= ВАРИАНТ B — КОНТУРНЫЕ ================= -->
+<section class="variant-section" id="vb">
+  <div class="wrap">
+    <div class="variant-head">
+      <span class="tag">Вариант B</span>
+      <h2>Контурные иконки — линия вместо заливки</h2>
+      <p>Те же крупные классические силуэты, но без заливки — только контур. Смотрится легче и сдержаннее, ближе к премиальной недвижимости, не спорит с текстом за внимание.</p>
+    </div>
+    <div class="demo-kicker">Как купить</div>
+    <div class="demo-h2">Способы покупки</div>
+    <div class="grid">
+
+      <a class="card tone-grey cell-l1" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19 5L5 19M9 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm11 11a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h4>Ипотека</h4>
+          <p>Более 15 банков-партнёров, одобрение за 1&nbsp;день</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+            <circle cx="140" cy="86" r="6" fill="none" stroke="#E30413" stroke-width="4"/>
+            <circle cx="190" cy="136" r="6" fill="none" stroke="#E30413" stroke-width="4"/>
+            <line x1="132" y1="144" x2="198" y2="78" stroke="#E30413" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card tone-peach cell-l2" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2 0 3.5 1.2 4 2.5C10.5 5.2 12 4 14 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <h4>Материнский капитал</h4>
+          <p>Как первоначальный взнос без доплат</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+            <path transform="translate(60,24) scale(5.4)" d="M12,21.35l-1.45-1.32C5.4,15.36,2,12.28,2,8.5 C2,5.42,4.42,3,7.5,3c1.74,0,3.41,0.81,4.5,2.09C13.09,3.81,14.76,3,16.5,3 C19.58,3,22,5.42,22,8.5c0,3.78-3.4,6.86-8.55,11.54L12,21.35z" fill="none" stroke="#E30413" stroke-width="1.3" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card tone-grey cell-l3" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Военная ипотека</h4>
+          <p>Оформим заявку за 1&nbsp;день</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+            <path d="M112 40 68 55v38c0 32 22 51 44 63 22-12 44-31 44-63V55l-44-15Z" fill="none" stroke="#1C1C1B" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M92 100l16 16 30-30" stroke="#E30413" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card tone-dark cell-r-tall" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 6h5.5a3.5 3.5 0 1 1 0 7H8m0-7v11m0-11H6m2 7h5m-5 4h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Наличные</h4>
+          <p>Дополнительная скидка при 100% оплате. Быстрое оформление сделки без банка и лишних документов — вносите полную стоимость и въезжайте раньше.</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 240 300" preserveAspectRatio="xMidYMid meet">
+            <text x="148" y="198" font-size="196" font-weight="900" fill="none" stroke="#F5F1EA" stroke-width="2.5" font-family="Golos Text, sans-serif" text-anchor="middle">₽</text>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card tone-peach cell-r-small" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h4>Рассрочка</h4>
+          <p>Равными платежами до сдачи дома</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+            <rect x="118" y="34" width="112" height="118" rx="16" fill="none" stroke="#E30413" stroke-width="4"/>
+            <line x1="118" y1="68" x2="230" y2="68" stroke="#E30413" stroke-width="4"/>
+            <line x1="146" y1="34" x2="146" y2="52" stroke="#E30413" stroke-width="4" stroke-linecap="round"/>
+            <line x1="202" y1="34" x2="202" y2="52" stroke="#E30413" stroke-width="4" stroke-linecap="round"/>
+            <rect x="170" y="90" width="18" height="18" rx="3" fill="#E30413"/>
+          </svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= ВАРИАНТ C — ЧЁРНО-БЕЛЫЕ + АКЦЕНТ ================= -->
+<section class="variant-section" id="vc">
+  <div class="wrap">
+    <div class="variant-head">
+      <span class="tag">Вариант C</span>
+      <h2>Иконки в чёрном, красный — только точечный акцент</h2>
+      <p>Сама иконка — тёмно-графитовая, спокойная. Красный остаётся лишь в бейдже, кнопке-стрелке и небольшом пятне за иконкой — сдержаннее и «взрослее», фирменный цвет не перегружает карточку.</p>
+    </div>
+    <div class="demo-kicker">Как купить</div>
+    <div class="demo-h2">Способы покупки</div>
+    <div class="grid">
+
+      <a class="card tone-white cell-l1" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19 5L5 19M9 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm11 11a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h4>Ипотека</h4>
+          <p>Более 15 банков-партнёров, одобрение за 1&nbsp;день</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+            <circle cx="140" cy="120" r="60" fill="#E30413" opacity="0.10"/>
+            <text x="108" y="132" font-size="118" font-weight="900" fill="#1C1C1B" font-family="Golos Text, sans-serif" text-anchor="middle" transform="rotate(-8 108 100)">%</text>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card tone-grey cell-l2" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2 0 3.5 1.2 4 2.5C10.5 5.2 12 4 14 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <h4>Материнский капитал</h4>
+          <p>Как первоначальный взнос без доплат</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+            <circle cx="130" cy="108" r="60" fill="#E30413" opacity="0.10"/>
+            <path transform="translate(64,26) scale(5.4)" d="M12,21.35l-1.45-1.32C5.4,15.36,2,12.28,2,8.5 C2,5.42,4.42,3,7.5,3c1.74,0,3.41,0.81,4.5,2.09C13.09,3.81,14.76,3,16.5,3 C19.58,3,22,5.42,22,8.5c0,3.78-3.4,6.86-8.55,11.54L12,21.35z" fill="#1C1C1B"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card tone-white cell-l3" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Военная ипотека</h4>
+          <p>Оформим заявку за 1&nbsp;день</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+            <circle cx="132" cy="98" r="60" fill="#E30413" opacity="0.10"/>
+            <path d="M112 40 68 55v38c0 32 22 51 44 63 22-12 44-31 44-63V55l-44-15Z" fill="#1C1C1B"/>
+            <path d="M92 100l16 16 30-30" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card tone-dark cell-r-tall" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 6h5.5a3.5 3.5 0 1 1 0 7H8m0-7v11m0-11H6m2 7h5m-5 4h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Наличные</h4>
+          <p>Дополнительная скидка при 100% оплате. Быстрое оформление сделки без банка и лишних документов — вносите полную стоимость и въезжайте раньше.</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 240 300" preserveAspectRatio="xMidYMid meet">
+            <circle cx="148" cy="148" r="96" fill="#E30413" opacity="0.22"/>
+            <text x="148" y="198" font-size="196" font-weight="900" fill="#F5F1EA" font-family="Golos Text, sans-serif" text-anchor="middle">₽</text>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card tone-grey cell-r-small" href="#">
+        <div class="card-text">
+          <div class="icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h4>Рассрочка</h4>
+          <p>Равными платежами до сдачи дома</p>
+          <span class="arrow-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="card-art">
+          <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+            <rect x="118" y="34" width="112" height="118" rx="16" fill="#fff" stroke="#E2E2E0" stroke-width="2"/>
+            <rect x="118" y="34" width="112" height="34" rx="16" fill="#1C1C1B"/>
+            <rect x="118" y="58" width="112" height="10" fill="#1C1C1B"/>
+            <rect x="136" y="86" width="20" height="20" rx="4" fill="#EDEDEC"/>
+            <rect x="164" y="86" width="20" height="20" rx="4" fill="#E30413"/>
+            <rect x="192" y="86" width="20" height="20" rx="4" fill="#EDEDEC"/>
+            <rect x="136" y="114" width="20" height="20" rx="4" fill="#EDEDEC"/>
+            <rect x="164" y="114" width="20" height="20" rx="4" fill="#EDEDEC"/>
+          </svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div style="padding:36px 0 60px; text-align:center; color:var(--slate); font-size:14px;">Скажи букву (можно с правками) — соберу как реальный блок на сайте.</div>
+
+</body>
+</html>
