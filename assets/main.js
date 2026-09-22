@@ -239,6 +239,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- переход «ЖК → Квартиры» с сохранением выбранного ЖК и комнатности ---------- */
+  document.querySelectorAll('.search-submit[data-object]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.search-card');
+      // на главной комнатность выбирается через #roomTabs (.toggle-group), а на
+      // страницах ЖК/квартир — через .room-toggle: оба варианта ведут себя одинаково
+      const roomGroup = card ? card.querySelector('.room-toggle, .toggle-group') : null;
+      const activeRoom = roomGroup ? roomGroup.querySelector('button.active') : null;
+      const rooms = activeRoom ? activeRoom.dataset.rooms : null;
+      let url = 'flats.html?object=' + encodeURIComponent(btn.dataset.object);
+      if (rooms && rooms !== 'all') {
+        url += '&rooms=' + encodeURIComponent(rooms);
+        // переносим на страницу «Квартиры» ту же площадь и цену, что были
+        // показаны для этой комнатности на странице ЖК
+        if (activeRoom.dataset.area) url += '&area=' + encodeURIComponent(activeRoom.dataset.area);
+        if (activeRoom.dataset.min) url += '&pmin=' + encodeURIComponent(activeRoom.dataset.min);
+        if (activeRoom.dataset.max) url += '&pmax=' + encodeURIComponent(activeRoom.dataset.max);
+      }
+      window.location.href = url;
+    });
+  });
+
   /* ---------- лайтбокс для фото-мозаики (блок «О компании») и хода строительства (object.html) ---------- */
   document.querySelectorAll('.photo-mosaic, .timeline-photos').forEach(mosaic => {
     const imgs = Array.from(mosaic.querySelectorAll('img'));
@@ -247,6 +269,12 @@ document.addEventListener('DOMContentLoaded', () => {
       img.style.cursor = 'zoom-in';
       img.addEventListener('click', () => openLightbox(imgs, i));
     });
+  });
+
+  /* ---------- лайтбокс для картинок планировки/этажа в карточке квартиры ---------- */
+  document.querySelectorAll('.lot-plan-tabs .tab-panel img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => openLightbox([img], 0));
   });
   let lightboxEl = null;
   function openLightbox(imgs, index) {
@@ -523,14 +551,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.num-range-input').forEach(inp => {
     const min = parseInt(inp.dataset.min || '10', 10);
     const max = parseInt(inp.dataset.max || '300', 10);
+    // ограничение по числу цифр берём из data-max, а не жёстко из 3 знаков —
+    // у жилых квартир потолок 99 м² (2 цифры), у коммерции потолок 543 м² (3 цифры)
+    const maxDigits = String(max).length;
 
     function sanitize(raw) {
       let v = raw.replace(/[^0-9\-–—]/g, '');
       v = v.replace(/[-–—]+/g, '–'); // несколько тире подряд — в одно
       const dashIndex = v.indexOf('–');
-      if (dashIndex === -1) return v.slice(0, 3); // максимум 3 цифры (до 999 м²)
-      const a = v.slice(0, dashIndex).slice(0, 3);
-      const b = v.slice(dashIndex + 1).replace(/–/g, '').slice(0, 3);
+      if (dashIndex === -1) return v.slice(0, maxDigits);
+      const a = v.slice(0, dashIndex).slice(0, maxDigits);
+      const b = v.slice(dashIndex + 1).replace(/–/g, '').slice(0, maxDigits);
       return a + '–' + b;
     }
 
@@ -935,9 +966,20 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', repositionActivePopup);
   }
 
-  /* ---------- «Скачать КП»: печатная версия страницы лота ---------- */
+  /* ---------- «Скачать КП»: сразу скачивает готовый PDF-файл лота ---------- */
   document.querySelectorAll('[data-print-kp]').forEach(btn => {
     btn.addEventListener('click', () => {
+      const pdfUrl = btn.getAttribute('data-print-kp');
+      if (pdfUrl) {
+        const a = document.createElement('a');
+        a.href = pdfUrl;
+        a.download = '';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        return;
+      }
+      // запасной вариант для страниц без готового PDF — печатная версия
       const dateEl = document.querySelector('.print-letterhead .print-date');
       if (dateEl) {
         dateEl.textContent = new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });

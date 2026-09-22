@@ -23,10 +23,14 @@
   var areaInput = document.getElementById('flatsAreaInput');
   var showMoreBtn = document.querySelector('.show-more-wrap .btn-show-more');
 
+  // список литеров строим по факту наличия карточек в каталоге ниже (а не по
+  // отдельным данным генплана — они велись как самостоятельный, не всегда
+  // синхронизированный набор, из-за чего в фильтре встречались литеры вроде 22,
+  // для которых в каталоге не было ни одной квартиры и фильтр всегда показывал
+  // «квартир не найдено»)
   var OBJECT_LITERS = {
     all: [],
-    neo: Array.from({ length: 22 }, function (_, i) { return String(i + 1); }),
-    anapa: ['1']
+    neo: ['1', '2', '3', '4', '5', '6', '7', '8', '10', '11', '12', '17', '18', '20']
   };
 
   var PAGE_SIZE = 12;
@@ -195,10 +199,17 @@
     });
   }
 
-  /* ---------- инициализация из query-параметров (?liter=N&object=neo) ---------- */
+  /* ---------- инициализация из query-параметров (?liter=N&object=neo&rooms=3+) ---------- */
   var params = new URLSearchParams(window.location.search);
   var literParam = params.get('liter');
-  var objectParam = params.get('object') || (literParam ? 'neo' : 'all');
+  var roomsParam = params.get('rooms');
+  var areaParam = params.get('area');
+  var pminParam = params.get('pmin');
+  var pmaxParam = params.get('pmax');
+  // по умолчанию (без параметров в ссылке) сразу выбираем «НЕО-квартал» — это
+  // единственный активный объект в каталоге (Анапа временно скрыта, см. round12),
+  // и тогда выпадашка «Литер» сразу приходит уже наполненной вариантами
+  var objectParam = params.get('object') || 'neo';
 
   state.object = OBJECT_LITERS.hasOwnProperty(objectParam) ? objectParam : 'all';
   selectOption(objectList, state.object);
@@ -208,5 +219,33 @@
     if (objOpt) objLabel.textContent = objOpt.textContent;
   }
   buildLiterOptions(state.object, literParam || 'any');
+
+  // пришли с кнопки «Показать →» на странице ЖК с уже выбранной комнатностью —
+  // подсвечиваем нужную кнопку в тумблере «Сколько комнат» и учитываем её в фильтре
+  if (roomsParam) {
+    var roomBtn = document.querySelector('#flatsRoomToggle button[data-rooms="' + roomsParam + '"]');
+    if (roomBtn) {
+      roomButtons.forEach(function (b) { b.classList.remove('active'); });
+      roomBtn.classList.add('active');
+      state.rooms = roomsParam;
+    }
+  }
+
+  // пришли с кнопки «Показать →» на странице ЖК — переносим сюда те же площадь и
+  // цену, что были показаны там для выбранной комнатности, а не общий диапазон по всем лотам
+  if (areaParam) {
+    if (areaInput) areaInput.value = areaParam;
+    var areaRange = parseAreaRange(areaParam);
+    state.areaMin = areaRange.min;
+    state.areaMax = areaRange.max;
+  }
+  if (pminParam && pmaxParam) {
+    var priceField = document.getElementById('flatsPriceField');
+    if (priceField) {
+      var fmtNum = function (n) { return Number(n).toLocaleString('ru-RU').replace(/,/g, ' '); };
+      priceField.value = fmtNum(pminParam) + ' – ' + fmtNum(pmaxParam);
+    }
+  }
+
   applyFilters();
 })();

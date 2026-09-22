@@ -15,6 +15,10 @@
     --radius-md: 14px;
     --maxw: 1240px;
   }
+  /* «Мириады Анапы» временно скрыт из каталога и фильтров — проект не удалён,
+     страницы (object-anapa.html, commercial-anapa.html) остаются доступны по
+     прямой ссылке, но нигде не анонсируются */
+  .flat-card[data-object="anapa"]{display:none !important;}
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth; overflow-x:hidden;}
   body{
@@ -255,6 +259,21 @@
   .search-section{padding:10px 0 50px;}
   .domclick-calc-wrap{border:1px solid var(--line); border-radius:0; overflow:hidden; padding:0; background:var(--paper-2);}
   .domclick-calc-wrap iframe{display:block; border:none; width:100%;}
+  /* калькулятор сужен примерно на 30% по ширине, освободившееся место справа —
+     под короткую подсказку «как это работает» */
+  .mortgage-calc-row{display:flex; align-items:flex-start; gap:36px;}
+  .mortgage-calc-col{flex:0 0 68%; max-width:68%;}
+  .mortgage-steps{flex:1; display:flex; flex-direction:column; gap:22px; padding-top:8px;}
+  .mortgage-step{display:flex; align-items:center; gap:14px; font-family:'Golos Text',sans-serif; font-weight:700; font-size:17px; line-height:1.35; color:var(--ink);}
+  .mortgage-step-num{
+    flex-shrink:0; width:38px; height:38px; border-radius:50%; background:var(--brick); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:800;
+  }
+  @media (max-width:900px){
+    .mortgage-calc-row{flex-direction:column;}
+    .mortgage-calc-col{flex:1 1 auto; max-width:100%;}
+    .mortgage-steps{flex-direction:row; flex-wrap:wrap; padding-top:0;}
+  }
   .search-card{
     background:var(--ink); color:var(--paper);
     border-radius:28px; padding:38px; position:relative;
@@ -632,6 +651,11 @@
     .header-actions .btn-primary{font-size:14px; padding:11px 16px; white-space:nowrap;}
     .filters-grid, .filters-grid-4{grid-template-columns:1fr 1fr !important;}
     .search-submit{grid-column:span 2; min-height:46px; padding:13px 26px;}
+    /* на flats.html третий фильтр (Сколько комнат) при переносе в 2 колонки
+       оставался один в своей ячейке, а место рядом с ним пустовало — из-за
+       этого и переноса кнопок в 2 строки ряд выглядел перекошенным. Растягиваем
+       его на всю ширину, тогда 5 кнопок умещаются в одну строку. */
+    #flatsFiltersGrid .filter:has(#flatsRoomToggle){grid-column:1 / -1;}
     .objects-grid{grid-template-columns:1fr;}
     .purchase-grid-v2{grid-template-columns:repeat(2,1fr);}
     .news-card{flex:0 0 240px;}
@@ -817,6 +841,7 @@ button[type="submit"][data-loading]{opacity:0.7; cursor:default;}
 .tile-card h4{font-size:17px; margin-bottom:6px;}
 .tile-card p{font-size:15px; color:var(--slate); margin:0; line-height:1.55;}
 .tile-card.empty{display:none;}
+.tile-card .bank-logo-img{height:32px; width:auto; display:block; margin-bottom:14px;}
 
 /* сетка карточек (новости, галерея, офисы) */
 .card-grid-2{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
@@ -934,8 +959,9 @@ button[type="submit"][data-loading]{opacity:0.7; cursor:default;}
 }
 .genplan-img{width:100%; height:auto; display:block; user-select:none; -webkit-user-drag:none;}
 .genplan-overlay{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1;}
-.gp-poly{fill:var(--brick); opacity:0; transition:opacity .35s ease;}
+.gp-poly{fill:var(--brick); opacity:0; transition:opacity .35s ease, fill .2s ease;}
 .gp-poly.active{opacity:0.45;}
+.gp-poly-available.active{fill:#1E9E52;}
 
 .genplan-pins{position:absolute; inset:0; z-index:2;}
 .gp-pin{
@@ -956,6 +982,10 @@ button[type="submit"][data-loading]{opacity:0.7; cursor:default;}
   transition:background .2s ease, color .2s ease, transform .2s ease; transform:translateY(2px);
 }
 .gp-pin:hover .gp-pin-label, .gp-pin.active .gp-pin-label{background:var(--brick); color:#fff;}
+/* литеры со свободными квартирами подсвечиваются зелёным при наведении — легче
+   отличить их от распроданных (те остаются с обычным красным hover) */
+.gp-pin-available:hover .gp-dot, .gp-pin-available.active .gp-dot{background:#1E9E52; box-shadow:0 0 0 5px rgba(30,158,82,0.28);}
+.gp-pin-available:hover .gp-pin-label, .gp-pin-available.active .gp-pin-label{background:#1E9E52; color:#fff;}
 
 /* .gp-card теперь используется только как источник данных (текста) для JS —
    сама карточка рисуется в единой .gp-popup, вынесенной в <body>, поэтому
@@ -1283,6 +1313,7 @@ body.transparent-header header.scrolled .burger span{background:var(--ink);}
   padding:28px 16px; display:flex; align-items:center; justify-content:center;
   font-family:'Golos Text',sans-serif; font-weight:700; font-size:18px; color:var(--ink); text-align:center;
 }
+.bank-logo img{height:34px; width:auto; max-width:100%;}
 @media (max-width: 700px){ .bank-logos{grid-template-columns:repeat(2,1fr);} }
 
 /* магнитные кнопки */
@@ -1336,6 +1367,8 @@ body.transparent-header header.scrolled .burger span{background:var(--ink);}
    ========================================================= */
 .print-letterhead{display:none;}
 
+.print-plan-label{display:none;}
+
 @media print{
   header, .subnav, .cookie-banner, .modal-overlay,
   footer, .lightbox-overlay,
@@ -1345,6 +1378,11 @@ body.transparent-header header.scrolled .burger span{background:var(--ink);}
   .lot-price-box .btn{
     display:none !important;
   }
+  /* в КП должны попадать все картинки таба (план + планировка на этаже), а не
+     только та, что была активна на экране в момент скачивания */
+  .tabs .tab-panel{display:block !important; break-inside:avoid; margin-bottom:18px;}
+  .tabs .tab-panel:last-child{margin-bottom:0;}
+  .print-plan-label{display:block; font-weight:700; font-size:14px; color:var(--ink); margin:0 0 6px;}
   .print-letterhead{
     display:flex; align-items:center; justify-content:space-between;
     padding:0 0 18px; margin-bottom:22px; border-bottom:2px solid var(--ink);
