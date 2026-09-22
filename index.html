@@ -21,7 +21,6 @@
         <a href="objects.html">Объекты</a>
         <div class="dropdown">
           <a href="object.html"><span><span class="city">Краснодар</span>НЕО-квартал «Красная площадь»</span><span class="price-tag">от 4,5 млн ₽</span></a>
-          <a href="object-anapa.html"><span><span class="city">Анапа</span>«Мириады Анапы»</span><span class="price-tag">Старт продаж</span></a>
           <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Новороссийск</span>«Красная площадь»</span><span class="sold-tag">Продано</span></a>
           <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Анапа</span>«Красная площадь»</span><span class="sold-tag">Продано</span></a>
         </div>
@@ -31,7 +30,6 @@
         <a href="commercial-objects.html">Торговые помещения</a>
         <div class="dropdown">
           <a href="commercial.html"><span><span class="city">Краснодар</span>Торговые помещения НЕО-квартал</span><span class="price-tag">от 3,2 млн ₽</span></a>
-          <a href="commercial-anapa.html"><span><span class="city">Анапа</span>Торговые помещения «Мириады Анапы»</span><span class="price-tag">от 2,9 млн ₽</span></a>
         </div>
       </div>
       <div class="navitem"><a href="mortgage.html">Ипотека</a></div>
@@ -49,7 +47,6 @@
     <a href="buying.html">Способы покупки</a>
     <a href="about.html">О компании</a>
     <a href="partners.html">Партнёрам</a>
-    <a href="keys.html">Выдача ключей</a>
     <a href="contacts.html">Контакты</a>
   </div>
 </header>
@@ -58,18 +55,8 @@
 <div class="hero-wrap">
 <section class="hero" id="hero">
   <div class="slide active">
-    <div class="render" style="position:absolute;inset:0;background:url('assets/img/object-anapa-miriady.jpg') center/cover;"></div>
-    <div class="slide-content">
-      <div class="eyebrow-row"><span class="pill">Скоро</span><span class="pill">Старт продаж</span></div>
-      <h1>«Мириады Анапы»</h1>
-      <p class="sub">Новый проект в Анапе — квартиры у моря с закрытым двором и собственной инфраструктурой.</p>
-      <div class="slide-cta"><a class="btn btn-primary" href="object-anapa.html">Узнать первым</a></div>
-    </div>
-  </div>
-  <div class="slide">
     <div class="render" style="position:absolute;inset:0;background:url('assets/img/object-krasnodar.jpg') center/cover;"></div>
     <div class="slide-content">
-      <div class="eyebrow-row"><span class="pill">Старт продаж</span><span class="pill">2‑я очередь</span></div>
       <h1>НЕО‑квартал «Красная площадь»</h1>
       <p class="sub">Город в городе на 39 домов в Краснодаре — школы, детские сады и парк в шаговой доступности от дома.</p>
       <div class="slide-cta"><a class="btn btn-primary" href="object.html">Перейти к объекту</a></div>
@@ -84,15 +71,8 @@
       <div class="slide-cta"><a class="btn btn-primary" href="mortgage.html">Рассчитать ипотеку</a></div>
     </div>
   </div>
-  <div class="slide">
-    <div class="render" style="position:absolute;inset:0;background:url('assets/img/entrance.jpg') center/cover;"></div>
-    <div class="slide-content">
-      <div class="eyebrow-row"><span class="pill">Выдача ключей</span></div>
-      <h1>Выдаём ключи в НЕО‑квартале</h1>
-      <p class="sub">Запишитесь на удобную дату и время получения ключей от новой квартиры.</p>
-      <div class="slide-cta"><a class="btn btn-primary" href="keys.html">Записаться</a></div>
-    </div>
-  </div>
+  <!-- слайд «Выдача ключей» временно скрыт (см. round13) — страница keys.html
+       остаётся доступна по прямой ссылке, просто нигде на сайте не анонсируется -->
   <div class="hero-scrim"></div>
   <button class="hero-nav prev" onclick="moveSlide(-1)" aria-label="Назад"><svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M8 1.5 1.5 7.5 8 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <button class="hero-nav next" onclick="moveSlide(1)" aria-label="Вперёд"><svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1 1.5 7.5 7.5 1 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -145,26 +125,17 @@
         </div>
       </div>
       <div class="room-tabs toggle-group" id="roomTabs">
-        <button class="active" data-min="3000000" data-max="12000000" data-area="24–95">Все квартиры</button>
-        <button data-min="3000000" data-max="5000000" data-area="24–34">Студии</button>
-        <button data-min="5000000" data-max="7000000" data-area="35–45">1‑комнатные</button>
-        <button data-min="7000000" data-max="9000000" data-area="50–65">2‑комнатные</button>
-        <button data-min="9000000" data-max="12000000" data-area="70–95">3‑комнатные и больше</button>
+        <button class="active" data-rooms="all" data-min="3000000" data-max="12000000" data-area="24–95">Все квартиры</button>
+        <button data-rooms="studio" data-min="3000000" data-max="5000000" data-area="24–34">Студии</button>
+        <button data-rooms="1" data-min="5000000" data-max="7000000" data-area="35–45">1‑комнатные</button>
+        <button data-rooms="2" data-min="7000000" data-max="9000000" data-area="50–65">2‑комнатные</button>
+        <button data-rooms="3+" data-min="9000000" data-max="12000000" data-area="70–95">3‑комнатные и больше</button>
       </div>
       <div class="filters-grid filters-grid-4">
-        <div class="filter">
+        <div class="filter filter-locked">
           <label>Город</label>
-          <div class="custom-select">
-            <button type="button" class="custom-select-trigger">
-              <span class="custom-select-label">Все города</span>
-              <span class="chev">⌄</span>
-            </button>
-            <div class="custom-select-list">
-              <div class="custom-select-option selected">Все города</div>
-              <div class="custom-select-option">Краснодар</div>
-              <div class="custom-select-option">Новороссийск</div>
-              <div class="custom-select-option">Анапа</div>
-            </div>
+          <div class="filter-value">
+            <input type="text" value="Краснодар" readonly tabindex="-1">
           </div>
         </div>
         <div class="filter filter-locked">
@@ -176,10 +147,10 @@
         <div class="filter">
           <label>Площадь, м²</label>
           <div class="filter-value">
-            <input type="text" inputmode="numeric" id="areaRangeField" class="num-range-input" value="24–95" data-min="10" data-max="300" maxlength="7">
+            <input type="text" inputmode="numeric" id="areaRangeField" class="num-range-input" value="24–95" data-min="10" data-max="99" maxlength="5">
           </div>
         </div>
-        <button class="search-submit">Найти →</button>
+        <button class="search-submit" data-object="neo">Найти →</button>
       </div>
     </div>
   </div>
@@ -205,27 +176,17 @@
           <div class="price-box">от<b>4,5 млн ₽</b></div>
         </div>
       </a>
-      <a class="object-card" href="object-anapa.html">
-        <div class="object-photo corner-ticks"><img class="obj-img" src="assets/img/object-anapa-miriady.jpg" alt="«Мириады Анапы»"><span class="badge">Старт продаж</span><span class="live-badge"><i class="dot"></i>Сегодня смотрели: 34</span></div>
+      <div class="object-card disabled">
+        <div class="object-photo sold corner-ticks"><img class="obj-img" src="assets/img/object-novorossiysk.jpg" alt="«Красная площадь», Новороссийск"><span class="badge sold-badge">Продано</span></div>
         <div class="object-body">
           <div>
-            <h3>«Мириады Анапы»</h3>
-            <div class="city">Анапа</div>
+            <h3>«Красная площадь»</h3>
+            <div class="city">Новороссийск</div>
           </div>
-          <div class="price-box">Старт продаж</div>
+          <div class="price-box">Продано</div>
         </div>
-      </a>
+      </div>
       <div class="hidden-objects objects-grid" id="hiddenObjects">
-        <div class="object-card disabled">
-          <div class="object-photo sold corner-ticks"><img class="obj-img" src="assets/img/object-novorossiysk.jpg" alt="«Красная площадь», Новороссийск"><span class="badge sold-badge">Продано</span></div>
-          <div class="object-body">
-            <div>
-              <h3>«Красная площадь»</h3>
-              <div class="city">Новороссийск</div>
-            </div>
-            <div class="price-box">Продано</div>
-          </div>
-        </div>
         <div class="object-card disabled">
           <div class="object-photo sold corner-ticks"><img class="obj-img" src="assets/img/object-anapa-krasnaya-ploshad.jpg" alt="«Красная площадь», Анапа"><span class="badge sold-badge">Продано</span></div>
           <div class="object-body">
@@ -391,7 +352,7 @@
     </div>
     <div class="about-right">
       <span class="kicker">Ромекс Девелопмент</span>
-      <p>Входит в состав инвестиционного холдинга «Ромекс».</p>
+      <p>Входит в состав инвестиционного холдинга «Ромекс»</p>
       <div class="about-stats">
         <div class="about-stat">
           <b class="count-up" data-count="28" data-format="plus">28+</b>
@@ -417,12 +378,11 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo"><img src="assets/img/logo-devel-white.svg" alt="Ромекс Девелопмент" style="height:40px; width:auto;"></div>
-        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России.</p>
+        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России</p>
       </div>
       <div>
         <h5>Проекты</h5>
         <a href="object.html">НЕО‑квартал, Краснодар</a>
-        <a href="object-anapa.html">«Мириады Анапы», Анапа</a>
         <a href="commercial-objects.html">Торговые помещения</a>
       </div>
       <div>
@@ -430,7 +390,6 @@
         <a href="flats.html">Квартиры</a>
         <a href="buying.html">Способы покупки</a>
         <a href="mortgage.html">Ипотека</a>
-        <a href="keys.html">Выдача ключей</a>
         <a href="contacts.html">Клиентский сервис</a>
       </div>
       <div>
@@ -451,11 +410,10 @@
       <div>© 1998–2026 Группа компаний Ромекс. Все права защищены</div>
       <div style="display:flex; gap:18px; align-items:center;">
         <a href="privacy.html" class="footer-link">Политика конфиденциальности</a>
-        <a href="#" class="footer-link">Дисклеймеры</a>
+        <a href="disclaimers.html" class="footer-link">Дисклеймеры</a>
         <div class="social-links">
           <a href="#" class="social-link">VK<span class="social-icon">VK</span></a>
           <a href="#" class="social-link">TG<span class="social-icon">TG</span></a>
-          <a href="#" class="social-link">WhatsApp<span class="social-icon">WA</span></a>
           <a href="#" class="social-link">MAX<span class="social-icon">MAX</span></a>
         </div>
       </div>
@@ -480,7 +438,7 @@
       <label class="consent"><input type="checkbox"><span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>
       <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
-    <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:15.5px;">Мы свяжемся с вами в ближайшее время.</p></div>
+    <div class="form-success"><div class="ic">✓</div><h3>Спасибо!</h3><p style="color:var(--slate); font-size:15.5px;">Заявка отправлена, мы с вами свяжемся.</p></div>
   </div>
 </div>
 

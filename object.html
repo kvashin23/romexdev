@@ -21,7 +21,6 @@
         <a href="objects.html">Объекты</a>
         <div class="dropdown">
           <a href="object.html"><span><span class="city">Краснодар</span>НЕО-квартал «Красная площадь»</span><span class="price-tag">от 4,5 млн ₽</span></a>
-          <a href="object-anapa.html"><span><span class="city">Анапа</span>«Мириады Анапы»</span><span class="price-tag">Старт продаж</span></a>
           <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Новороссийск</span>«Красная площадь»</span><span class="sold-tag">Продано</span></a>
           <a href="#" class="disabled-link" onclick="return false;"><span><span class="city">Анапа</span>«Красная площадь»</span><span class="sold-tag">Продано</span></a>
         </div>
@@ -31,7 +30,6 @@
         <a href="commercial-objects.html">Торговые помещения</a>
         <div class="dropdown">
           <a href="commercial.html"><span><span class="city">Краснодар</span>Торговые помещения НЕО-квартал</span><span class="price-tag">от 3,2 млн ₽</span></a>
-          <a href="commercial-anapa.html"><span><span class="city">Анапа</span>Торговые помещения «Мириады Анапы»</span><span class="price-tag">от 2,9 млн ₽</span></a>
         </div>
       </div>
       <div class="navitem"><a href="mortgage.html">Ипотека</a></div>
@@ -49,7 +47,6 @@
     <a href="buying.html">Способы покупки</a>
     <a href="about.html">О компании</a>
     <a href="partners.html">Партнёрам</a>
-    <a href="keys.html">Выдача ключей</a>
     <a href="contacts.html">Контакты</a>
   </div>
 </header>
@@ -62,7 +59,7 @@
       <a href="objects.html" style="color:rgba(243,238,230,0.7);">Объекты</a><span class="sep">/</span>
       <span class="current" style="color:#fff;">НЕО-квартал «Красная площадь»</span>
     </nav>
-    <div class="eyebrow-row"><span class="pill">Старт продаж</span><span class="pill">2-я очередь</span><span class="pill">Скидка 2 млн ₽</span></div>
+    <div class="eyebrow-row"><span class="pill">Скидка 2 млн ₽</span></div>
     <h1>НЕО-квартал «Красная площадь»</h1>
     <p class="sub">Город в городе на 39 домов в Краснодаре — школы, детские сады и парк в шаговой доступности от дома.</p>
     <div class="slide-cta">
@@ -86,22 +83,22 @@
         <div class="filter">
           <label>Сколько комнат</label>
           <div class="room-toggle" id="objRoomToggle">
-            <button data-min="3450000" data-max="10800000" data-area="24–95">Все</button>
-            <button class="active" data-min="3450000" data-max="4500000" data-area="24–34">Студия</button>
-            <button data-min="5900000" data-max="7500000" data-area="35–48">1к</button>
-            <button data-min="8200000" data-max="10000000" data-area="50–65">2к</button>
-            <button data-min="10800000" data-max="14500000" data-area="68–95">3к+</button>
+            <button data-rooms="all" data-min="3450000" data-max="10800000" data-area="24–95">Все</button>
+            <button class="active" data-rooms="studio" data-min="3450000" data-max="4500000" data-area="24–34">Студия</button>
+            <button data-rooms="1" data-min="5900000" data-max="7500000" data-area="35–48">1к</button>
+            <button data-rooms="2" data-min="8200000" data-max="10000000" data-area="50–65">2к</button>
+            <button data-rooms="3+" data-min="10800000" data-max="14500000" data-area="68–95">3к+</button>
           </div>
         </div>
         <div class="filter filter-compact">
           <label>Площадь, м²</label>
-          <div class="filter-value"><input type="text" inputmode="numeric" class="num-range-input" id="objAreaField" value="24–34" data-min="10" data-max="300" maxlength="7"></div>
+          <div class="filter-value"><input type="text" inputmode="numeric" class="num-range-input" id="objAreaField" value="24–34" data-min="10" data-max="99" maxlength="5"></div>
         </div>
         <div class="filter filter-compact filter-locked">
           <label>Стоимость, ₽</label>
           <div class="filter-value"><input type="text" id="objPriceField" value="3 450 000 – 4 500 000" readonly tabindex="-1"></div>
         </div>
-        <button class="search-submit">Показать →</button>
+        <button class="search-submit" id="objShowFlatsBtn" data-object="neo">Показать →</button>
       </div>
     </div>
   </div>
@@ -239,18 +236,18 @@
           <path class="gp-poly" data-liter="8" d="M505.56 367.55L497.97 372.94L499.41 377.74L500.77 378.42L502.51 441.79L562.14 470.94L577.16 458.4L576.8 412.39V393.95L577.88 392.14L570.6 388.35L565.24 385.62L566.19 383.17L553.99 377.36L550.27 379.88L544.99 377.74L543.52 378.85L538.13 376.1L539.66 373.33L538.13 372.94V370.34L539.29 368.74L527.62 363.34L524.61 365.33V366.65L522.23 365.33L521.7 365.82L512.56 361.33L504.41 366.65L505.56 367.55Z"></path>
           <path class="gp-poly" data-liter="9" d="M557.11 331.19L558.18 335.71V379.48L566.19 383.17L565.24 385.62L577.88 392.14L576.8 393.95V411.24L603.87 423.46L607.21 420.92L619.53 426.76L632.36 417.52V355.08L634 353.84V350.7L634.74 349.34L626.87 345.76V343.72L628.17 342.2L619.2 338.12L616.04 340.11V340.99L613.36 339.86L614.41 338.96L608.89 336.18L607.9 337.06L605.25 335.71L604.29 336.61L600.52 335.11L598.79 336.61L591.8 333.23L593.13 330.91L591.43 329.93L592.6 326.07L581.38 320.6L578.48 322.64V324.03L571.86 320.96L557.11 331.19Z"></path>
           <path class="gp-poly" data-liter="10" d="M612.27 293.11L612.92 293.65L613.71 309.9L613.4 337.13L613.71 337.45L612.87 338.13L614.17 338.8L613.4 339.69L616.28 340.89V339.69L619 338.23L628.02 342.31L626.95 343.68L626.77 345.58L634.19 349.08L633.58 351.11V353.52L631.86 355.26V357.83L632.24 372.73L658.57 385.25L662.97 382.47L675.27 388.03L687.41 379.75L687.85 366.85L688.64 366.03L687.54 365.2L687.75 316.59L689.15 315.76V312.34L690.17 311.11L682.39 307.38L682.59 305.47L683.66 304.25L673.8 299.46L671.33 301.65V302.33L668.47 301.2L669.19 300.47L663.96 297.99L662.93 298.78L660.34 297.5L659.27 298.4L655.96 296.86L653.7 297.99L646.7 294.89L648.45 292.59L646.7 291.63L646.38 290.23L647.41 289.45V287.47L636.84 282.71H635.93L633.82 284.42V285.32L627.38 282.3C627.38 282.3 612.96 292.53 612.62 292.53C612.27 292.53 612.27 293.11 612.27 293.11Z"></path>
-          <path class="gp-poly" data-liter="11" d="M600.12 177.98L605.58 174.77L606.43 175.16L606.97 174.49V173.15L609.58 171.47L612.96 172.8V175.16L615.33 176.03L620.22 173.15L630.64 177.98V183.25L632.06 182.53L634.34 183.25L635.09 182.9L639.19 184.59L639.97 184.05L655.52 190.21V194.82L659.66 196.69L659.94 195.99L661.59 194.82C661.59 194.82 663.88 195.71 664.66 196.69C665.45 197.68 663.95 199.88 663.95 199.88L663.48 279.35L665.18 279.85V281.93L663.95 282.8V286.7L663.48 287.18V291.31L661.59 293.3H659.94L654.78 296.44L651.22 295.19L649.86 296.44L646.48 295.19L648.45 292.59L646.7 291.63L646.48 290.12L647.77 289.41L647.37 287.18L636.67 282.8L633.82 284.43V285.32L627.38 282.3L621.93 286.27L597.79 273.95L597 183.5L600.12 181.51V177.98Z"></path>
-          <path class="gp-poly" data-liter="12" d="M293.37 292.9L301.29 288.37L300.64 287.65L308.72 282.94L317.13 286.75L318 286.42L319.52 287.3V285.92L322.2 284.42L333 289.02L332.05 290.32L331.64 292.9L342.5 298.48L343.63 297.96L347.26 299.61L348.36 298.77L350.3 299.61L352.74 297.96L361.24 302.01L360.62 303.12V305.56L362.88 306.85L365.38 305.56L366.47 305.89L368 305.02L367.05 304.34L371.82 301.65L372.76 302.01V299.61H372.23L373.94 298.48L379.76 300.8L379.05 303.42L380.09 304.01L379.43 305.02L380.09 305.56L381.01 305.02L388.97 308.6L388.06 310.1L391.12 364.25L367.05 376.01L298.94 342.94L296.88 298.48L294.88 297.96V294.24L293.37 292.9Z"></path>
-          <path class="gp-poly" data-liter="13" d="M204 239.1L205.12 242.36L199 245.93L200.2 247.4L204 283.25L202.51 284.42L204 285.4L205.12 295.01L278.19 333.13L293.69 324.42L292.79 313.52L294.43 311.76L292.43 310.51L288.74 267.06L289.98 265.94L286.65 264.6L287.46 263.63L275.77 258.16L274.86 258.79L274.04 258.51L273.69 255.69L274.86 254.33L266.51 250.29L262.93 252.28L252.46 247.4L251.38 247.85L248.42 246.4L243.4 249.1L241.43 247.85L241.01 248.23V245.24L239.02 244.18L238.45 236.11L239.02 235.02L233.91 232.37L232.62 233.33V235.02L225.07 231.71L217.03 236.11L212.17 234.33L204 239.1Z"></path>
+          <path class="gp-poly gp-poly-available" data-liter="11" d="M600.12 177.98L605.58 174.77L606.43 175.16L606.97 174.49V173.15L609.58 171.47L612.96 172.8V175.16L615.33 176.03L620.22 173.15L630.64 177.98V183.25L632.06 182.53L634.34 183.25L635.09 182.9L639.19 184.59L639.97 184.05L655.52 190.21V194.82L659.66 196.69L659.94 195.99L661.59 194.82C661.59 194.82 663.88 195.71 664.66 196.69C665.45 197.68 663.95 199.88 663.95 199.88L663.48 279.35L665.18 279.85V281.93L663.95 282.8V286.7L663.48 287.18V291.31L661.59 293.3H659.94L654.78 296.44L651.22 295.19L649.86 296.44L646.48 295.19L648.45 292.59L646.7 291.63L646.48 290.12L647.77 289.41L647.37 287.18L636.67 282.8L633.82 284.43V285.32L627.38 282.3L621.93 286.27L597.79 273.95L597 183.5L600.12 181.51V177.98Z"></path>
+          <path class="gp-poly gp-poly-available" data-liter="12" d="M293.37 292.9L301.29 288.37L300.64 287.65L308.72 282.94L317.13 286.75L318 286.42L319.52 287.3V285.92L322.2 284.42L333 289.02L332.05 290.32L331.64 292.9L342.5 298.48L343.63 297.96L347.26 299.61L348.36 298.77L350.3 299.61L352.74 297.96L361.24 302.01L360.62 303.12V305.56L362.88 306.85L365.38 305.56L366.47 305.89L368 305.02L367.05 304.34L371.82 301.65L372.76 302.01V299.61H372.23L373.94 298.48L379.76 300.8L379.05 303.42L380.09 304.01L379.43 305.02L380.09 305.56L381.01 305.02L388.97 308.6L388.06 310.1L391.12 364.25L367.05 376.01L298.94 342.94L296.88 298.48L294.88 297.96V294.24L293.37 292.9Z"></path>
+          <path class="gp-poly gp-poly-available" data-liter="13" d="M204 239.1L205.12 242.36L199 245.93L200.2 247.4L204 283.25L202.51 284.42L204 285.4L205.12 295.01L278.19 333.13L293.69 324.42L292.79 313.52L294.43 311.76L292.43 310.51L288.74 267.06L289.98 265.94L286.65 264.6L287.46 263.63L275.77 258.16L274.86 258.79L274.04 258.51L273.69 255.69L274.86 254.33L266.51 250.29L262.93 252.28L252.46 247.4L251.38 247.85L248.42 246.4L243.4 249.1L241.43 247.85L241.01 248.23V245.24L239.02 244.18L238.45 236.11L239.02 235.02L233.91 232.37L232.62 233.33V235.02L225.07 231.71L217.03 236.11L212.17 234.33L204 239.1Z"></path>
           <path class="gp-poly" data-liter="14" d="M123 212.5L125.5 217L127 229L130 259L178 283L193.5 271.5L190.5 237L182 232.5L181 229.5L172 224.5L167 227.5L164 225V216L159.5 211V207.5L150.5 203L147 206.5L138.5 202L123 212.5Z"></path>
-          <path class="gp-poly" data-liter="15" d="M47.5 220.5L44.5 180.5L41 174.5L47.5 170L46.5 167L55 163.5L60 165L68 161L73.5 164L75.5 161.5L80 164L81.5 176L87.5 173.5L101 179L103.5 176.5L110 180.5V184L124 191.5L128.5 246L114.5 254.5L47.5 220.5Z"></path>
-          <path class="gp-poly" data-liter="16" d="M157.5 122.5L160 157.5L211.5 172.5L217 173L225 180L229 176.5L236.5 183L244.5 177L243 160L252 153.5L251 134L249 127.5L236.5 123V119.5L229.5 116L226.5 118.5L226 115L219 112L218 113.5L212 112L202 117L201.5 111.5L197.5 109.5H193.5L187.5 105L184 108L180.5 106L178 108L173.5 105.5L164.5 110.5L165.5 113L154 119.5L157.5 122.5Z"></path>
-          <path class="gp-poly" data-liter="17" d="M308.5 208.5L295.5 217.5L285.5 213L281 216L251 201V192L244.5 190.5V185.5L242.5 159.5L257.5 151L272 152.5L280 153L286.5 152L290.5 155.5L293.5 153L307 161L305 168L308.5 208.5Z"></path>
+          <path class="gp-poly gp-poly-available" data-liter="15" d="M47.5 220.5L44.5 180.5L41 174.5L47.5 170L46.5 167L55 163.5L60 165L68 161L73.5 164L75.5 161.5L80 164L81.5 176L87.5 173.5L101 179L103.5 176.5L110 180.5V184L124 191.5L128.5 246L114.5 254.5L47.5 220.5Z"></path>
+          <path class="gp-poly gp-poly-available" data-liter="16" d="M157.5 122.5L160 157.5L211.5 172.5L217 173L225 180L229 176.5L236.5 183L244.5 177L243 160L252 153.5L251 134L249 127.5L236.5 123V119.5L229.5 116L226.5 118.5L226 115L219 112L218 113.5L212 112L202 117L201.5 111.5L197.5 109.5H193.5L187.5 105L184 108L180.5 106L178 108L173.5 105.5L164.5 110.5L165.5 113L154 119.5L157.5 122.5Z"></path>
+          <path class="gp-poly gp-poly-available" data-liter="17" d="M308.5 208.5L295.5 217.5L285.5 213L281 216L251 201V192L244.5 190.5V185.5L242.5 159.5L257.5 151L272 152.5L280 153L286.5 152L290.5 155.5L293.5 153L307 161L305 168L308.5 208.5Z"></path>
           <path class="gp-poly" data-liter="18" d="M253.5 238.5L241.5 247.5L239.5 244V235.5L233.5 232L231.5 234.5L226 231L217.5 235.5L212.5 234L205 238L196 233L188.5 226.5L141.5 199L139.5 167.5L154 160L157.5 162L161 159L168.5 163.5L175 160.5L186 163.5L188.5 161L196 164.5V168.5L202.5 171.5L199.5 177.5L207 183L209.5 180.5L217.5 185.5L222.5 182.5H231L236 186L238 183L246 186.5L245 190.5L250.5 192.5L251.5 197.5L249.5 199L253.5 238.5Z"></path>
-          <path class="gp-poly" data-liter="19" d="M358.5 180.5L345.5 189L305.5 172.5L307 161L297.5 155.5L296 127L293 122L307 113L314 117L317.5 114L327 119L326 122L332 124.5V135L335.5 137L338.5 134.5L348.5 138V140.5L358 145L358.5 180.5Z"></path>
-          <path class="gp-poly" data-liter="20" d="M291 123L264 139V144.5L252 147.5L251 133.5L248.5 128L236.5 122.5V120L228.5 116.5L227 110.5L225.5 104L236 98.5L235.5 96.5L243 92L246 95L249 93L248.5 82.5L258.5 77V74L266 69.5L269 73L272.5 69.5L282 74H285L290.5 77.5L287 82.5L291 123Z"></path>
-          <path class="gp-poly" data-liter="21" d="M298 119L290 115L287.5 83L290 77.5L287.5 74.5L300 67L303 70L307 67.5L305.5 59.5L311.5 54L317 52L316.5 49.5L324.5 45L325.5 49.5L329.5 46.5L344 50.5L345.5 87L338.5 94.5L341 99.5L337 103.5L318.5 111L314 117L308 112.5L298 119Z"></path>
-          <path class="gp-poly" data-liter="22" d="M418.5 145L407.5 155L372 141.5L364.5 136L359.5 131.5L357.5 124L356.5 102.5L355.5 98L369 90.5L373 93L377.5 90.5L384.5 95L390.5 91H395.5L403.5 95L405 92L412.5 94.5L412 99L417.5 99.5L418.5 105L416.5 107L418.5 145Z"></path>
+          <path class="gp-poly gp-poly-available" data-liter="19" d="M358.5 180.5L345.5 189L305.5 172.5L307 161L297.5 155.5L296 127L293 122L307 113L314 117L317.5 114L327 119L326 122L332 124.5V135L335.5 137L338.5 134.5L348.5 138V140.5L358 145L358.5 180.5Z"></path>
+          <path class="gp-poly gp-poly-available" data-liter="20" d="M291 123L264 139V144.5L252 147.5L251 133.5L248.5 128L236.5 122.5V120L228.5 116.5L227 110.5L225.5 104L236 98.5L235.5 96.5L243 92L246 95L249 93L248.5 82.5L258.5 77V74L266 69.5L269 73L272.5 69.5L282 74H285L290.5 77.5L287 82.5L291 123Z"></path>
+          <path class="gp-poly gp-poly-available" data-liter="21" d="M298 119L290 115L287.5 83L290 77.5L287.5 74.5L300 67L303 70L307 67.5L305.5 59.5L311.5 54L317 52L316.5 49.5L324.5 45L325.5 49.5L329.5 46.5L344 50.5L345.5 87L338.5 94.5L341 99.5L337 103.5L318.5 111L314 117L308 112.5L298 119Z"></path>
+          <path class="gp-poly gp-poly-available" data-liter="22" d="M418.5 145L407.5 155L372 141.5L364.5 136L359.5 131.5L357.5 124L356.5 102.5L355.5 98L369 90.5L373 93L377.5 90.5L384.5 95L390.5 91H395.5L403.5 95L405 92L412.5 94.5L412 99L417.5 99.5L418.5 105L416.5 107L418.5 145Z"></path>
       </svg>
       <div class="genplan-pins">
           <button type="button" class="gp-pin" data-liter="1" style="left:74.56%; top:80.75%;" aria-label="Литер 1">
@@ -393,7 +390,7 @@
               <a class="gp-card-link" href="flats.html">Смотреть все квартиры &rarr;</a>
             </div>
           </button>
-          <button type="button" class="gp-pin" data-liter="11" style="left:62.7%; top:36.62%;" aria-label="Литер 11">
+          <button type="button" class="gp-pin gp-pin-available" data-liter="11" style="left:62.7%; top:36.62%;" aria-label="Литер 11">
             <span class="gp-dot"></span>
             <span class="gp-pin-label">Литер 11</span>
             <div class="gp-card">
@@ -412,7 +409,7 @@
             <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=11">Шахматка квартир &rarr;</a>
             </div>
           </button>
-          <button type="button" class="gp-pin" data-liter="12" style="left:34.0%; top:48.18%;" aria-label="Литер 12">
+          <button type="button" class="gp-pin gp-pin-available" data-liter="12" style="left:34.0%; top:48.18%;" aria-label="Литер 12">
             <span class="gp-dot"></span>
             <span class="gp-pin-label">Литер 12</span>
             <div class="gp-card">
@@ -432,7 +429,7 @@
             <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=12">Шахматка квартир &rarr;</a>
             </div>
           </button>
-          <button type="button" class="gp-pin" data-liter="13" style="left:24.21%; top:41.45%;" aria-label="Литер 13">
+          <button type="button" class="gp-pin gp-pin-available" data-liter="13" style="left:24.21%; top:41.45%;" aria-label="Литер 13">
             <span class="gp-dot"></span>
             <span class="gp-pin-label">Литер 13</span>
             <div class="gp-card">
@@ -465,7 +462,7 @@
               <a class="gp-card-link" href="flats.html">Смотреть все квартиры &rarr;</a>
             </div>
           </button>
-          <button type="button" class="gp-pin" data-liter="15" style="left:7.69%; top:29.42%;" aria-label="Литер 15">
+          <button type="button" class="gp-pin gp-pin-available" data-liter="15" style="left:7.69%; top:29.42%;" aria-label="Литер 15">
             <span class="gp-dot"></span>
             <span class="gp-pin-label">Литер 15</span>
             <div class="gp-card">
@@ -481,7 +478,7 @@
             <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=15">Шахматка квартир &rarr;</a>
             </div>
           </button>
-          <button type="button" class="gp-pin" data-liter="16" style="left:20.26%; top:20.74%;" aria-label="Литер 16">
+          <button type="button" class="gp-pin gp-pin-available" data-liter="16" style="left:20.26%; top:20.74%;" aria-label="Литер 16">
             <span class="gp-dot"></span>
             <span class="gp-pin-label">Литер 16</span>
             <div class="gp-card">
@@ -499,7 +496,7 @@
             <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=16">Шахматка квартир &rarr;</a>
             </div>
           </button>
-          <button type="button" class="gp-pin" data-liter="17" style="left:27.26%; top:28.69%;" aria-label="Литер 17">
+          <button type="button" class="gp-pin gp-pin-available" data-liter="17" style="left:27.26%; top:28.69%;" aria-label="Литер 17">
             <span class="gp-dot"></span>
             <span class="gp-pin-label">Литер 17</span>
             <div class="gp-card">
@@ -532,7 +529,7 @@
               <a class="gp-card-link" href="flats.html">Смотреть все квартиры &rarr;</a>
             </div>
           </button>
-          <button type="button" class="gp-pin" data-liter="19" style="left:32.09%; top:22.55%;" aria-label="Литер 19">
+          <button type="button" class="gp-pin gp-pin-available" data-liter="19" style="left:32.09%; top:22.55%;" aria-label="Литер 19">
             <span class="gp-dot"></span>
             <span class="gp-pin-label">Литер 19</span>
             <div class="gp-card">
@@ -549,7 +546,7 @@
             <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=19">Шахматка квартир &rarr;</a>
             </div>
           </button>
-          <button type="button" class="gp-pin" data-liter="20" style="left:25.21%; top:16.19%;" aria-label="Литер 20">
+          <button type="button" class="gp-pin gp-pin-available" data-liter="20" style="left:25.21%; top:16.19%;" aria-label="Литер 20">
             <span class="gp-dot"></span>
             <span class="gp-pin-label">Литер 20</span>
             <div class="gp-card">
@@ -565,7 +562,7 @@
             <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=20">Шахматка квартир &rarr;</a>
             </div>
           </button>
-          <button type="button" class="gp-pin" data-liter="21" style="left:30.79%; top:12.79%;" aria-label="Литер 21">
+          <button type="button" class="gp-pin gp-pin-available" data-liter="21" style="left:30.79%; top:12.79%;" aria-label="Литер 21">
             <span class="gp-dot"></span>
             <span class="gp-pin-label">Литер 21</span>
             <div class="gp-card">
@@ -584,7 +581,7 @@
             <a class="gp-card-link gp-card-link-secondary" href="chessboard.html?liter=21">Шахматка квартир &rarr;</a>
             </div>
           </button>
-          <button type="button" class="gp-pin" data-liter="22" style="left:38.26%; top:17.55%;" aria-label="Литер 22">
+          <button type="button" class="gp-pin gp-pin-available" data-liter="22" style="left:38.26%; top:17.55%;" aria-label="Литер 22">
             <span class="gp-dot"></span>
             <span class="gp-pin-label">Литер 22</span>
             <div class="gp-card">
@@ -678,7 +675,7 @@
             Жду звонка
           </button>
         </form>
-        <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3></div>
+        <div class="form-success"><div class="ic">✓</div><h3>Спасибо!</h3><p style="color:var(--slate); font-size:15.5px;">Заявка отправлена, мы с вами свяжемся.</p></div>
       </div>
     </div>
   </div>
@@ -706,7 +703,7 @@
     </div>
     <div class="about-right">
       <span class="kicker">Ромекс Девелопмент</span>
-      <p>Входит в состав инвестиционного холдинга «Ромекс».</p>
+      <p>Входит в состав инвестиционного холдинга «Ромекс»</p>
       <div class="about-stats">
         <div class="about-stat">
           <b class="count-up" data-count="28" data-format="plus">28+</b>
@@ -731,11 +728,10 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo"><img src="assets/img/logo-devel-white.svg" alt="Ромекс Девелопмент" style="height:40px; width:auto;"></div>
-        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России.</p>      </div>
+        <p style="max-width:220px; line-height:1.6; color:rgba(243,238,230,0.5);">Один из крупнейших девелоперов Юга России</p>      </div>
       <div>
         <h5>Проекты</h5>
         <a href="object.html">НЕО‑квартал, Краснодар</a>
-        <a href="object-anapa.html">«Мириады Анапы», Анапа</a>
         <a href="commercial-objects.html">Торговые помещения</a>
       </div>
       <div>
@@ -743,7 +739,6 @@
         <a href="flats.html">Квартиры</a>
         <a href="buying.html">Способы покупки</a>
         <a href="mortgage.html">Ипотека</a>
-        <a href="keys.html">Выдача ключей</a>
         <a href="contacts.html">Клиентский сервис</a>
       </div>
       <div>
@@ -764,11 +759,10 @@
       <div>© 1998–2026 Группа компаний Ромекс. Все права защищены</div>
       <div style="display:flex; gap:18px; align-items:center;">
         <a href="privacy.html" class="footer-link">Политика конфиденциальности</a>
-        <a href="#" class="footer-link">Дисклеймеры</a>
+        <a href="disclaimers.html" class="footer-link">Дисклеймеры</a>
         <div class="social-links">
           <a href="#" class="social-link">VK<span class="social-icon">VK</span></a>
           <a href="#" class="social-link">TG<span class="social-icon">TG</span></a>
-          <a href="#" class="social-link">WhatsApp<span class="social-icon">WA</span></a>
           <a href="#" class="social-link">MAX<span class="social-icon">MAX</span></a>
         </div>
       </div>
@@ -793,7 +787,7 @@
       <label class="consent"><input type="checkbox"><span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>
       <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
-    <div class="form-success"><div class="ic">✓</div><h3>Заявка отправлена</h3><p style="color:var(--slate); font-size:15.5px;">Мы свяжемся с вами в ближайшее время.</p></div>
+    <div class="form-success"><div class="ic">✓</div><h3>Спасибо!</h3><p style="color:var(--slate); font-size:15.5px;">Заявка отправлена, мы с вами свяжемся.</p></div>
   </div>
 </div>
 
